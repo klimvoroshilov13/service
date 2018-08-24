@@ -25,12 +25,7 @@ if ($status=='run'||$status=='') {
 ?>
 
 <?php
-$script = <<< JS
-$(document).ready(function() {
-    setInterval(function(){ $("#refreshButton").click(); }, 100000);
-});
-JS;
-$this->registerJs($script);
+$this->registerJs('js/refresh.js');
 ?>
 
 <?php Pjax::begin(); ?>

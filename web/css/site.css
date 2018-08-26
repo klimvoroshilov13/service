@@ -181,6 +181,18 @@ div[class*=-create],div[class*=-update],.requests-view,.site-contact {
     margin-left: 20%;
     margin-right: 20%;
 }
+
+.wait{
+    color: #ffa500;
+}
+
+.postponed{
+    color: #ff0000;
+}
+
+.performed{
+    color:#008000;
+}
 /*.btn.btn-link.logout:hover{*/
     /*color: #ababab;*/
 /*}*/

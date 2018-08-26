@@ -24,10 +24,6 @@ if ($status=='run'||$status=='') {
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?php
-$this->registerJs('js/refresh.js');
-?>
-
 <?php Pjax::begin(); ?>
 
 <div class="requests-bar">
@@ -146,5 +142,10 @@ $this->registerJs('js/refresh.js');
 </div>
 
 <?= "* - смотри комментарий."?>
+
+<?php
+$this->registerJs('js/refresh.js');
+$this->registerJs('js/chcolor.js');
+?>
 
 <?php Pjax::end(); ?>

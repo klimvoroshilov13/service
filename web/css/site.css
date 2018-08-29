@@ -193,6 +193,10 @@ div[class*=-create],div[class*=-update],.requests-view,.site-contact {
 .performed{
     color:#008000;
 }
+
+.today{
+    font-weight: bold;
+}
 /*.btn.btn-link.logout:hover{*/
     /*color: #ababab;*/
 /*}*/

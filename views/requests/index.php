@@ -24,19 +24,32 @@ if ($status=='run'||$status=='') {
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 
+
+<?php
+
+$this->registerJsFile('@web/js/chcolor.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+    'yii\widgets\PjaxAsset',
+    'yii\grid\GridViewAsset'
+]]);
+?>
+
 <?php Pjax::begin(); ?>
 
 <div class="requests-bar">
     <h3><?= Html::encode($this->title) ?></h3>
     <p>
         <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn btn-primary']):null ?>
-        <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('yii', 'All'), ['/requests/index/all'], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('refreshButton',$status=='run'? ['/requests/index/run']:null, ['class' => 'hide','id' => 'refreshButton']) ?>
+        <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-primary control']) ?>
+        <?= Html::a(Yii::t('yii', 'All'), ['/requests/index/all'], ['class' => 'btn btn-primary control']) ?>
+        <?= Html::a('refreshButton',$status == 'run'? ['/requests/index/run']:null, ['class' => 'control hidden','id' => 'refreshButton']) ?>
     </p>
 </div>
 
-<div class="index">
+<!-- --><?//= 'Статус:'.$status ?>
+
+    <div class="index">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -142,10 +155,5 @@ if ($status=='run'||$status=='') {
 </div>
 
 <?= "* - смотри комментарий."?>
-
-<?php
-$this->registerJs('js/refresh.js');
-$this->registerJs('js/chcolor.js');
-?>
 
 <?php Pjax::end(); ?>

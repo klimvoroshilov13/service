@@ -21,8 +21,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/refresh.js',
-        'js/chcolor.js'
+//        'js/refresh.js',
+//        'js/chcolor.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

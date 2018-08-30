@@ -24,17 +24,6 @@ if ($status=='run'||$status=='') {
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
-<?php
-
-$this->registerJsFile('@web/js/chcolor.js',['depends' => [
-    'yii\web\YiiAsset',
-    'yii\bootstrap\BootstrapAsset',
-    'yii\widgets\PjaxAsset',
-    'yii\grid\GridViewAsset'
-]]);
-?>
-
 <?php Pjax::begin(); ?>
 
 <div class="requests-bar">
@@ -157,3 +146,18 @@ $this->registerJsFile('@web/js/chcolor.js',['depends' => [
 <?= "* - смотри комментарий."?>
 
 <?php Pjax::end(); ?>
+
+<!-- Подключение JS скриптов -->
+<?php
+$this->registerJsFile('@web/js/refresh-page.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
+$this->registerJsFile('@web/js/redye-requests.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+?>
+<!-- Подключение JS скриптов -->
+

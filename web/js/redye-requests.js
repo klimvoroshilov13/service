@@ -1,11 +1,5 @@
 'use strict';
 
-// Функция  обновления странице "заявки в работе" приложения по времени
-var refreshDocument = function() {
-    var refreshButton = document.querySelector('#refreshButton');
-    setInterval(function(){ $('#refreshButton').click();}, 15000); //Устанавливается время обновления
-};
-
 // Функция изменения цвета заявки взависимости от статуса
 var changeColor = function () {
 
@@ -40,7 +34,7 @@ var changeColor = function () {
 //
 // var today = new Date;
 
-$(document).ready([refreshDocument,changeColor]);
+$(document).ready(changeColor);
 $(document).on('pjax:complete',changeColor);
 
 //Диагностика

@@ -12,11 +12,16 @@ var redyeRequests = function () {
 
     for (var i = 0; i < request.length; i++) {
     var text = request[i].innerText;
-    text.search(regexPostponed) > 0 ? request[i].className='postponed':null;
-    text.search(regexWait) > 0 ? request[i].className='wait':null;
-    text.search(regexPerformed) > 0 ? request[i].className='performed':null;
-    text.search(regexDate) > 0 ? request[i].classList.add('today'):null;
-    text.search(regexCompleted) > 0 ? request[i].classList.remove('today'):null;
+    text.search(regexPostponed) > 0 ?
+        request[i].classList.add('postponed'):null;
+    text.search(regexWait) > 0 ?
+        request[i].classList.add('wait'):null;
+    text.search(regexPerformed) > 0 ?
+        request[i].classList.add('performed'):null;
+    text.search(regexDate) > 0 ?
+        request[i].classList.add('today'):null;
+    text.search(regexCompleted) > 0 || text.search(regexPostponed) > 0 || text.search(regexPerformed) > 0 ?
+        request[i].classList.remove('today'):null;
     }
 };
 

@@ -183,11 +183,11 @@ div[class*=-create],div[class*=-update],.requests-view,.site-contact {
 }
 
 .wait{
-    color: #ffa500;
+    color: #ff0000;
 }
 
 .postponed{
-    color: #ff0000;
+    color: #ffa500;
 }
 
 .performed{

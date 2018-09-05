@@ -109,4 +109,9 @@ use app\components\helper\Adminhelper;
 
     <?php ActiveForm::end(); ?>
 
+    <?= $model->getOldAttribute('name_status') ?> <br>
+
+    <?= var_dump($model) ?>
+
+
 </div>

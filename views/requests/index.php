@@ -29,10 +29,11 @@ if ($status=='run'||$status=='') {
 <div class="requests-bar">
     <h3><?= Html::encode($this->title) ?></h3>
     <p>
+        <?  $page==null ? $page=1:null ?>
         <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn btn-primary']):null ?>
         <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-primary control']) ?>
         <?= Html::a(Yii::t('yii', 'All'), ['/requests/index/all'], ['class' => 'btn btn-primary control']) ?>
-        <?= Html::a('refreshButton',$status == 'run'? ['/requests/index/run']:null, ['class' => 'control hidden','id' => 'refreshButton']) ?>
+        <?= Html::a('refreshButton',$status == 'run'? ['/requests/index/run/'.$page.'/10']:null, ['class' => 'control hidden','id' => 'refreshButton']) ?>
     </p>
 </div>
 
@@ -47,18 +48,18 @@ if ($status=='run'||$status=='') {
 
             'id'=>[
                 'attribute' => 'id',
-                'options' => ['width' => '10']
+//                'options' => ['width' => '10']
             ],
 
             'date_start'=>[
                 'attribute' => 'date_start',
-                'options' => ['width' => '150'],
+                'options' => ['width' => '120'],
                 'format' => ['date','php:d.m.Y H:i'],
             ],
 
             'name_customers'=>[
                 'attribute' => 'name_customers',
-                'options' => ['width' => '150'],
+                'options' => ['width' => '70'],
                 ],
 //            'name_contracts'=>[
 //                'attribute' => 'name_contracts',
@@ -100,17 +101,19 @@ if ($status=='run'||$status=='') {
             [
                 'class' => 'app\components\grid\CombinedDataColumn',
                 'attributes' => [
-                    'date_run:datetime',
+                    'date_run:html',
                     'date_end:html',
                 ],
                 'labelTemplate' => '{0} / {1}',
                 'valueTemplate' => '{0} {1}',
                 'labels' => [
-                    'Дата нач.',
+                    'Дата изм.',
                     'зав. заявки',
                 ],
                 'values' => [
-                    null,
+                        function ($model, $_key, $_index, $_column) {
+                        return ' ' . Yii::$app->formatter->asDatetime($model->date_run) . ' ';
+                    },
                         function ($model, $_key, $_index, $_column) {
                         return ' ' . Yii::$app->formatter->asDatetime($model->date_end) . ' ';
                     },
@@ -124,15 +127,15 @@ if ($status=='run'||$status=='') {
                 //'attribute' => 'date',
                 //'value' => 'date',
                 //'format' => ['date','php:d.m.Y'],
-                'options' => ['width' => '170'],
+//                'options' => ['width' => '170'],
             ],
-            /* End Комбинированные ячейки  date_start и date_end */
+            /* End Комбинированные ячейки  date_run и date_end */
             'name_performers',
             'name_status',
             //'name_user',
             ['class' => 'yii\grid\ActionColumn',
                             'header'=>'Изм.',
-                            'headerOptions' => ['width' => '70'],
+//                            'headerOptions' => ['width' => '70'],
                             'urlCreator'=>function($action, $model, $key, $index)use($page){
                                         return \yii\helpers\Url::to([$action,'id'=>$model->id,'page'=>$page]);
                                         },
@@ -160,4 +163,3 @@ $this->registerJsFile('@web/js/redye-requests.js',['depends' => [
 ]]);
 ?>
 <!-- Подключение JS скриптов -->
-

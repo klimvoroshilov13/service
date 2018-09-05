@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use app\components\helper\Adminhelper;
 
 /**
  *  Класс модели Requests(заявки)
@@ -74,10 +75,11 @@ class Requests extends ActiveRecord
     public function rules()
     {
         return [
-            [['date_start','date_run', 'date_end','info','contacts'],'trim'],
-            [['date_start','date_run', 'date_end'],'date','format'=>'php:d.m.Y H:i'],
-            [['date_start','date_run', 'date_end'], 'default', 'value' => null],
-            [['name_customers','name_contracts'], 'string', 'max' => 100],
+            [['date_start','date_run','date_end','info','contacts'],'trim'],
+            [['date_start','date_end'],'date','format'=>'php:d.m.Y H:i'],
+            [['date_run'],'date','format'=>'php:Y-m-d H:i:s'],
+            [['date_start','date_run','date_end'], 'default','value' => null],
+            [['name_customers','name_contracts'],'string', 'max' => 100],
             [['info','comment'], 'string'],
             [['phone'], 'string', 'max' => 16],
             [['contacts'], 'string', 'max' => 250],
@@ -167,14 +169,24 @@ class Requests extends ActiveRecord
      */
     public function beforeSave($insert)
     {
+
         if (parent::beforeSave($insert)) {
             $this->name_status=='завершена' && $this->date_end==null ? $this->date_end = setCurrentDate():null;
+            $this->name_status=='ожидание'||$this->name_status=='отложена'||$this->name_status=='отменена'? [$this->name_performers=null]: null;
+
+            !($this->name_status == $this->getOldAttribute('name_status')) && !($this->name_status=='завершена')? $this->date_run = setCurrentDate():null;
+
             $this->name_status==null ? $this->name_status='ожидание': null;
+
             $this->name_status=='ожидание' && !(Yii::$app->user->identity->username =='Admin') ? $this->name_user=Yii::$app->user->identity->username: null;
-            $this->name_status=='ожидание'||$this->name_status=='отложена'? $this->name_performers=null: null;
-            $this->name_status=='ожидание'||$this->name_status=='выполняется'? $this->date_end=null: null;
+
+            $this->name_status=='ожидание'||$this->name_status=='отложена'||$this->name_status=='отменена'? $this->name_performers=null: null;
+            $this->name_status=='ожидание'||$this->name_status=='выполняется'||$this->name_status=='отменена'? $this->date_end=null: null;
+
             $this->date_start=Yii::$app->formatter->asDatetime($this->date_start, "php:Y-m-d H:i");
             $this->date_end==null ? null:$this->date_end=Yii::$app->formatter->asDatetime($this->date_end, "php:Y-m-d H:i");
+            $this->date_run==null ? null:$this->date_run=Yii::$app->formatter->asDatetime($this->date_run, "php:Y-m-d H:i");
+
             $this->name_contracts=='' ? $this->name_contracts=null:null;
             $this->name_performers=='' ? $this->name_performers=null:null;
             !(empty($this->comment)) ? $this->info=$this->info.' *': null;
@@ -182,4 +194,7 @@ class Requests extends ActiveRecord
         }
         return false;
     }
+
+
 }
+

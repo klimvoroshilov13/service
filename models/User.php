@@ -19,7 +19,7 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token // Токен для сброса пароля пользователя .
  * @property string $email // Email пользователя.
  * @property string $auth_key // Ключ аутентификации основанный на cookie файлах.
- * @property integer $status // Статус пользователя.
+ * @property integer $status// Статус пользователя.
  * @property integer $created_at // Дата создания пользователя.
  * @property integer $updated_at // Дата изменения пользователя.
  * @property string $role // Роль пользователя.

@@ -19,6 +19,7 @@ use kartik\date\DatePicker;
 /* @var $performer2 string */
 /* @var $statuses array */
 /* @var $status string */
+/* @var $requests  array  */
 
 ?>
 
@@ -48,17 +49,42 @@ use kartik\date\DatePicker;
 
 
     <? $paramNj = ['options' =>[$job  => ['Selected' => true]],
-        'prompt'=> 'Выберите работы ... ',
-        'onchange'=>''
+        'prompt'=> 'Выберите работы ... '
         ];?>
     <?= $form->field($model,'name_jobs')->dropDownList($jobs,$paramNj)?>
 
     <?= $form->field($model, 'name_customers')->dropDownList($customers,[
         'options' =>[$customer => ['Selected' => true]],
         'prompt'=>'Выберите контрагента ...',
+        'onchange'=>
+    '$.post( "'.Yii::$app->urlManager->createUrl('requests/lists?id=').'"+$(this).val(), 
+        function( data ) {$("select#planner-info").html(data);});',
+//    '$.post( "'.Yii::$app->urlManager->createUrl('contracts/lists?id=').'"+$(this).val(),
+//    function( data ){$("select#planner-name_contracts").html(data);});'
+
+        //:null
     ]) ?>
 
-    <?= $form->field($model, 'info')->textInput() ?>
+    <?= $form->field($model, 'info')->textarea(['rows' => 3, 'cols' => 5]);?>
+
+<!--    --><?//  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
+//        $paramNs = ['options' =>[$stateRequest => ['Selected' => true]],
+//            'prompt'=>'Выберите заявку ...'
+//        ];?>
+
+    <?= !($role=='user')? $form->field($model, 'info')->dropDownList($contracts,[
+        'options' =>[$contract  => ['Selected' => true]],
+        'prompt'=>'Выберите договор ...',
+    ]):null;?>
+
+
+    <? $params = [
+            'prompt'=>'Выберите заявку ...'
+        ];?>
+    <?= $form->field($model,'info')->dropDownList($requests, $params)?>
+
+
+
 
     <? $paramNp = ['options' =>[$performer1 => ['Selected' => true]],
                 'prompt'=>'Выберите исполнителя ...'
@@ -87,3 +113,12 @@ use kartik\date\DatePicker;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<!-- Подключение JS скриптов -->
+<?php
+$this->registerJsFile('@web/js/reload-info.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+?>
+<!-- Подключение JS скриптов -->

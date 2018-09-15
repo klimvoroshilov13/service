@@ -62,12 +62,12 @@ class RequestsController extends Controller
                         'roles' => ['user'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer'],
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
                         'allow' => true,
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer'],
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -114,19 +114,42 @@ class RequestsController extends Controller
     */
     public function actionIndex()
     {
-        $status= Yii::$app->request->get('status');
-        !($status) ? $status='run':null;
-        $page= Yii::$app->request->get('page');
-        $status==null ? $status='run':null;
+        $stateRequest = Yii::$app->request->get('stateRequest');
+        !($stateRequest) ? $stateRequest='run':null;
+        $page = Yii::$app->request->get('page');
+        $stateRequest==null ? $stateRequest='run':null;
         $searchModel = new RequestsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$status);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'status'=>$status,
+            'stateRequest'=>$stateRequest,
             'page'=>$page,
         ]);
+    }
+
+
+    public function actionLists($id)
+    {
+
+        $countRequests = Requests::find()
+            ->where(['name_customers'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
+            ->count();
+
+        $requests = Requests::find()
+            ->where(['name_customers'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
+            ->all();
+        if ($countRequests > 0)
+        {
+            foreach ($requests as $request){
+                echo"<option value='".$request->id. " '>".$request->info. "</option>";
+            }
+        }
+        else {
+            echo"<option>  </option>";
+        }
+
     }
 
     /**
@@ -202,6 +225,8 @@ class RequestsController extends Controller
         $userModel=Yii::$app->user->identity;
         $role=$userModel->role;
         $page = Yii::$app->request->get('page');
+        $statusRequest= Yii::$app->request->get('stateRequest');
+//        !($statusPage) ? $statusPage='run':null;
         $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
         $customer = ArrayHelper::getValue($model,'name_customers');
         $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
@@ -221,7 +246,7 @@ class RequestsController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if (!$page==null){return $this->redirect(['/requests/index/all/'.$page.'/10']);}
+            if (!$page==null){return $this->redirect(['/requests/index/'.$statusRequest.'/'.$page.'/10']);}
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

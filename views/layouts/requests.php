@@ -25,6 +25,7 @@ $userModel=Yii::$app->user->identity;
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="icon" href="/web/favicon.ico">
 </head>
 <body>
 <?php $this->beginBody() ?>

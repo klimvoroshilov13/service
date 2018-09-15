@@ -20,7 +20,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 /**
- * PlannerController implements the CRUD actions for Planner model.
+ * Контроллер PlannerController(управление планировщиком)
  */
 class PlannerController extends Controller
 {
@@ -63,10 +63,7 @@ class PlannerController extends Controller
         ];
     }
 
-    /**
-     * Lists all Planner models.
-     * @return mixed
-     */
+
     public function actionIndex()
     {
         $searchModel = new PlannerSearch();
@@ -78,11 +75,7 @@ class PlannerController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Planner model.
-     * @param integer $id
-     * @return mixed
-     */
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -90,11 +83,7 @@ class PlannerController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Planner model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
+
     public function actionCreate()
     {
         /* @var $userModel UserControl  */
@@ -130,18 +119,13 @@ class PlannerController extends Controller
                 'performer1'=>$performer1,
                 'performer2'=>$performer2,
                 'statuses'=>$statuses,
-                'status'=>$status,
+                'stateRequest'=>$status,
                 'requests'=>$requests,
             ]);
         }
     }
 
-    /**
-     * Updates an existing Planner model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
+
     public function actionUpdate($id)
     {
         /* @var $userModel UserControl  */
@@ -160,6 +144,7 @@ class PlannerController extends Controller
         $performer2 = ArrayHelper::getValue($model,'name_performers2');
         $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
         $status = ArrayHelper::getValue($model,'name_status');
+        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','info');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -176,17 +161,13 @@ class PlannerController extends Controller
                 'performer1'=>$performer1,
                 'performer2'=>$performer2,
                 'statuses'=>$statuses,
-                'status'=>$status,
+                'stateRequest'=>$status,
+                'requests'=>$requests,
             ]);
         }
     }
 
-    /**
-     * Deletes an existing Planner model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
+
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -194,13 +175,7 @@ class PlannerController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Planner model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Planner the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+
     protected function findModel($id)
     {
         if (($model = Planner::findOne($id)) !== null) {

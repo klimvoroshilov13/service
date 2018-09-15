@@ -13,6 +13,7 @@ use app\components\helper\Adminhelper;
  * @property integer $id // Номер заявки
  * @property string $date_start // Дата создания заявки
  * @property string $date_run // Дата начала выполнения заявки
+ * @property string $date_changed_status // Даты изменения статуса
  * @property string $date_end // Дата завершения заявки
  * @property string $name_customers //Наименование контрагента
  * @property string $info // Информация по заявки
@@ -49,11 +50,11 @@ class Requests extends ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[static::SCENARIO_ADMIN] = ['date_start','date_run', 'date_end','name_customers','info','comment','phone',
+        $scenarios[static::SCENARIO_ADMIN] = ['date_start','date_run','date_changed_status', 'date_end','name_customers','info','comment','phone',
             'contacts','name_performers', 'name_status','name_contracts'];
-        $scenarios[static::SCENARIO_OPERATOR] = ['date_start','name_customers','info','phone',
+        $scenarios[static::SCENARIO_OPERATOR] = ['date_start','date_changed_status','name_customers','info','phone',
             'contacts','name_contracts'];
-        $scenarios[static::SCENARIO_USER] = ['date_end','date_run','name_customers','info','comment','phone',
+        $scenarios[static::SCENARIO_USER] = ['date_end','date_run','date_changed_status','name_customers','info','comment','phone',
             'contacts','name_performers', 'name_status','name_contracts'];
         return $scenarios;
     }
@@ -80,7 +81,7 @@ class Requests extends ActiveRecord
             [['date_run'],'date','format'=>'php:Y-m-d H:i:s'],
             [['date_start','date_run','date_end'], 'default','value' => null],
             [['name_customers','name_contracts'],'string', 'max' => 100],
-            [['info','comment'], 'string'],
+            [['date_changed_status','info','comment'], 'string'],
             [['phone'], 'string', 'max' => 16],
             [['contacts'], 'string', 'max' => 250],
             [['name_performers', 'name_status'], 'string', 'max' => 30],
@@ -104,6 +105,7 @@ class Requests extends ActiveRecord
             'id' => '№',
             'date_start' => Yii::t('yii','date_start'),
             'date_run' => Yii::t('yii','date_run'),
+            'date_changed_status'=> Yii::t('yii','Date_changed_status'),
             'date_end' => Yii::t('yii','date_end'),
             'name_customers' => Yii::t('yii','name_customers'),
             'info' => Yii::t('yii','info'),
@@ -172,20 +174,36 @@ class Requests extends ActiveRecord
 
         if (parent::beforeSave($insert)) {
             $this->name_status=='завершена' && $this->date_end==null ? $this->date_end = setCurrentDate():null;
-            $this->name_status=='ожидание'||$this->name_status=='отложена'||$this->name_status=='отменена'? [$this->name_performers=null]: null;
+            $this->getOldAttribute('name_status')=='ожидание' && $this->name_status=='завершена'? $this->name_status='ожидание': null;
 
             !($this->name_status == $this->getOldAttribute('name_status')) && !($this->name_status=='завершена')? $this->date_run = setCurrentDate():null;
+
+            if (!($this->name_status == $this->getOldAttribute('name_status'))) {
+                $status = Status::find()->where(['name'=> $this->name_status])->one();
+                if ($this->date_changed_status == null){
+                    $this->date_changed_status = Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.y")
+                        .'-'.$status->abbreviated_name;
+                }
+               else
+               {
+                   $this->date_changed_status = $this->getOldAttribute('date_changed_status').'  '
+                       .Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.y").' - '.$status->abbreviated_name;
+               }
+
+            }
+
 
             $this->name_status==null ? $this->name_status='ожидание': null;
 
             $this->name_status=='ожидание' && !(Yii::$app->user->identity->username =='Admin') ? $this->name_user=Yii::$app->user->identity->username: null;
 
             $this->name_status=='ожидание'||$this->name_status=='отложена'||$this->name_status=='отменена'? $this->name_performers=null: null;
-            $this->name_status=='ожидание'||$this->name_status=='выполняется'||$this->name_status=='отменена'? $this->date_end=null: null;
+            $this->name_status=='ожидание'||$this->name_status=='выполняется' ? $this->date_end=null: null;
+            $this->name_status=='отменена'? $this->date_end=$this->date_run:null;
 
             $this->date_start=Yii::$app->formatter->asDatetime($this->date_start, "php:Y-m-d H:i");
-            $this->date_end==null ? null:$this->date_end=Yii::$app->formatter->asDatetime($this->date_end, "php:Y-m-d H:i");
-            $this->date_run==null ? null:$this->date_run=Yii::$app->formatter->asDatetime($this->date_run, "php:Y-m-d H:i");
+            !($this->date_end==null) ? $this->date_end=Yii::$app->formatter->asDatetime($this->date_end, "php:Y-m-d H:i"):null;
+            !($this->date_run==null) ? $this->date_run=Yii::$app->formatter->asDatetime($this->date_run, "php:Y-m-d H:i"):null;
 
             $this->name_contracts=='' ? $this->name_contracts=null:null;
             $this->name_performers=='' ? $this->name_performers=null:null;

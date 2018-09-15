@@ -5,10 +5,11 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "status".
+ * This is the model class for table "Status".
  *
  * @property integer $id
  * @property string $name
+ * @property string $abbreviated_name
  *
  * @property Requests[] $requests
  */
@@ -41,6 +42,7 @@ class Status extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'abbreviated_name'=>'Abbreviated name'
         ];
     }
 

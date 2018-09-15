@@ -31,6 +31,7 @@ $this->title = Yii::t('yii', 'Users');
                 //'format' =>  ['date','HH:i dd.MM.yyyy'],
                 //'options' => ['width' => '70']
             ],
+            'fullname',
             //'auth_key',
             //'password_hash',
             //'password_reset_token',

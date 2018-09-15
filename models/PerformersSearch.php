@@ -18,7 +18,7 @@ class PerformersSearch extends Performers
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
+            [['id', 'stateRequest'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class PerformersSearch extends Performers
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
+            'stateRequest' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

@@ -15,6 +15,7 @@ use yii\helpers\Html;
 /* @var $performer2 string */
 /* @var $statuses array */
 /* @var $status string */
+/* @var $requests  array  */
 
 $this->title = Yii::t('yii', 'Update {modelClass}: ', [
     'modelClass' => 'Planner',
@@ -39,7 +40,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'performer1'=>$performer1,
         'performer2'=>$performer2,
         'statuses'=>$statuses,
-        'status'=>$status,
+        'stateRequest'=>$status,
+        'requests'=>$requests,
     ]) ?>
 
 </div>

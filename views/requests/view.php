@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']]
             'contacts',
             'name_performers',
             'name_status',
+            'date_changed_status',
             'name_user',
         ],
     ]) ?>

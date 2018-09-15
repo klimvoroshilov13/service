@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property integer $status
+ * @property integer $stateRequest
  *
  * @property Requests[] $requests
  */
@@ -29,7 +29,7 @@ class Performers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status'], 'integer'],
+            [['stateRequest'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['name'], 'unique'],
         ];
@@ -43,7 +43,7 @@ class Performers extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'status' => 'Status',
+            'stateRequest' => 'Status',
         ];
     }
 

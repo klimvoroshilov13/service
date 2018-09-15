@@ -2791,7 +2791,7 @@ INSERT INTO `requests` (`id`, `date_start`, `date_run`, `date_end`, `name_custom
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `status`
+-- Структура таблицы `stateRequest`
 --
 
 CREATE TABLE `status` (
@@ -2800,7 +2800,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='статусы заявок';
 
 --
--- Дамп данных таблицы `status`
+-- Дамп данных таблицы `stateRequest`
 --
 
 INSERT INTO `status` (`id`, `name`) VALUES
@@ -2930,7 +2930,7 @@ ALTER TABLE `requests`
   ADD KEY `requests_contracts_name_fk` (`name_contracts`);
 
 --
--- Индексы таблицы `status`
+-- Индексы таблицы `stateRequest`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`),
@@ -2987,7 +2987,7 @@ ALTER TABLE `requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2404;
 
 --
--- AUTO_INCREMENT для таблицы `status`
+-- AUTO_INCREMENT для таблицы `stateRequest`
 --
 ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

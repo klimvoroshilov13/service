@@ -55,3 +55,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']]
         ]): null ?>
     </p>
 </div>
+
+<!-- Подключение JS скриптов -->
+<?php
+
+$this->registerJsFile('@web/js/changed-status.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
+?>
+<!-- Подключение JS скриптов -->

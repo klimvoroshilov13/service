@@ -79,6 +79,7 @@ $config = [
                 '<controller>/update/<id:\d+>/<page:\d+>' => '<controller>/update',
                 '<controller>/update/<id:\d+>' => '<controller>/update',
                 'admin-panel' =>'admin/admin-panel/index',
+                '<module>/<controller>/update/index'=>'<module>/<controller>/index',
                 '<module>/<controller>/<action>/<id:\d+>' => '<module>/<controller>/<action>',
                 'customers/create/<actions:\w+>' => 'customers/create',
             ],

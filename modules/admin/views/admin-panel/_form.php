@@ -16,6 +16,8 @@ use app\modules\admin\models\AuthItem;
 
     <?= $model->isNewRecord ?  $form->field($model, 'username')->textInput(['autofocus' => true]): null ?>
 
+    <?= $form->field($model, 'fullname')->textInput(); ?>
+
     <?= $form->field($model, 'email')->input('email'); ?>
 
     <?= $form->field($model, 'new_password')->passwordInput() ?>
@@ -23,7 +25,6 @@ use app\modules\admin\models\AuthItem;
     <?= $form->field($model, 'new_confirm')->passwordInput() ?>
 
     <?= $form->field($model, 'role')->dropDownList(ArrayHelper::map(AuthItem::find()->all(),'name','name')) ?>
-
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ?  Yii::t('yii', 'Create') : Yii::t('yii', 'Update'),

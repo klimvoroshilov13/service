@@ -85,7 +85,7 @@ class Requests extends ActiveRecord
             [['phone'], 'string', 'max' => 16],
             [['contacts'], 'string', 'max' => 250],
             [['name_performers', 'name_status'], 'string', 'max' => 30],
-            [['name_user'], 'string', 'max' => 22],
+            [['name_user'], 'string', 'max' => 32],
             [['name_customers','phone','contacts','info'], 'required'],// Поля необходимые к заполнению
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
             [['name_performers'], 'exist', 'skipOnError' => true, 'targetClass' => Performers::className(), 'targetAttribute' => ['name_performers' => 'name']],
@@ -177,27 +177,24 @@ class Requests extends ActiveRecord
             $this->getOldAttribute('name_status')=='ожидание' && $this->name_status=='завершена'? $this->name_status='ожидание': null;
 
             !($this->name_status == $this->getOldAttribute('name_status')) && !($this->name_status=='завершена')? $this->date_run = setCurrentDate():null;
-
-            if (!($this->name_status == $this->getOldAttribute('name_status'))) {
-                $status = Status::find()->where(['name'=> $this->name_status])->one();
-                if ($this->date_changed_status == null){
-                    $this->date_changed_status = Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.y")
-                        .'-'.$status->abbreviated_name;
-                }
-               else
-               {
-                   $this->date_changed_status = $this->getOldAttribute('date_changed_status').'  '
-                       .Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.y").' - '.$status->abbreviated_name;
-               }
-
-            }
-
-
             $this->name_status==null ? $this->name_status='ожидание': null;
 
-            $this->name_status=='ожидание' && !(Yii::$app->user->identity->username =='Admin') ? $this->name_user=Yii::$app->user->identity->username: null;
+            $this->name_status=='ожидание' && $this->name_user==null ? $this->name_user=Yii::$app->user->identity->fullname: null;
 
             $this->name_status=='ожидание'||$this->name_status=='отложена'||$this->name_status=='отменена'? $this->name_performers=null: null;
+
+            if (!($this->name_status == $this->getOldAttribute('name_status'))) {
+                $this->name_performers==null? $namePerformer='':$namePerformer=$this->name_performers;
+                $status = Status::find()->where(['name'=> $this->name_status])->one();
+                if ($this->date_changed_status == null){
+                    $this->date_changed_status = Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.Y")
+                        .';'.$this->name_status.';'.$namePerformer;
+                } else {
+                    $this->date_changed_status = $this->getOldAttribute('date_changed_status').';'
+                        .Yii::$app->formatter->asDatetime(setCurrentDate(), "php:H:i d.m.Y").';'.$this->name_status.';'.$namePerformer;
+                }
+            }
+
             $this->name_status=='ожидание'||$this->name_status=='выполняется' ? $this->date_end=null: null;
             $this->name_status=='отменена'? $this->date_end=$this->date_run:null;
 

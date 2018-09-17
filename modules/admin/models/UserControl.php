@@ -41,8 +41,8 @@ class UserControl extends User
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[static::SCENARIO_UPDATE] = ['username', 'new_password','email', 'role','new_confirm'];
-        $scenarios[static::SCENARIO_CREATE] = ['username', 'auth_key','new_password','email','role','new_confirm'];
+        $scenarios[static::SCENARIO_UPDATE] = ['username','fullname','new_password','email', 'role','new_confirm'];
+        $scenarios[static::SCENARIO_CREATE] = ['username','fullname','auth_key','new_password','email','role','new_confirm'];
         return $scenarios;
     }
 
@@ -78,6 +78,7 @@ class UserControl extends User
         return [
             'id' => '№',
             'username' => Yii::t('yii','Name'),
+            'fullname'=> Yii::t('yii','Fullname'),
             'email' => 'Email',
             'status' => Yii::t('yii','Status'),
             'new_password' => Yii::t('yii','New_password'),

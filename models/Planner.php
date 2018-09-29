@@ -12,7 +12,9 @@ use Yii;
  * @property string $day_week
  * @property string $name_jobs
  * @property string $name_customers
- * @property integer $info
+ * @property string $info_text
+ * @property string $info_contract
+ * @property string $info_request
  * @property string $name_status
  * @property string $name_performers1
  * @property string $name_performers2
@@ -42,9 +44,9 @@ class Planner extends \yii\db\ActiveRecord
             [['date'], 'required'],
             //[['date'], 'safe'],
             //[['date'],'date','format'=>'php:d.m.Y'],
-            [['info'], 'string'],
+            [['info_text','info_request'], 'string'],
             [['name_jobs','day_week'], 'string', 'max' => 12],
-            [['name_customers'], 'string', 'max' => 100],
+            [['name_customers','info_contract'], 'string', 'max' => 100],
             [['name_status', 'name_performers1', 'name_performers2'], 'string', 'max' => 30],
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
             [['name_jobs'], 'exist', 'skipOnError' => true, 'targetClass' => Jobs::className(), 'targetAttribute' => ['name_jobs' => 'name']],
@@ -65,7 +67,9 @@ class Planner extends \yii\db\ActiveRecord
             'day_week' => Yii::t('yii','Day Week'),
             'name_jobs' => Yii::t('yii','Name Jobs'),
             'name_customers' => Yii::t('yii','Name Customers'),
-            'info' => Yii::t('yii','Info'),
+            'info_text' => Yii::t('yii','Info'),
+            'info_contract' => Yii::t('yii','Info'),
+            'info_request' => Yii::t('yii','Info'),
             'name_status' => Yii::t('yii','Name Status'),
             'name_performers1' => Yii::t('yii','Name Performers1'),
             'name_performers2' => Yii::t('yii','Name Performers2')

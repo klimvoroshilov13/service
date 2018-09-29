@@ -181,7 +181,7 @@ if ($stateRequest=='run'||$stateRequest=='') {
 <?php Pjax::begin(); ?>
 
 <div class="requests-bar">
-    <h3><?= Html::encode($this->title) ?></h3>
+    <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?  $page==null ? $page=1:null ?>
         <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn btn-primary']):null ?>

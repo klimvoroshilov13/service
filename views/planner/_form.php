@@ -17,8 +17,9 @@ use kartik\date\DatePicker;
 /* @var $performers array */
 /* @var $performer1 string */
 /* @var $performer2 string */
-/* @var $statuses array */
 /* @var $status string */
+/* @var $statuses array */
+/* @var $request string */
 /* @var $requests  array  */
 
 ?>
@@ -35,18 +36,12 @@ use kartik\date\DatePicker;
         'convertFormat' => true,
         'pluginOptions' => [
             'format' => 'dd.MM.yyyy',
-            'autoclose'=>true,
+            'autoclose'=> true,
             'todayHighlight' => true,
             'weekStart'=> 1, //неделя начинается с понедельника
             'startDate' => '01.05.2015', //самая ранняя возможная дата
         ]
     ]) ?>
-
-
-<!--    --><?//= $form->field($model, 'day_week')->textInput(['maxlength' => true]) ?>
-
-<!--    --><?//= $form->field($model, 'name_jobs')->textInput(['maxlength' => true]) ?>
-
 
     <? $paramNj = ['options' =>[$job  => ['Selected' => true]],
         'prompt'=> 'Выберите работы ... '
@@ -56,34 +51,25 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'name_customers')->dropDownList($customers,[
         'options' =>[$customer => ['Selected' => true]],
         'prompt'=>'Выберите контрагента ...',
-        'onchange'=>
-    '$.post( "'.Yii::$app->urlManager->createUrl('requests/lists?id=').'"+$(this).val(), 
-        function( data ) {$("select#planner-info").html(data);});',
-//    '$.post( "'.Yii::$app->urlManager->createUrl('contracts/lists?id=').'"+$(this).val(),
-//    function( data ){$("select#planner-name_contracts").html(data);});'
-
-        //:null
+//        'onchange'=>
+//            '$.post( "'.Yii::$app->urlManager->createUrl('requests/lists?id=').'"+$(this).val(),
+//                function( data ) {$("select#planner-info_request").html(data);});',
+//            '$.post( "'.Yii::$app->urlManager->createUrl('contracts/lists?id=').'"+$(this).val(),
+//                function( data ){$("select#planner-info_contract").html(data);});',
     ]) ?>
 
-    <?= $form->field($model, 'info')->textarea(['rows' => 3, 'cols' => 5]);?>
 
-<!--    --><?//  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
-//        $paramNs = ['options' =>[$stateRequest => ['Selected' => true]],
-//            'prompt'=>'Выберите заявку ...'
-//        ];?>
-
-    <?= !($role=='user')? $form->field($model, 'info')->dropDownList($contracts,[
+    <?=  $form->field($model, 'info_contract')->dropDownList($model->isNewRecord ?[]:$contracts,[
         'options' =>[$contract  => ['Selected' => true]],
-        'prompt'=>'Выберите договор ...',
-    ]):null;?>
+        'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
+        ]);?>
 
+    <?= $form->field($model,'info_request')->label(false)->dropDownList($requests, [
+        'options' =>[$request  => ['Selected' => true]],
+        'prompt'=> $model->isNewRecord ? 'Выберите заявку ...':null,
+    ])?>
 
-    <? $params = [
-            'prompt'=>'Выберите заявку ...'
-        ];?>
-    <?= $form->field($model,'info')->dropDownList($requests, $params)?>
-
-
+    <?= $form->field($model, 'info_text')->label(false)->textarea(['rows' => 3, 'cols' => 5]);?>
 
 
     <? $paramNp = ['options' =>[$performer1 => ['Selected' => true]],
@@ -95,7 +81,10 @@ use kartik\date\DatePicker;
     <? $paramNp = ['options' =>[$performer2 => ['Selected' => true]],
                 'prompt'=>'Выберите исполнителя ...'
         ];?>
-    <?= $form->field($model,'name_performers2')->dropDownList($performers,$paramNp)?>
+
+    <?= $form->field($model,'name_performers2')->checkbox(['label'=>'Второй исполнитель'])?>
+
+    <?= $form->field($model,'name_performers2')->label(false)->dropDownList($performers,$paramNp)?>
 
     <?  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
         $paramNs = ['options' =>[$status => ['Selected' => true]],
@@ -117,6 +106,16 @@ use kartik\date\DatePicker;
 <!-- Подключение JS скриптов -->
 <?php
 $this->registerJsFile('@web/js/reload-info.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
+$this->registerJsFile('@web/js/hide-elements.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
+$this->registerJsFile('@web/js/load-data.js',['depends' => [
     'yii\web\YiiAsset',
     'yii\bootstrap\BootstrapAsset',
 ]]);

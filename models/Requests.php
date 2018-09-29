@@ -17,6 +17,7 @@ use app\components\helper\Adminhelper;
  * @property string $date_end // Дата завершения заявки
  * @property string $name_customers //Наименование контрагента
  * @property string $info // Информация по заявки
+ * @property string $short_info // Информация по заявки
  * @property string $comment // Комментарий по заявке
  * @property string $phone // Номер телефона
  * @property string $contacts // Контакты контрагента
@@ -51,7 +52,7 @@ class Requests extends ActiveRecord
     {
         $scenarios = parent::scenarios();
         $scenarios[static::SCENARIO_ADMIN] = ['date_start','date_run','date_changed_status', 'date_end','name_customers','info','comment','phone',
-            'contacts','name_performers', 'name_status','name_contracts'];
+            'contacts','name_performers', 'name_status','name_contracts','short_info'];
         $scenarios[static::SCENARIO_OPERATOR] = ['date_start','date_changed_status','name_customers','info','phone',
             'contacts','name_contracts'];
         $scenarios[static::SCENARIO_USER] = ['date_end','date_run','date_changed_status','name_customers','info','comment','phone',
@@ -173,6 +174,7 @@ class Requests extends ActiveRecord
     {
 
         if (parent::beforeSave($insert)) {
+            $this->short_info = $this->info ? mb_strimwidth($this->info,0,45,'...'):null;
             $this->name_status=='завершена' && $this->date_end==null ? $this->date_end = setCurrentDate():null;
             $this->getOldAttribute('name_status')=='ожидание' && $this->name_status=='завершена'? $this->name_status='ожидание': null;
 

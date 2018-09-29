@@ -78,6 +78,7 @@ $config = [
                 '<controller>/update/<id:\d+>/<stateRequest:\w+>/<page:\d+>' => '<controller>/update',
                 '<controller>/update/<id:\d+>/<page:\d+>' => '<controller>/update',
                 '<controller>/update/<id:\d+>' => '<controller>/update',
+                '<controller>/<action>' => '<controller>/<action>',
                 'admin-panel' =>'admin/admin-panel/index',
                 '<module>/<controller>/update/index'=>'<module>/<controller>/index',
                 '<module>/<controller>/<action>/<id:\d+>' => '<module>/<controller>/<action>',

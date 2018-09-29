@@ -67,7 +67,7 @@ class RequestsController extends Controller
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists','crops'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -130,26 +130,40 @@ class RequestsController extends Controller
     }
 
 
-    public function actionLists($id)
+    public function actionLists($id,$flag='one')
     {
+         function uploadData($arr,$count,$flag){
+          switch ($flag) {
+              case 'one':if ($count > 0){
+                         foreach ($arr as $item){
+                             echo"<option value='".$item->name_customers."'>".$item->name_customers."</option>";
+                         }
+                     }else{
+                         echo"<option></option>";
+                     }
+              break;
+              case 'all':if ($count > 0){
+                  echo"<option value=''>Выберите заявку ...</option>";
+                  foreach ($arr as $item){
+                      echo"<option value='".$item->id."'>".$item->short_info ."</option>";
+                  }
+              }else{
+                  echo"<option></option>";
+              }
+              break;
+          }
+         }
 
-        $countRequests = Requests::find()
-            ->where(['name_customers'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
-            ->count();
+        $flag=='one'? $requests = Requests::find()
+            ->where(['id'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
+            ->all():null;
 
-        $requests = Requests::find()
-            ->where(['name_customers'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
-            ->all();
-        if ($countRequests > 0)
-        {
-            foreach ($requests as $request){
-                echo"<option value='".$request->id. " '>".$request->info. "</option>";
-            }
-        }
-        else {
-            echo"<option>  </option>";
-        }
+        $flag=='all'? $requests = Requests::find()
+            ->where(['name_status'=>['ожидание','выполняется','отложена']])
+            ->all():null;
 
+        $countRequests=count($requests);
+        uploadData($requests,$countRequests,$flag);
     }
 
     /**
@@ -304,8 +318,33 @@ class RequestsController extends Controller
         if (($model = Requests::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('yii','The requested page does not exist.'));
+//            throw new NotFoundHttpException(Yii::t('yii','The requested page does not exist.'));
+            return false;
         }
+    }
+
+
+    public function actionCrops()
+    {
+        $requests = ArrayHelper::map(Requests::find()->all(),'id','info');
+        $id=count($requests);
+        $error=0;
+        for ($i=1;$i<=$id;$i++){
+          if ($this->findModel($i)){
+            $model=$this->findModel($i);
+            $model->short_info=$model->info ? mb_strimwidth($model->info,0,45,'...'):null;
+            $model->save(false);
+          }else{
+              $error++;
+          }
+//
+//
+//
+//            print_r($this->findModel($i));
+//            echo "<br><br>";
+        }
+        echo "Завершено c ".$error." ошибками.";
+
     }
 
 }

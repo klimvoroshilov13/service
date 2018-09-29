@@ -15,7 +15,7 @@ $this->title = Yii::t('yii','Send Requests').' № '. $request->id;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
-    <h2><?= Html::encode($this->title) ?></h2>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?php Pjax::begin(); ?>
     <?php if (Yii::$app->session->hasFlash('mailerFormSubmitted')) : ?>
@@ -41,7 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <? $model->body = Yii::t('yii','Customer:').' '. $request->name_customers."\n".$request->info ."\n"
                     . Yii::t('yii','Contacts:').' ' .$request->phone.', '.$request->contacts."\n".
-                    Yii::t('yii','Create:').' ' .Yii::$app->formatter->asDatetime($request->date_start, "php:d.m.Y H:i") ?>
+                    Yii::t('yii','Create:').' ' .Yii::$app->formatter->asDatetime($request->date_start, "php:d.m.Y H:i") ."\n".
+                    Yii::t('yii','Operator:').' '.$request->name_user ?>
                 <?= $form->field($model, 'body')-> textArea(['rows' => 5, 'cols' => 5])  ?>
 
                 <div class="form-group">

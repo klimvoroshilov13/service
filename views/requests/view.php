@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']]
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="requests-view">
-    <h2><?= Html::encode($this->title) ?></h2>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= DetailView::widget([
         'model' => $model,

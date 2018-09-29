@@ -72,10 +72,12 @@ $this->title = Yii::t('yii', 'Planners');
                 'attributes' => [
                     'name_jobs:html',
                     'name_customers:html',
-                    'info:html',
+                    'info_text:html',
+                    'info_contract:html',
+                    'info_request:html',
                 ],
                 'labelTemplate' => '{2}',
-                'valueTemplate' => '{0}  -  {1} {2}',
+                'valueTemplate' => '{0}  -  {1} {2} {3} {4}',
                 'labels' => [
                     'Jobs',
                     'Customer',
@@ -85,8 +87,14 @@ $this->title = Yii::t('yii', 'Planners');
                     null,
                     null,
                     function ($model, $_key, $_index, $_column) {
-                        return $model->info == '' ? null:' ( ' . $model->info . ' ) ' ;
+                        return $model->info_text == '' ? null:' ( ' . $model->info_text . ' ) ' ;
                         },
+                    function ($model, $_key, $_index, $_column) {
+                        return $model->info_contract == '' ? null:' ( ' . $model->info_contract . ' ) ' ;
+                    },
+                    function ($model, $_key, $_index, $_column) {
+                        return $model->info_request == '' ? null:' ( ' . $model->info_request . ' ) ' ;
+                    },
                 ],
                 'sortLinksOptions' => [
                     ['class' => 'text-nowrap'],

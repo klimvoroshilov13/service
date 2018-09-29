@@ -13,16 +13,17 @@ use yii\helpers\Html;
 /* @var $performers array */
 /* @var $performer1 string */
 /* @var $performer2 string */
-/* @var $statuses array */
 /* @var $status string */
+/* @var $statuses array */
+/* @var $request string  */
 /* @var $requests  array  */
 
 $this->title = Yii::t('yii', 'Update {modelClass}: ', [
     'modelClass' => 'Planner',
 ]) . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Planners'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
 <div class="planner-update">
 
@@ -41,6 +42,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'performer2'=>$performer2,
         'statuses'=>$statuses,
         'stateRequest'=>$status,
+        'request'=>$request,
         'requests'=>$requests,
     ]) ?>
 

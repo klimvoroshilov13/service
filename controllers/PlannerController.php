@@ -95,14 +95,14 @@ class PlannerController extends Controller
         $role=$userModel->role;
         $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
         $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
+        $contracts = ArrayHelper::map(Contracts::find()->where(['flag'=>1])->all(),'name','full_name');
 //        $contract = ArrayHelper::getValue($model,'name_contracts');
         $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
         $performer1 = ArrayHelper::getValue($model,'name_performers1');
         $performer2 = ArrayHelper::getValue($model,'name_performers2');
         $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
         $status = ArrayHelper::getValue($model,'name_status');
-        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','info');
+        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -144,7 +144,8 @@ class PlannerController extends Controller
         $performer2 = ArrayHelper::getValue($model,'name_performers2');
         $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
         $status = ArrayHelper::getValue($model,'name_status');
-        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','info');
+        $request = ArrayHelper::getValue($model,'info_request');
+        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -162,6 +163,7 @@ class PlannerController extends Controller
                 'performer2'=>$performer2,
                 'statuses'=>$statuses,
                 'stateRequest'=>$status,
+                'request'=>$request,
                 'requests'=>$requests,
             ]);
         }

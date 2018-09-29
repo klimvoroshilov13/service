@@ -51,7 +51,7 @@ class CustomersController extends Controller
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete'],
+                        'actions' => ['logout','index','view','update','create','delete','lists'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -73,6 +73,41 @@ class CustomersController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function actionLists($id=1)
+    {
+//        if ($flag){
+//            $firstParam='id';
+////            $select='name_customers';
+//        }else{
+//            $firstParam='name_customers';
+////            $select='short_info';
+//        }
+
+//        $countRequests = Customers::find()
+//            ->where([$firstParam=>$id,'name_status'=>['ожидание','выполняется','отложена']])
+//            ->count();
+
+
+        $customers = Customers::find()
+            ->where(['flag'=>$id])
+            ->all();
+
+        $countCustomers=count($customers);
+
+        if ($countCustomers > 0)
+        {
+                echo"<option value=''>Выберите контрагента ...</option>";
+            foreach ($customers as $item){
+                echo"<option value='".$item->name. " '>".$item->name. "</option>";
+            }
+        }
+        else {
+            echo"<option></option>";
+        }
+
     }
 
     /**

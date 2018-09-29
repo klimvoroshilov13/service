@@ -7,6 +7,12 @@ body {
     color: #005fad;
 }
 
+h1{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
 .wrap {
     min-height: 100%;
     height: auto;

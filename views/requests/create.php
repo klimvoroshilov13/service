@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['index']]
 ?>
 <div class="requests-create">
 
-    <h3><?= Html::encode($this->title) ?></h3>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

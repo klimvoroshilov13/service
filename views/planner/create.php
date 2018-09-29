@@ -19,9 +19,9 @@ use yii\helpers\Html;
 /* @var $requests  array  */
 
 $this->title = Yii::t('yii', 'Create Planner');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Planners'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' => ['index']];
 ?>
+
 <div class="planner-create">
 
     <h1><?= Html::encode($this->title) ?></h1>

@@ -18,7 +18,7 @@ class PlannerSearch extends Planner
     public function rules()
     {
         return [
-            [['id', 'info'], 'integer'],
+            [['id'], 'integer'],
             [['date', 'name_jobs', 'name_customers', 'name_status', 'name_performers1', 'name_performers2'], 'safe'],
         ];
     }
@@ -73,11 +73,12 @@ class PlannerSearch extends Planner
         $query->andFilterWhere([
             'id' => $this->id,
             'date' => $this->date,
-            'info' => $this->info,
+            'info_text' => $this->info_text,
         ]);
 
         $query->andFilterWhere(['like', 'name_jobs', $this->name_jobs])
             ->andFilterWhere(['like', 'name_customers', $this->name_customers])
+            ->andFilterWhere(['like', 'info_text', $this->info_text])
             ->andFilterWhere(['like', 'name_status', $this->name_status])
             ->andFilterWhere(['like', 'name_performers1', $this->name_performers1])
             ->andFilterWhere(['like', 'name_performers2', $this->name_performers2]);

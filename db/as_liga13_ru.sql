@@ -345,7 +345,7 @@ CREATE TABLE `planner` (
 -- Дамп данных таблицы `planner`
 --
 
-INSERT INTO `planner` (`id`, `date`, `day_week`, `name_jobs`, `name_customers`, `info`, `name_status`, `name_performers1`, `name_performers2`) VALUES
+INSERT INTO `planner` (`id`, `date`, `day_week`, `name_jobs`, `name_customers`, info_text, `name_status`, `name_performers1`, `name_performers2`) VALUES
 (1, '2018-04-15', 'Воскресенье', 'то(план.)', 'АГРО-МИР', 'тест', 'выполняется', 'Адикаев', 'Латышов');
 
 -- --------------------------------------------------------

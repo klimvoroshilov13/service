@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Войти в приложение';
 ?>
 <div class="requests-login">
-    <h2><?= Html::encode($this->title) ?></h2>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Пожалуйста, заполните следующие поля для входа:</p>
 

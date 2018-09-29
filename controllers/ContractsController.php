@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 
 /**
  * ContractsController implements the CRUD actions for Contracts model.
@@ -56,7 +57,7 @@ class ContractsController extends Controller
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists','contracts'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -87,21 +88,23 @@ class ContractsController extends Controller
     public function actionLists($id)
     {
 
-        $countContracts=Contracts::find()
-            ->where(['name_customers'=>$id,'flag'=>1])
-            ->count();
+//        $countContracts=Contracts::find()
+//            ->where(['name_customers'=>$id,'flag'=>1])
+//            ->count();
 
-        $contracts=Contracts::find()
+        $contracts = Contracts::find()
             ->where(['name_customers'=>$id,'flag'=>1])
             ->all();
-        if ($countContracts > 0)
-        {
+
+        $countContracts = count($contracts);
+
+        if ($countContracts){
             foreach ($contracts as $contract){
-                echo"<option value='".$contract->name. " '>".$contract->name. "</option>";
+                echo"<option value='".$contract->name. " '>".$contract->full_name. "</option>";
             }
-        }
-            else {
-            echo"<option>  </option>";
+        }else{
+            echo"<option>Без договора</option>";
+//            echo "<option>".$countContracts."</option>";
         }
 
     }
@@ -187,4 +190,19 @@ class ContractsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionContracts()
+    {
+        $contracts = ArrayHelper::map(Contracts::find()->all(),'id','name');
+        $id=count($contracts);
+        for ($i=1;$i<$id;$i++){
+            $model=$this->findModel($i);
+            $model->full_name=$model->name. ($model->note ? ' ('.$model->note.')':null);
+            $this->findModel($i)->save();
+        }
+
+    echo "Завершено";
+
+    }
+
 }

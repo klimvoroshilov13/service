@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property string $note
+ * @property string $full_name
  * @property string $flag
  * @property string $name_customers
  *
@@ -69,14 +70,15 @@ class Contracts extends \yii\db\ActiveRecord
         return $this->hasMany(Requests::className(), ['name_contracts' => 'name']);
     }
 
-//    public function beforeSave($insert)
-//    {
-//        if (parent::beforeSave($insert))
-//        {
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert))
+        {
+            $this->full_name=$this->name. ($this->note ? ' ('.$this->note.')':null);
 //            $this->flag =='выполняется' ? $this->flag=1:$this->flag=0;
-//            return true;
-//        }
-//        return false;
-//    }
+            return true;
+        }
+        return false;
+    }
 
 }

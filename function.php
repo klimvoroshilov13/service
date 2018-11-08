@@ -29,7 +29,7 @@ function setCurrentDate()
     return $currentDate->format('d.m.Y H:i');
 }
 
-function printArr($array,$str){
+function printArr($array,$str=null){
     $n=0;
     echo var_dump($str)."<br>";
     foreach ($array as $key=>$value){

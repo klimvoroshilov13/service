@@ -78,6 +78,7 @@ $columnsRun = [
 
     ],
 ];
+
 $columnsAll = [
 
     'id'=>[
@@ -156,7 +157,7 @@ $columnsAll = [
 
     ['class' => 'yii\grid\ActionColumn',
         'header'=>'Изм.',
-        'urlCreator'=>function($action, $model, $key, $index)use($page,$stateRequest){
+        'urlCreator'=>function($action, $model, $key, $index) use ($page,$stateRequest){
             return \yii\helpers\Url::to([$action,'id'=>$model->id,'stateRequest'=>$stateRequest,'page'=>$page]);
         },
         'template' => !($userModel->role=='user') ? '{view} {update}': '{view} {update}'
@@ -166,40 +167,47 @@ $columnsAll = [
 
 if ($stateRequest=='run'||$stateRequest=='') {
         $this->title = 'Заявки(в работе)';
-        $columnsSetting=$columnsRun;
+        $columnsSetting = $columnsRun;
     }
     else{
         $this->title = 'Заявки(все)';
-        $columnsSetting=$columnsAll;
+        $columnsSetting = $columnsAll;
     }
 
 //$this->params['breadcrumbs'][] = $this->title;
 
-
 ?>
 
+
 <?php Pjax::begin(); ?>
+
 
 <div class="requests-bar">
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?  $page==null ? $page=1:null ?>
-        <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn btn-primary']):null ?>
-        <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-primary control']) ?>
-        <?= Html::a(Yii::t('yii', 'All'), ['/requests/index/all'], ['class' => 'btn btn-primary control']) ?>
-        <?= Html::a('refreshButton',$stateRequest == 'run'? ['/requests/index/run/'.$page.'/10']:null, ['class' => 'control hidden','id' => 'refreshButton']) ?>
+        <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn-requests btn-create btn-success']):null ?>
+    </p>
+    <p>
+        <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-success btn-option']) ?>
+        <?= Html::a(Yii::t('yii', '&nbsp&nbsp&nbspВсе&nbsp&nbsp&nbsp'), ['/requests/index/all'], ['class' => 'btn btn-success btn-option']) ?>
+        <?= Html::a('refreshButton',$stateRequest == 'run'? ['/requests/index/run/'.$page.'/10']:null, ['class' => 'hidden','id' => 'refreshButton']) ?>
     </p>
 </div>
 
 <!-- --><?//= 'Статус:'.$stateRequest ?>
 
     <div class="index">
-    <?= GridView::widget([
+        <? try {?>
+        <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $columnsSetting,
     ]); ?>
-</div>
+        <?}catch ( \Exception $e){
+        return \yii\helpers\Url::to(['/requests/error','message'=>$e->getMessage()]);
+        }?>
+    </div>
 
 <?= "* - смотри комментарий."?>
 

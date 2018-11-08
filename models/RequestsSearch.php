@@ -59,7 +59,7 @@ class RequestsSearch extends Requests
                     'pageSize' => 10]
                 ]);
 
-            $query->Where(['name_status' => ['ожидание','отложена','выполняется'] ]);
+            $query->Where(['name_status' => ['ожидание','отложена','выполняется'] ])->all();
         }
 
         $query->andFilterWhere([

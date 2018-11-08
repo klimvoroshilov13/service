@@ -9,7 +9,7 @@ namespace app\components\helper;
 
 class Adminhelper
 {
-    static function printArr($array,$str){
+    static function printArr($array,$str= null){
         $n=0;
         echo var_dump($str)."<br>";
         foreach ($array as $key=>$value){

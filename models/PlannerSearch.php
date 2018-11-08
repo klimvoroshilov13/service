@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Planner;
+use app\components\helper\Datehelper;
 
 /**
  * PlannerSearch represents the model behind the search form about `app\models\Planner`.
@@ -19,7 +20,7 @@ class PlannerSearch extends Planner
     {
         return [
             [['id'], 'integer'],
-            [['date', 'name_jobs', 'name_customers', 'name_status', 'name_performers1', 'name_performers2'], 'safe'],
+            [['date', 'name_jobs', 'name_customers','info_text', 'name_status', 'name_performers1', 'name_performers2'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class PlannerSearch extends Planner
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params,$status)
     {
         $query = Planner::find();
 
@@ -48,7 +49,7 @@ class PlannerSearch extends Planner
         $dataProvider = new ActiveDataProvider([
             'query' => $query->orderBy(['date' => SORT_DESC]),
             'pagination' => [
-                'pageSize' => 7,
+                'pageSize' => 12,
             ],
 //            'sort' => [
 //                'OrderBy' => [
@@ -69,11 +70,28 @@ class PlannerSearch extends Planner
             return $dataProvider;
         }
 
+        switch($status) {
+            case ('curdate'):$query->Where('date = CURDATE()')->all();
+            break;
+            case ('tomorrow'):$query->Where('date = (CURDATE()+1) AND date > CURDATE()')->all();
+            break;
+            case ('yesterday'):$query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
+            break;
+            case ('week'):$query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
+            break;
+            case ('month'):$query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
+            break;
+            case ('year'):$query->Where('YEAR(`date`) = YEAR(NOW())')->all();
+            break;
+        }
+
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
-            'info_text' => $this->info_text,
+            'date' =>$this->date ==''? null:Yii::$app->formatter->asDatetime ($this->date,"php:Y-m-d"),
+            'name_customers' => $this->name_customers,
         ]);
 
         $query->andFilterWhere(['like', 'name_jobs', $this->name_jobs])

@@ -35,6 +35,7 @@ class Contracts extends \yii\db\ActiveRecord
         return [
             [['name','note'],'trim'],
             [['name_customers','name','note'], 'string', 'max' => 100],
+            [['flag'],'required'],
             [['name'], 'unique'],
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
         ];

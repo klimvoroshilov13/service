@@ -44,17 +44,17 @@ class PlannerController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index','view','update'],
+                        'actions' => ['logout','index','view','update','create','delete'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer'],
-                        'allow' => true,
+                        'actions' => ['logout','index','view','update','create','delete'],
+                        'allow' => false,
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer'],
+                        'actions' => ['logout','index','view','update','create','delete'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -66,12 +66,15 @@ class PlannerController extends Controller
 
     public function actionIndex()
     {
+        $stateRequest = Yii::$app->request->get('stateRequest');
+        !($stateRequest) ? $stateRequest='curdate':null;
         $searchModel = new PlannerSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'stateRequest'=>$stateRequest
         ]);
     }
 
@@ -134,7 +137,7 @@ class PlannerController extends Controller
         $job = ArrayHelper::getValue($model,'name_jobs');
         $jobs = ArrayHelper::map(Jobs::find()->all(),'name','name');
         $userModel = Yii::$app->user->identity;
-        $role=$userModel->role;
+        $role = $userModel->role;
         $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
         $customer = ArrayHelper::getValue($model,'name_customers');
         $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
@@ -145,10 +148,15 @@ class PlannerController extends Controller
         $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
         $status = ArrayHelper::getValue($model,'name_status');
         $request = ArrayHelper::getValue($model,'info_request');
-        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
-
+        $requestsAllRun = Requests::find()
+            ->where(['name_status'=>['ожидание','выполняется','отложена']])
+            ->orderBy(['date_start'=>SORT_ASC])
+            ->all();
+        $requests=ArrayHelper::map($requestsAllRun,'id',function ($requestsAllRun){
+            return Yii::$app->formatter->asDatetime($requestsAllRun->date_start, "php:d.m.Y").' - '.$requestsAllRun->short_info;
+        });
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -177,7 +185,9 @@ class PlannerController extends Controller
         return $this->redirect(['index']);
     }
 
-
+    /**
+     * @throws NotFoundHttpException
+     **/
     protected function findModel($id)
     {
         if (($model = Planner::findOne($id)) !== null) {

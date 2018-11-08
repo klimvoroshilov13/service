@@ -4,10 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Customers;
+use app\components\helper\Adminhelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Contracts */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $role string  */
+
 ?>
 
 <div class="contracts-form">
@@ -40,7 +43,9 @@ use app\models\Customers;
 
     <?
     //Диагностика
-    $userModel->role=='admin' ? printArr($valueAllFl,$valueFl): null;
+    if ($role =='admin') {
+        Adminhelper::printArr($valueAllFl,$valueFl);
+    };
     ?>
 
     <div class="form-group">

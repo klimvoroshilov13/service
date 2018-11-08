@@ -6,6 +6,7 @@ use Yii;
 use app\models\Contracts;
 use app\models\ContractsSearch;
 use app\models\Customers;
+use app\modules\admin\models\UserControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -47,17 +48,17 @@ class ContractsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index','view','update'],
+                        'actions' => ['logout','index','view','update','lists'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
+                        'actions' => ['logout','index','view','update','create','delete','lists'],
                         'allow' => true,
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','mailer','lists','contracts'],
+                        'actions' => ['logout','index','view','update','create','delete','lists','full'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -88,10 +89,6 @@ class ContractsController extends Controller
     public function actionLists($id)
     {
 
-//        $countContracts=Contracts::find()
-//            ->where(['name_customers'=>$id,'flag'=>1])
-//            ->count();
-
         $contracts = Contracts::find()
             ->where(['name_customers'=>$id,'flag'=>1])
             ->all();
@@ -102,10 +99,8 @@ class ContractsController extends Controller
             foreach ($contracts as $contract){
                 echo"<option value='".$contract->name. " '>".$contract->full_name. "</option>";
             }
-        }else{
-            echo"<option>Без договора</option>";
-//            echo "<option>".$countContracts."</option>";
         }
+        echo"<option value=''>Без договора</option>";
 
     }
 
@@ -128,6 +123,10 @@ class ContractsController extends Controller
      */
     public function actionCreate()
     {
+        /* @var $userModel UserControl  */
+
+        $userModel = Yii::$app->user->identity;
+        $role=$userModel->role;
         $model = new Contracts();
         $searchModel = new ContractsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -137,6 +136,7 @@ class ContractsController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'role'=>$role
             ]);
         }
     }
@@ -149,6 +149,10 @@ class ContractsController extends Controller
      */
     public function actionUpdate($id)
     {
+        /* @var $userModel UserControl  */
+
+        $userModel = Yii::$app->user->identity;
+        $role = $userModel->role;
         $model = $this->findModel($id);
         //$searchModel = new ContractsSearch();
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -158,6 +162,7 @@ class ContractsController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'role'=>$role
             ]);
         }
     }
@@ -191,10 +196,10 @@ class ContractsController extends Controller
         }
     }
 
-    public function actionContracts()
+    public function actionFull()
     {
         $contracts = ArrayHelper::map(Contracts::find()->all(),'id','name');
-        $id=count($contracts);
+        $id = count($contracts);
         for ($i=1;$i<$id;$i++){
             $model=$this->findModel($i);
             $model->full_name=$model->name. ($model->note ? ' ('.$model->note.')':null);

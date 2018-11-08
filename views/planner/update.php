@@ -18,12 +18,10 @@ use yii\helpers\Html;
 /* @var $request string  */
 /* @var $requests  array  */
 
-$this->title = Yii::t('yii', 'Update {modelClass}: ', [
-    'modelClass' => 'Planner',
-]) . $model->id;
+$this->title = Yii::t('yii', 'Update Planner of ') . Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y");
 $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
+//$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+//$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
 <div class="planner-update">
 

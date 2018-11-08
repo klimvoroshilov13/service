@@ -18,6 +18,8 @@ use Yii;
  * @property string $name_status
  * @property string $name_performers1
  * @property string $name_performers2
+ * @property string $all_performers
+ * @property string $name_user
  *
  * @property Customers $nameCustomers
  * @property Jobs $nameJobs
@@ -27,6 +29,7 @@ use Yii;
  */
 class Planner extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -41,13 +44,11 @@ class Planner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date'], 'required'],
-            //[['date'], 'safe'],
-            //[['date'],'date','format'=>'php:d.m.Y'],
+            [['date','name_jobs','name_customers'], 'required'],
             [['info_text','info_request'], 'string'],
             [['name_jobs','day_week'], 'string', 'max' => 12],
             [['name_customers','info_contract'], 'string', 'max' => 100],
-            [['name_status', 'name_performers1', 'name_performers2'], 'string', 'max' => 30],
+            [['name_status', 'name_performers1', 'name_performers2','name_user'], 'string', 'max' => 32],
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
             [['name_jobs'], 'exist', 'skipOnError' => true, 'targetClass' => Jobs::className(), 'targetAttribute' => ['name_jobs' => 'name']],
             [['name_performers1'], 'exist', 'skipOnError' => true, 'targetClass' => Performers::className(), 'targetAttribute' => ['name_performers1' => 'name']],
@@ -72,8 +73,32 @@ class Planner extends \yii\db\ActiveRecord
             'info_request' => Yii::t('yii','Info'),
             'name_status' => Yii::t('yii','Name Status'),
             'name_performers1' => Yii::t('yii','Name Performers1'),
-            'name_performers2' => Yii::t('yii','Name Performers2')
+            'name_performers2' => Yii::t('yii','Name Performers2'),
+            'name_user'=>Yii::t('yii','Name user')
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getAllPerformers()
+    {
+        /**
+         * @var string $name_performers1
+         * @var string $name_performers2
+         */
+
+        $this->name_performers1 ? $name_performers1 = $this->name_performers1:null;
+        $this->name_performers2 ? $name_performers2 = ' / '. $this->name_performers2:null;
+        return $name_performers1.$name_performers2;
+    }
+
+    /**
+     * @return string
+     */
+    public function withoutContract()
+    {
+        return $this->info_contract == null ? $this->info_contract = 'Без договора':$this->info_contract;
     }
 
     /**
@@ -119,10 +144,14 @@ class Planner extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->day_week=getDayRus($this->date);
+            $this->day_week = getDayRus($this->date);
             $this->date=Yii::$app->formatter->asDatetime($this->date, "php:Y-m-d");
+            !($this->name_jobs=='заявка')?$this->info_request=null:null;
+            $this->info_contract=='Выберите договор...'? $this->info_contract=null:null;
             $this->name_performers1==''? $this->name_performers1=null:null;
             $this->name_performers2==''? $this->name_performers2=null:null;
+            $this->name_user==null ? $this->name_user=Yii::$app->user->identity->fullname: null;
+            $this->name_user=='Администратор'? $this->name_user='Казаков Н.': null;
             return true;
         }
         return false;

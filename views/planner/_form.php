@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
+use app\components\helper\Datehelper;
+use app\components\helper\Adminhelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Planner */
@@ -27,8 +29,10 @@ use kartik\date\DatePicker;
 <div class="planner-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'date')->widget(DatePicker::classname(), [
+    <?php $model->isNewRecord ? $model->date = Datehelper::setCurrentDate(): null;?>
+    <?php $model->date=Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y") ?>
+    <?= $form->field($model, 'date')->
+    widget(DatePicker::classname(), [
         'language' => 'ru',
         'name' => 'date',
         'value' => date('d.m.Y'),
@@ -48,15 +52,10 @@ use kartik\date\DatePicker;
         ];?>
     <?= $form->field($model,'name_jobs')->dropDownList($jobs,$paramNj)?>
 
-    <?= $form->field($model, 'name_customers')->dropDownList($customers,[
-        'options' =>[$customer => ['Selected' => true]],
-        'prompt'=>'Выберите контрагента ...',
-//        'onchange'=>
-//            '$.post( "'.Yii::$app->urlManager->createUrl('requests/lists?id=').'"+$(this).val(),
-//                function( data ) {$("select#planner-info_request").html(data);});',
-//            '$.post( "'.Yii::$app->urlManager->createUrl('contracts/lists?id=').'"+$(this).val(),
-//                function( data ){$("select#planner-info_contract").html(data);});',
-    ]) ?>
+    <?= $form->field($model, 'name_customers')->dropDownList
+    ($customers,['options' =>[$customer => ['Selected' => true]],
+        'prompt'=> $model->isNewRecord ? 'Выберите контрагента...':null,
+    ])?>
 
 
     <?=  $form->field($model, 'info_contract')->dropDownList($model->isNewRecord ?[]:$contracts,[
@@ -86,18 +85,15 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model,'name_performers2')->label(false)->dropDownList($performers,$paramNp)?>
 
-    <?  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
+    <?php  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
         $paramNs = ['options' =>[$status => ['Selected' => true]],
             'prompt'=>'Выберите статус ...'
         ];?>
     <?= $form->field($model,'name_status')->dropDownList($statuses,$paramNs)?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
-    <?='Это статус:'.$model->name_status;?>
-    <?='Это работы:'.$job;?>
 
     <?php ActiveForm::end(); ?>
 
@@ -110,14 +106,24 @@ $this->registerJsFile('@web/js/reload-info.js',['depends' => [
     'yii\bootstrap\BootstrapAsset',
 ]]);
 
-$this->registerJsFile('@web/js/hide-elements.js',['depends' => [
+$this->registerJsFile('@web/js/planner/form/behavior-fields.js',['depends' => [
     'yii\web\YiiAsset',
     'yii\bootstrap\BootstrapAsset',
 ]]);
 
-$this->registerJsFile('@web/js/load-data.js',['depends' => [
-    'yii\web\YiiAsset',
-    'yii\bootstrap\BootstrapAsset',
-]]);
+//$this->registerJsFile('@web/js/planner/form/load-data.js',['depends' => [
+//    'yii\web\YiiAsset',
+//    'yii\bootstrap\BootstrapAsset',
+//]]);
 ?>
 <!-- Подключение JS скриптов -->
+
+<!-- Диагностика -->
+<?php If (Yii::$app->user->identity->username=='Admin') {?>
+<?='Это статус: '.$model->name_status;?><br>
+<?='Это работы: '.$job;?><br>
+<?= Adminhelper::printArr($requests);?>
+<?}?>
+<!-- Диагностика -->
+
+

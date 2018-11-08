@@ -12,7 +12,6 @@ h1{
     font-weight: bold;
 }
 
-
 .wrap {
     min-height: 100%;
     height: auto;
@@ -183,7 +182,7 @@ a.desc:after {
     margin-right: 20%;
 }
 
-div[class*=-create],div[class*=-update],.requests-view,.site-contact {
+div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-contact {
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -197,11 +196,59 @@ div[class*=-create],div[class*=-update],.requests-view,.site-contact {
 }
 
 .performed{
-    color:#008000;
+    color: #008000;
+}
+
+.completed{
+    text-decoration:line-through;
 }
 
 .today{
     font-weight: bold;
+}
+
+.btn-option{
+    margin: -2px 3px 2px 0px;
+    padding: 6px 15px 6px 17px;
+}
+
+.btn-requests{
+    padding: 6px 18px;
+}
+
+.btn-planner{
+    padding: 6px 12px;
+}
+
+.btn-create{
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #337ab7;
+}
+
+.btn-create:hover, .btn-create:focus, .btn-create.focus {
+    text-decoration: none;
+}
+
+.btn-current {
+    background-color: #008000;
+    border-color: #008000;
 }
 /*.btn.btn-link.logout:hover{*/
     /*color: #ababab;*/

@@ -51,7 +51,7 @@ $userModel=Yii::$app->user->identity;
             ) : (
                 '<li>'
                 . Html::beginForm(['requests/logout'], 'post')
-                . Html::submitButton('Выйти (' . $userModel->username . ')',
+                . Html::submitButton('Выйти (' . $userModel->fullname . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm().
@@ -83,8 +83,16 @@ $userModel=Yii::$app->user->identity;
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
                 ['label' => Yii::t('yii','Admin panel'), 'url' => ['admin/admin-panel/index']],
-                ['label' => Yii::t('yii','Planner'), 'url' => ['planner/index']],
                 ['label' => Yii::t('yii','Contracts'), 'url' => ['contracts/index']],
+            ],
+        ]);
+    }
+
+    if ($userModel->role=='admin'|| $userModel->role=='user') {
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
+                ['label' => Yii::t('yii','Planner'), 'url' => ['planner/index']],
             ],
         ]);
     }

@@ -21,10 +21,16 @@ class Datehelper
         return $days[strftime("%w", strtotime($date))];
     }
 
-    static function setCurrentDate()
+    static function setCurrentDate($format='d.m.Y H:i')
     {
         $currentDate = new DateTime();
-        return $currentDate->format('d.m.Y H:i');
-    }
+        switch ($format){
+            case'd.m.Y H:i': $date=$currentDate->format('d.m.Y H:i');
+            break;
+            case'Y-m-d': $date=$currentDate->format('d.m.Y H:i');
+            break;
+        }
+        return $date;
+        }
 
 }

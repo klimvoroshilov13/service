@@ -66,16 +66,50 @@ class PlannerController extends Controller
 
     public function actionIndex()
     {
+        /* @var $userModel UserControl  */
+
         $stateRequest = Yii::$app->request->get('stateRequest');
         !($stateRequest) ? $stateRequest='curdate':null;
         $searchModel = new PlannerSearch();
+        $model = new Planner();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest);
+        $job = ArrayHelper::getValue($model,'name_jobs');
+        $jobs = ArrayHelper::map(Jobs::find()->all(),'name','name');
+        $userModel = Yii::$app->user->identity;
+        $role=$userModel->role;
+        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
+        $customer = ArrayHelper::getValue($model,'name_customers');
+        $contracts = ArrayHelper::map(Contracts::find()->where(['flag'=>1])->all(),'name','full_name');
+//        $contract = ArrayHelper::getValue($model,'name_contracts');
+        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
+        $performer1 = ArrayHelper::getValue($model,'name_performers1');
+        $performer2 = ArrayHelper::getValue($model,'name_performers2');
+        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
+        $status = ArrayHelper::getValue($model,'name_status');
+        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'stateRequest'=>$stateRequest
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'stateRequest'=>$stateRequest,
+                'model' => $model,
+                'job' => $job,
+                'jobs' => $jobs,
+                'role'=>$role,
+                'customers'=>$customers,
+                'contracts'=>$contracts,
+//                'contract'=>$contract,
+                'performers'=>$performers,
+                'performer1'=>$performer1,
+                'performer2'=>$performer2,
+                'statuses'=>$statuses,
+                'requests'=>$requests
+            ]);
+        }
+
     }
 
 

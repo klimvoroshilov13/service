@@ -47,7 +47,7 @@ class PlannerSearch extends Planner
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $query->orderBy(['date' => SORT_DESC]),
+            'query' => $query->orderBy(['date' => SORT_DESC,'id'=>SORT_DESC]),
             'pagination' => [
                 'pageSize' => 12,
             ],

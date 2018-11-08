@@ -4,12 +4,12 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\date\DatePicker;
 use yii\widgets\Pjax;
-use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PlannerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $stateRequest string */
+
 
 $this->title = Yii::t('yii', 'Planners');
 ?>
@@ -160,26 +160,13 @@ $this->title = Yii::t('yii', 'Planners');
 <div class="planner-index">
     <h1><?= Html::encode($this->title) ?></h1>
 <!--    --><?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
-    <?php Modal::begin([
-
-    'header' => '<h2>Hello world</h2>',
-    'toggleButton' => [
-            'label' => 'click me',
-            'class' => 'btn-planner btn-create btn-success',
-            ],
-
-    'footer' => 'Низ окна',
-    ]);
-
-    echo 'Say hello...';
-
-    Modal::end();?>
-
+        <?php require  ('modal_create.php');?>
     </p>
 
     <p>
-        <?= Html::a(Yii::t('yii', '&nbspСоздать&nbsp'), ['create'], ['class' => 'btn-planner btn-create btn-success']) ?>
+        <?= Html::a(Yii::t('yii', '&nbspСоздать&nbsp'), ['create'], ['class' => 'btn-planner btn-create btn-success hidden']) ?>
     </p>
     <p>
         <?= Html::a(Yii::t('yii', 'Сегодня'), ['planner/index/curdate'],$stateRequest=='curdate'? ['class' => 'btn btn-success btn-option btn-current']:['class' => 'btn btn-success btn-option']) ?>
@@ -218,6 +205,17 @@ $this->registerJsFile('@web/js/planner/index/redye-planners.js',['depends' => [
     'yii\web\YiiAsset',
     'yii\bootstrap\BootstrapAsset',
 ]]);
+
+$this->registerJsFile('@web/js/reload-info.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
+$this->registerJsFile('@web/js/planner/form/behavior-fields.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
+
 ?>
 <!-- Подключение JS скриптов -->
 

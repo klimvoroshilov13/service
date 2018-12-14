@@ -15,20 +15,19 @@ use kartik\date\DatePicker;
 /* @var $model app\models\Planner */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $role string  */
-/* @var $jobs array  */
 /* @var $job string  */
-/* @var $customers array  */
+/* @var $jobs array  */
 /* @var $customer string  */
-/* @var $contracts array  */
+/* @var $customers array  */
 /* @var $contract string  */
-/* @var $performers array */
+/* @var $contracts array  */
 /* @var $performer1 string */
 /* @var $performer2 string */
+/* @var $performers array */
 /* @var $status string */
 /* @var $statuses array */
 /* @var $request string */
 /* @var $requests  array  */
-
 ?>
 
 <?php Modal::begin([
@@ -71,7 +70,6 @@ use kartik\date\DatePicker;
             'prompt'=> $model->isNewRecord ? 'Выберите контрагента...':null,
         ])?>
 
-
         <?=  $form->field($model, 'info_contract')->dropDownList($model->isNewRecord ?[]:$contracts,[
             'options' =>[$contract  => ['Selected' => true]],
             'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
@@ -84,12 +82,10 @@ use kartik\date\DatePicker;
 
         <?= $form->field($model, 'info_text')->label(false)->textarea(['rows' => 3, 'cols' => 5]);?>
 
-
         <? $paramNp = ['options' =>[$performer1 => ['Selected' => true]],
             'prompt'=>'Выберите исполнителя ...'
         ];?>
         <?= $form->field($model,'name_performers1')->dropDownList($performers,$paramNp)?>
-
 
         <? $paramNp = ['options' =>[$performer2 => ['Selected' => true]],
             'prompt'=>'Выберите исполнителя ...'

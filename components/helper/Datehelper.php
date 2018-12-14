@@ -29,6 +29,8 @@ class Datehelper
             break;
             case'Y-m-d': $date=$currentDate->format('d.m.Y H:i');
             break;
+            case'd.m.Y': $date=$currentDate->format('php:d.m.Y');
+            break;
         }
         return $date;
         }

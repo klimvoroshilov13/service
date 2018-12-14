@@ -208,7 +208,7 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
 }
 
 .btn-option{
-    margin: -2px 3px 2px 0px;
+    margin: 4px 3px 2px 0;
     padding: 6px 15px 6px 17px;
 }
 
@@ -216,13 +216,14 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
     padding: 6px 18px;
 }
 
-.btn-planner{
+.btn-planner {
     padding: 6px 12px;
+
 }
 
 .btn-create{
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: -4px;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.42857143;
@@ -242,14 +243,27 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
     background-color: #337ab7;
 }
 
-.btn-create:hover, .btn-create:focus, .btn-create.focus {
+.btn-create:hover, .btn-create:focus{
     text-decoration: none;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
 
-.btn-current {
-    background-color: #008000;
-    border-color: #008000;
+.btn-current, .btn:focus, .btn:hover, .btn-option:active {
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
+
+.btn-success:active:focus:hover {
+    background-color: #2d5c92;
+    border-color: #2d5c92;
+}
+
+/*.modal-content{*/
+    /*width: 700px;*/
+    /*margin-left: 20%;*/
+/*}*/
+
 /*.btn.btn-link.logout:hover{*/
     /*color: #ababab;*/
 /*}*/

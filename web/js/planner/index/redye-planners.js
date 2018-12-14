@@ -55,8 +55,6 @@ var redyeRequests = function () {
     yesterday.setDate(yesterday.getDate()-1);
 
 
-
-
 //Диагностика
 // var requestSum = document.querySelectorAll('div.summary');
 // var th  = document.querySelectorAll('th[data-col-seq]');
@@ -85,8 +83,31 @@ var redyeRequests = function () {
          console.log(p);
          };
 
- $(document).ready(redyeRequests);
+    var copyModal = function(){
+    $('[id^=copy]').on('click',function(event){
+            event.preventDefault();
+            var target = this.id;
+            var myModal = $('#myModal');
+            var modalBody = myModal.find('.modal-body');
+            var modalTitle = myModal.find('.modal-header');
+            var form = $('#w1');
+            var action = form.attr('action');
+            form.attr('action',target);
+
+            //modalTitle.find('h2').html('Информация.');
+            //modalBody.html('Тут будет информация.');
+            console.log(form);
+            console.log(action);
+            console.log(target);
+            myModal.modal('show');
+        }
+    );
+    };
+
+  $(document).ready([redyeRequests,copyModal]);
  // $(document).ready(Diag);
  $(document).on('pjax:complete',redyeRequests);
+ $(document).on('pjax:complete',copyModal);
  //$(document).on('pjax:complete',Diag);
+
 })();

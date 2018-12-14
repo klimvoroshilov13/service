@@ -10,12 +10,12 @@ use app\components\helper\Adminhelper;
 /* @var $model app\models\Planner */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $role string  */
-/* @var $jobs array  */
 /* @var $job string  */
-/* @var $customers array  */
+/* @var $jobs array  */
 /* @var $customer string  */
-/* @var $contracts array  */
+/* @var $customers array  */
 /* @var $contract string  */
+/* @var $contracts array  */
 /* @var $performers array */
 /* @var $performer1 string */
 /* @var $performer2 string */
@@ -31,8 +31,8 @@ use app\components\helper\Adminhelper;
     <?php $form = ActiveForm::begin(); ?>
     <?php $model->isNewRecord ? $model->date = Datehelper::setCurrentDate(): null;?>
     <?php $model->date=Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y") ?>
-    <?= $form->field($model, 'date')->
-    widget(DatePicker::classname(), [
+    <?= $form->field($model, 'date')
+        -> widget(DatePicker::classname(), [
         'language' => 'ru',
         'name' => 'date',
         'value' => date('d.m.Y'),
@@ -52,14 +52,20 @@ use app\components\helper\Adminhelper;
         ];?>
     <?= $form->field($model,'name_jobs')->dropDownList($jobs,$paramNj)?>
 
-    <?= $form->field($model, 'name_customers')->dropDownList
-    ($customers,['options' =>[$customer => ['Selected' => true]],
+    <?= $form->field($model, 'name_customers')
+        ->dropDownList($customers,[
+                'options' =>[
+                        $customer => ['Selected' => true ]
+                ],
         'prompt'=> $model->isNewRecord ? 'Выберите контрагента...':null,
     ])?>
 
 
-    <?=  $form->field($model, 'info_contract')->dropDownList($model->isNewRecord ?[]:$contracts,[
-        'options' =>[$contract  => ['Selected' => true]],
+    <?=  $form->field($model, 'info_contract')
+        ->dropDownList($model->isNewRecord ?[]:$contracts,[
+        'options' =>[
+                $contract  => ['Selected' => true]
+        ],
         'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
         ]);?>
 
@@ -111,10 +117,10 @@ $this->registerJsFile('@web/js/planner/form/behavior-fields.js',['depends' => [
     'yii\bootstrap\BootstrapAsset',
 ]]);
 
-//$this->registerJsFile('@web/js/planner/form/load-data.js',['depends' => [
-//    'yii\web\YiiAsset',
-//    'yii\bootstrap\BootstrapAsset',
-//]]);
+$this->registerJsFile('@web/js/planner/form/load-data.js',['depends' => [
+    'yii\web\YiiAsset',
+    'yii\bootstrap\BootstrapAsset',
+]]);
 ?>
 <!-- Подключение JS скриптов -->
 
@@ -122,7 +128,9 @@ $this->registerJsFile('@web/js/planner/form/behavior-fields.js',['depends' => [
 <?php If (Yii::$app->user->identity->username=='Admin') {?>
 <?='Это статус: '.$model->name_status;?><br>
 <?='Это работы: '.$job;?><br>
-<?= Adminhelper::printArr($requests);?>
+<?='Это котрагент: '.$customer;?><br>
+<?='Это контракт: '.$contract;?><br>
+<?//= Adminhelper::printArr($requests);?>
 <?}?>
 <!-- Диагностика -->
 

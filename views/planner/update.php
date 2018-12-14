@@ -7,9 +7,10 @@ use yii\helpers\Html;
 /* @var $jobs array  */
 /* @var $job string  */
 /* @var $role string */
+/* @var $customer array */
 /* @var $customers array */
-/* @var $contracts array */
 /* @var $contract string */
+/* @var $contracts array */
 /* @var $performers array */
 /* @var $performer1 string */
 /* @var $performer2 string */
@@ -32,14 +33,15 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' =>
         'job' => $job,
         'jobs' => $jobs,
         'role'=>$role,
+        'customer'=>$customer,
         'customers'=>$customers,
-        'contracts'=>$contracts,
         'contract'=>$contract,
+        'contracts'=>$contracts,
         'performers'=>$performers,
         'performer1'=>$performer1,
         'performer2'=>$performer2,
+        'status'=>$status,
         'statuses'=>$statuses,
-        'stateRequest'=>$status,
         'request'=>$request,
         'requests'=>$requests,
     ]) ?>

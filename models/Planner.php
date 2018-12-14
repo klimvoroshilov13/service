@@ -102,6 +102,14 @@ class Planner extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return string
+     */
+//    public function ()
+//    {
+//        return $this->info_contract == null ? $this->info_contract = 'Без договора':$this->info_contract;
+//    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getNameCustomers()

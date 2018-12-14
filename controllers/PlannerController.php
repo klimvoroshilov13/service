@@ -3,21 +3,18 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\LoginForm;
+use app\models\Requests;
 use app\modules\admin\models\UserControl;
 use app\models\Planner;
 use app\models\PlannerSearch;
-use app\models\MailerForm;
-use app\models\Jobs;
-use app\models\Customers;
-use app\models\Contracts;
-use app\models\Performers;
-use app\models\Status;
-use app\models\Requests;
+use app\models\PlannerCopy;
+use yii\base\InvalidConfigException;
+use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\services\DataFromPlanner;
 use yii\helpers\ArrayHelper;
 /**
  * Контроллер PlannerController(управление планировщиком)
@@ -44,17 +41,40 @@ class PlannerController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete'],
+                        'actions' => [
+                            'logout',
+                            'index',
+                            'view',
+                            'update',
+                            'create',
+                            'delete',
+                            'copy'
+                        ],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete'],
+                        'actions' => [
+                            'logout',
+                            'index',
+                            'view',
+                            'update',
+                            'create',
+                            'delete'
+                        ],
                         'allow' => false,
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete'],
+                        'actions' => [
+                            'logout',
+                            'index',
+                            'view',
+                            'update',
+                            'create',
+                            'delete',
+                            'copy'
+                        ],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -64,29 +84,78 @@ class PlannerController extends Controller
     }
 
 
+
+
     public function actionIndex()
     {
         /* @var $userModel UserControl  */
-
         $stateRequest = Yii::$app->request->get('stateRequest');
-        !($stateRequest) ? $stateRequest='curdate':null;
+        $page = Yii::$app->request->get('page');
+        $perPage = Yii::$app->request->get('per-page');
+        !($stateRequest) ? $stateRequest ='curdate':null;
+
+        if ($stateRequest=='curdate'){
+            $query = Planner::find()
+                ->where('date = CURDATE() AND name_status = "ожидание" AND name_performers1 != "null"')
+                ->column();
+             if ($query){
+                foreach ($query as $value){
+                    try {
+                        $model = $this->findModel($value);
+                    } catch (NotFoundHttpException $e) {
+                    }
+                    $model->name_status = 'выполняется';
+                    $model->save();
+                }
+              }
+
+            $query = Planner::find()
+                ->where('(date < CURDATE()) AND (name_status = "выполняется" OR name_status = "ожидание")')
+                ->column();
+            if ($query){
+                foreach ($query as $value){
+                    try {
+                        $model = $this->findModel($value);
+                    } catch (NotFoundHttpException $e) {
+                    }
+                    /** @var object $model */
+                    switch ($model->name_status){
+                        case 'выполняется':
+                            $model->name_status = 'завершена';
+                            $model->save();
+                            break;
+                        case 'ожидание':
+                            if ($model->name_performers1 == null){
+                            try {
+                                $model->date = Yii::$app->formatter->asDatetime(setCurrentDate(), "php:Y-m-d");
+                            } catch (InvalidConfigException $e) {
+                            }
+                            $model->day_week = getDayRus($model->date);
+                            $model->save();
+                        }
+                    }
+                    $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
+                    /** @var object $modelRequest */
+                    if ($modelRequest){
+                        $modelRequest->scenario = Requests::SCENARIO_USER;
+                        $modelRequest->name_performers = $model->name_performers1;
+                        $modelRequest->name_status = $model->name_status;
+                        $modelRequest->save();
+                    }
+                }
+            }
+        }
+
         $searchModel = new PlannerSearch();
-        $model = new Planner();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest);
-        $job = ArrayHelper::getValue($model,'name_jobs');
-        $jobs = ArrayHelper::map(Jobs::find()->all(),'name','name');
+
         $userModel = Yii::$app->user->identity;
-        $role=$userModel->role;
-        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
-        $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['flag'=>1])->all(),'name','full_name');
-//        $contract = ArrayHelper::getValue($model,'name_contracts');
-        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
-        $performer1 = ArrayHelper::getValue($model,'name_performers1');
-        $performer2 = ArrayHelper::getValue($model,'name_performers2');
-        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
-        $status = ArrayHelper::getValue($model,'name_status');
-        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
+        $role = $userModel->role;
+
+        $model = new Planner();
+        $modelCopy = new PlannerCopy();
+        $data = new DataFromPlanner();
+        $dataArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -95,18 +164,20 @@ class PlannerController extends Controller
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
                 'stateRequest'=>$stateRequest,
+                'page'=>$page,
+                'perPage'=>$perPage,
                 'model' => $model,
-                'job' => $job,
-                'jobs' => $jobs,
+                'modelCopy'=> $modelCopy,
                 'role'=>$role,
-                'customers'=>$customers,
-                'contracts'=>$contracts,
-//                'contract'=>$contract,
-                'performers'=>$performers,
-                'performer1'=>$performer1,
-                'performer2'=>$performer2,
-                'statuses'=>$statuses,
-                'requests'=>$requests
+                'job' => $dataArray['job'],
+                'jobs' => $dataArray['jobs'],
+                'customers'=>$dataArray['customers'],
+                'contracts'=>$dataArray['contracts'],
+                'performers'=>$dataArray['performers'],
+                'performer1'=>$dataArray['performer1'],
+                'performer2'=>$dataArray['performer2'],
+                'statuses'=>$dataArray['statuses'],
+                'requests'=>$dataArray['requests']
             ]);
         }
 
@@ -115,8 +186,12 @@ class PlannerController extends Controller
 
     public function actionView($id)
     {
+        try {
+           $model=$this->findModel($id);
+        } catch (NotFoundHttpException $e) {
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -124,40 +199,35 @@ class PlannerController extends Controller
     public function actionCreate()
     {
         /* @var $userModel UserControl  */
+        $userModel = Yii::$app->user->identity;
+        $role = $userModel->role;
 
         $model = new Planner();
-        $job = ArrayHelper::getValue($model,'name_jobs');
-        $jobs = ArrayHelper::map(Jobs::find()->all(),'name','name');
-        $userModel = Yii::$app->user->identity;
-        $role=$userModel->role;
-        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
-        $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['flag'=>1])->all(),'name','full_name');
-//        $contract = ArrayHelper::getValue($model,'name_contracts');
-        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
-        $performer1 = ArrayHelper::getValue($model,'name_performers1');
-        $performer2 = ArrayHelper::getValue($model,'name_performers2');
-        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
-        $status = ArrayHelper::getValue($model,'name_status');
-        $requests = ArrayHelper::map(Requests::find()->where(['name_status'=>['ожидание','выполняется','отложена']])->all(),'id','short_info');
+        $data = new DataFromPlanner();
+        $dataArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
+            if ($modelRequest){
+                $modelRequest->scenario = Requests::SCENARIO_USER;
+                $modelRequest->name_performers = $model->name_performers1;
+                $modelRequest->name_status = $model->name_status;
+                $modelRequest->save();
+            }
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'job' => $job,
-                'jobs' => $jobs,
                 'role'=>$role,
-                'customers'=>$customers,
-                'contracts'=>$contracts,
-//                'contract'=>$contract,
-                'performers'=>$performers,
-                'performer1'=>$performer1,
-                'performer2'=>$performer2,
-                'statuses'=>$statuses,
-                'stateRequest'=>$status,
-                'requests'=>$requests,
+                'job' => $dataArray['job'],
+                'jobs' => $dataArray['jobs'],
+                'customers'=>$dataArray['customers'],
+                'contracts'=>$dataArray['contracts'],
+                'performers'=>$dataArray['performers'],
+                'performer1'=>$dataArray['performer1'],
+                'performer2'=>$dataArray['performer2'],
+                'statuses'=>$dataArray['statuses'],
+                'requests'=>$dataArray['requests']
             ]);
         }
     }
@@ -166,57 +236,109 @@ class PlannerController extends Controller
     public function actionUpdate($id)
     {
         /* @var $userModel UserControl  */
-
-        $model = $this->findModel($id);
-        $job = ArrayHelper::getValue($model,'name_jobs');
-        $jobs = ArrayHelper::map(Jobs::find()->all(),'name','name');
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
-        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
-        $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
-//        $contract = ArrayHelper::getValue($model,'name_contracts');
-        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
-        $performer1 = ArrayHelper::getValue($model,'name_performers1');
-        $performer2 = ArrayHelper::getValue($model,'name_performers2');
-        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
-        $status = ArrayHelper::getValue($model,'name_status');
-        $request = ArrayHelper::getValue($model,'info_request');
-        $requestsAllRun = Requests::find()
-            ->where(['name_status'=>['ожидание','выполняется','отложена']])
-            ->orderBy(['date_start'=>SORT_ASC])
-            ->all();
-        $requests=ArrayHelper::map($requestsAllRun,'id',function ($requestsAllRun){
-            return Yii::$app->formatter->asDatetime($requestsAllRun->date_start, "php:d.m.Y").' - '.$requestsAllRun->short_info;
-        });
+
+        try {
+            $model = $this->findModel($id);
+        } catch (NotFoundHttpException $e) {
+
+        }
+        $stateRequest = Yii::$app->request->get('stateRequest');
+
+        $data = new DataFromPlanner();
+        $dataArray = $data->getDataArray($model);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->id]);
+            $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
+            if ($modelRequest){
+                $modelRequest->scenario = Requests::SCENARIO_USER;
+                $modelRequest->name_performers = $model->name_performers1;
+                $modelRequest->name_status = $model->name_status;
+                $modelRequest->save();
+            }
+            return $this->redirect(['index', 'id' => $model->id, 'stateRequest'=>$stateRequest]);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'job' => $job,
-                'jobs' => $jobs,
                 'role'=>$role,
-                'customers'=>$customers,
-                'contracts'=>$contracts,
-//                'contract'=>$contract,
-                'performers'=>$performers,
-                'performer1'=>$performer1,
-                'performer2'=>$performer2,
-                'statuses'=>$statuses,
-                'stateRequest'=>$status,
-                'request'=>$request,
-                'requests'=>$requests,
+                'job' => $dataArray['job'],
+                'jobs' => $dataArray['jobs'],
+                'customer'=>$dataArray['customer'],
+                'customers'=>$dataArray['customers'],
+                'contract'=>$dataArray['contract'],
+                'contracts'=>$dataArray['contracts'],
+                'performers'=>$dataArray['performers'],
+                'performer1'=>$dataArray['performer1'],
+                'performer2'=>$dataArray['performer2'],
+                'status'=>$dataArray['status'],
+                'statuses'=>$dataArray['statuses'],
+                'request'=>$dataArray['request'],
+                'requests'=>$dataArray['requestsRunDate'],
             ]);
         }
     }
 
 
+    public function actionCopy($id)
+    {
+        try {
+            $copyModel = $this->findModel($id);
+        } catch (NotFoundHttpException $e) {
+        }
+
+        $modelCopy = new PlannerCopy();
+        $stateRequest = Yii::$app->request->get('stateRequest');
+
+        if ($modelCopy->load(Yii::$app->request->post()) && $modelCopy->validate()) {
+            $modelCopy->dateEnd && date($modelCopy->dateEnd) > date($modelCopy->dateStart)  ?
+                $sumDays = date($modelCopy->dateEnd)-date($modelCopy->dateStart):
+                $sumDays = 0;
+            for ($i=0;$i<=($sumDays);$i++){
+                $model = new Planner();
+                $model->attributes = $copyModel->attributes ;
+                $model->date = date('Y-m-d H:i',strtotime($modelCopy->dateStart. ' + '.$i.' days'));
+                $model->name_status = 'ожидание';
+                $model->save();
+            }
+            return $this->redirect(['index','Result'=>true]);
+        } else {
+            return $this->redirect(['index','Result'=>false]);
+        }
+
+    }
+
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        $page = Yii::$app->request->get('page');
+        $perPage = Yii::$app->request->get('per-page');
+        $stateRequest = Yii::$app->request->get('stateRequest');
+
+        try {
+            $this->findModel($id)->delete();
+        } catch (StaleObjectException $e) {
+
+        } catch (NotFoundHttpException $e) {
+
+        } catch (\Exception $e) {
+
+        }
+
+        if ($page) {
+            $url=[
+                'index',
+                'stateRequest'=>$stateRequest,
+                'page'=>$page,
+                'per-page'=>$perPage
+            ];
+        } else {
+            $url=[
+                'index',
+                'stateRequest'=>$stateRequest,
+            ];
+        }
+        return $this->redirect($url);
     }
 
     /**

@@ -49,7 +49,7 @@ class PlannerSearch extends Planner
         $dataProvider = new ActiveDataProvider([
             'query' => $query->orderBy(['date' => SORT_DESC,'id'=>SORT_DESC]),
             'pagination' => [
-                'pageSize' => 12,
+                'pageSize' => 17,
             ],
 //            'sort' => [
 //                'OrderBy' => [
@@ -72,17 +72,19 @@ class PlannerSearch extends Planner
 
         switch($status) {
             case ('curdate'):$query->Where('date = CURDATE()')->all();
-            break;
+                break;
             case ('tomorrow'):$query->Where('date = (CURDATE()+1) AND date > CURDATE()')->all();
-            break;
+                break;
             case ('yesterday'):$query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
-            break;
-            case ('week'):$query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
-            break;
+                break;
+            case ('curweek'):$query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
+                break;
+            case ('nextweek'):$query->Where('WEEKOFYEAR(`date`) = (WEEKOFYEAR(NOW())+1)')->all();
+                break;
             case ('month'):$query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
-            break;
+                break;
             case ('year'):$query->Where('YEAR(`date`) = YEAR(NOW())')->all();
-            break;
+                break;
         }
 
 

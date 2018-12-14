@@ -12,6 +12,7 @@ use app\models\Customers;
 use app\models\Contracts;
 use app\models\Performers;
 use app\models\Status;
+use app\models\Planner;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -55,7 +56,7 @@ class RequestsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index','view','update'],
+                        'actions' => ['logout','index','view','update','lists'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
@@ -236,6 +237,15 @@ class RequestsController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $modelPlanner = new Planner();
+            $modelPlanner->date = $model->date_start;
+            $modelPlanner->name_jobs = 'заявка';
+            $modelPlanner->name_customers = $model->name_customers;
+            $modelPlanner->info_contract = $model->name_contracts;
+            $modelPlanner->info_request = (string)$model->id;
+            $modelPlanner->name_status = $model->name_status;
+            $modelPlanner->name_user=$model->name_user;
+            $modelPlanner->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -383,6 +393,7 @@ class RequestsController extends Controller
         if ($e !== null) {
             return $this->render('error', ['exception' => $e,'message'=>$e->getMessage()]);
         }
+        return 0;
     }
 
 

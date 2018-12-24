@@ -40,7 +40,7 @@ class PlannerSearch extends Planner
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$status)
+    public function search($params,$status,$filter)
     {
         $query = Planner::find();
 
@@ -71,21 +71,30 @@ class PlannerSearch extends Planner
         }
 
         switch($status) {
-            case ('curdate'):$query->Where('date = CURDATE()')->all();
+            case ('curdate'):
+                $query->Where('date = CURDATE()')->all();
+                $query->orderBy(['name_status'=>SORT_ASC,'name_performers1'=>SORT_ASC,'id'=>SORT_DESC]);
                 break;
-            case ('tomorrow'):$query->Where('date = (CURDATE()+1) AND date > CURDATE()')->all();
+            case ('tomorrow'):
+                $query->Where('date = (CURDATE()+1) AND date > CURDATE()')->all();
                 break;
-            case ('yesterday'):$query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
+            case ('yesterday'):
+                $query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
                 break;
-            case ('curweek'):$query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
+            case ('curweek'):
+                $query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
                 break;
-            case ('nextweek'):$query->Where('WEEKOFYEAR(`date`) = (WEEKOFYEAR(NOW())+1)')->all();
+            case ('nextweek'):
+                $query->Where('WEEKOFYEAR(`date`) = (WEEKOFYEAR(NOW())+1)')->all();
                 break;
-            case ('month'):$query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
+            case ('month'):
+                $query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
                 break;
-            case ('year'):$query->Where('YEAR(`date`) = YEAR(NOW())')->all();
+            case ('year'):
+                $filter==null ? $query->Where('YEAR(`date`) = YEAR(NOW())')->all()
+                    :$query->Where('MONTH(`date`)= '.$filter.' AND YEAR(`date`) = YEAR(NOW())')->all();
                 break;
-        }
+        };
 
 
 

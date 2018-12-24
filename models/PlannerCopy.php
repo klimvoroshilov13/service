@@ -6,8 +6,6 @@
  */
 
 namespace app\models;
-
-
 use yii\base\Model;
 
 class PlannerCopy extends Model
@@ -23,9 +21,6 @@ class PlannerCopy extends Model
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

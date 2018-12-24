@@ -11,7 +11,7 @@ use yii\helpers\Html;
  */
 
 $btn=[
-    'yesterday'=>'&nbsp&nbspВчера&nbsp',
+    'yesterday'=>'Вчера&nbsp',
     'curdate'=>'Сегодня',
     'tomorrow'=>'Завтра',
     'curweek'=>'Тек.(неделя)',

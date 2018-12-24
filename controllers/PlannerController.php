@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\PlannerFilter;
 use Yii;
 use app\models\Requests;
 use app\modules\admin\models\UserControl;
@@ -146,8 +147,10 @@ class PlannerController extends Controller
             }
         }
 
+        $modelFilter = new PlannerFilter();
+        $modelFilter->load(Yii::$app->request->post()) ? $month = $modelFilter->month:$month=null;
         $searchModel = new PlannerSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest,$month);
 
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
@@ -168,6 +171,7 @@ class PlannerController extends Controller
                 'perPage'=>$perPage,
                 'model' => $model,
                 'modelCopy'=> $modelCopy,
+                'modelFilter'=> $modelFilter,
                 'role'=>$role,
                 'job' => $dataArray['job'],
                 'jobs' => $dataArray['jobs'],

@@ -37,7 +37,8 @@ $this->title = Yii::t('yii', 'Planners');
     </p>
 
     <p>
-        <?php require  ('btn-create.php');?><!--    -->
+        <?php require  ('btn-create.php');?>
+        <?php $stateRequest=='year'? require  ('filter-month_form.php'):null;?>
     </p>
 
     <?php try {
@@ -68,10 +69,10 @@ $this->title = Yii::t('yii', 'Planners');
 
 <?php
 
-$this->registerJsFile('@web/js/refresh-page.js',['depends' => [
-    'yii\web\YiiAsset',
-    'yii\bootstrap\BootstrapAsset',
-]]);
+//$this->registerJsFile('@web/js/refresh-page.js',['depends' => [
+//    'yii\web\YiiAsset',
+//    'yii\bootstrap\BootstrapAsset',
+//]]);
 
 $this->registerJsFile('@web/js/planner/index/redye-planners.js',['depends' => [
     'yii\web\YiiAsset',

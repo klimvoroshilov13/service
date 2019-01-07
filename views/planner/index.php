@@ -9,6 +9,7 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $stateRequest string */
 /* @var $Result boolean */
+/* @var $month string */
 
 
 $this->title = Yii::t('yii', 'Planners');
@@ -38,7 +39,7 @@ $this->title = Yii::t('yii', 'Planners');
 
     <p>
         <?php require  ('btn-create.php');?>
-        <?php $stateRequest=='year'? require  ('filter-month_form.php'):null;?>
+        <?php $stateRequest=='all'? require  ('filter-month_form.php'):null;?>
     </p>
 
     <?php try {
@@ -107,5 +108,7 @@ $userModel = Yii::$app->user->identity;
 If ($userModel->username == 'Admin') {?>
     <?="PHP: " . PHP_VERSION . "\n";?>
     <?="ICU: " . INTL_ICU_VERSION . "\n";?>
+    <br>
+    <?php echo "Месяц:".$month;?>
 <?}?>
 <!-- Диагностика -->

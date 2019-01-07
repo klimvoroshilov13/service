@@ -259,10 +259,18 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
     border-color: #2d5c92;
 }
 
-.field-plannerfilter-month{
+.field-plannerfilter-month,.field-plannerfilter-year{
     display: inline-block;
     width: 173px;
     margin-bottom: 0;
+}
+
+.field-plannerfilter-year{
+    width: 80px;
+}
+
+.btn-filter{
+    display: block;
 }
 
 /*.modal-content{*/

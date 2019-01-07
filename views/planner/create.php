@@ -5,18 +5,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Planner */
-/* @var $jobs array  */
-/* @var $job string  */
 /* @var $role string */
-/* @var $customers array */
-/* @var $contracts array */
-/* @var $contract string */
-/* @var $performers array */
-/* @var $performer1 string */
-/* @var $performer2 string */
-/* @var $statuses array */
-/* @var $status string */
-/* @var $requests  array  */
+/* @var $modelPlannerArray  array  */
 
 $this->title = Yii::t('yii', 'Create Planner');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' => ['index']];
@@ -28,18 +18,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' =>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'job' => $job,
-        'jobs' => $jobs,
         'role'=>$role,
-        'customers'=>$customers,
-        'contracts'=>$contracts,
-        'contract'=>$contract,
-        'performers'=>$performers,
-        'performer1'=>$performer1,
-        'performer2'=>$performer2,
-        'statuses'=>$statuses,
-        'stateRequest'=>$status,
-        'requests'=>$requests,
+        'modelPlannerArray'=>$modelPlannerArray
     ]) ?>
 
 </div>

@@ -13,6 +13,7 @@ use app\components\helper\Datehelper;
  */
 class PlannerSearch extends Planner
 {
+
     /**
      * @inheritdoc
      */

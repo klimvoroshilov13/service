@@ -158,7 +158,7 @@ class PlannerController extends Controller
         $model = new Planner();
         $modelCopy = new PlannerCopy();
         $data = new DataFromPlanner();
-        $dataArray = $data->getDataArray($model);
+        $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -173,15 +173,8 @@ class PlannerController extends Controller
                 'modelCopy'=> $modelCopy,
                 'modelFilter'=> $modelFilter,
                 'role'=>$role,
-                'job' => $dataArray['job'],
-                'jobs' => $dataArray['jobs'],
-                'customers'=>$dataArray['customers'],
-                'contracts'=>$dataArray['contracts'],
-                'performers'=>$dataArray['performers'],
-                'performer1'=>$dataArray['performer1'],
-                'performer2'=>$dataArray['performer2'],
-                'statuses'=>$dataArray['statuses'],
-                'requests'=>$dataArray['requests']
+                'modelPlannerArray'=>$modelPlannerArray,
+                'month'=>$modelFilter->month
             ]);
         }
 
@@ -208,7 +201,7 @@ class PlannerController extends Controller
 
         $model = new Planner();
         $data = new DataFromPlanner();
-        $dataArray = $data->getDataArray($model);
+        $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
@@ -223,15 +216,7 @@ class PlannerController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'role'=>$role,
-                'job' => $dataArray['job'],
-                'jobs' => $dataArray['jobs'],
-                'customers'=>$dataArray['customers'],
-                'contracts'=>$dataArray['contracts'],
-                'performers'=>$dataArray['performers'],
-                'performer1'=>$dataArray['performer1'],
-                'performer2'=>$dataArray['performer2'],
-                'statuses'=>$dataArray['statuses'],
-                'requests'=>$dataArray['requests']
+                'modelPlannerArray'=>$modelPlannerArray
             ]);
         }
     }
@@ -251,7 +236,7 @@ class PlannerController extends Controller
         $stateRequest = Yii::$app->request->get('stateRequest');
 
         $data = new DataFromPlanner();
-        $dataArray = $data->getDataArray($model);
+        $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
@@ -266,19 +251,7 @@ class PlannerController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'role'=>$role,
-                'job' => $dataArray['job'],
-                'jobs' => $dataArray['jobs'],
-                'customer'=>$dataArray['customer'],
-                'customers'=>$dataArray['customers'],
-                'contract'=>$dataArray['contract'],
-                'contracts'=>$dataArray['contracts'],
-                'performers'=>$dataArray['performers'],
-                'performer1'=>$dataArray['performer1'],
-                'performer2'=>$dataArray['performer2'],
-                'status'=>$dataArray['status'],
-                'statuses'=>$dataArray['statuses'],
-                'request'=>$dataArray['request'],
-                'requests'=>$dataArray['requestsRunDate'],
+                'modelPlannerArray'=>$modelPlannerArray
             ]);
         }
     }

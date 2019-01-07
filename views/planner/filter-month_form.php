@@ -11,24 +11,10 @@ use kartik\date\DatePicker;
 use app\components\helper\Datehelper;
 
 /** @var $modelFilter app\models\PlannerFilter */
-/** @var array $arr */
+/** @var $arrMonth array */
+/** @var $month string*/
 
-//$arr= array(
-//    'January'=>'Январь',
-//    'February'=>'Февраль',
-//    'March'=>'Март',
-//    'April'=>'Апрель',
-//    'May'=>'Май',
-//    'June'=>'Июнь',
-//    'July'=>'Июль',
-//    'August'=>'Август',
-//    'September'=>'Сентябрь',
-//    'October'=>'Октябрь',
-//    'November'=>'Ноябрь',
-//    'December'=>'Декабрь'
-//);
-
-$arr= array(
+$arrMonth = array(
     '1'=>'Январь',
     '2'=>'Февраль',
     '3'=>'Март',
@@ -42,14 +28,37 @@ $arr= array(
     '11'=>'Ноябрь',
     '12'=>'Декабрь'
 );
+
+$arrYear = array(
+    '18'=>'2018',
+    '19'=>'2019'
+);
+
 ?>
 
 <!--<div class="filter-month-form">-->
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([]); ?>
         <?= $form
         ->field($modelFilter,'month')
         ->label(false)
-        ->dropDownList($arr); ?>
-        <?= Html::submitButton( Yii::t('yii', 'Применить') , ['class' => 'btn btn-success']) ?>
+        ->dropDownList($arrMonth,[
+                'options'=>[
+                    $month =>['Selected'=>true]
+                ]
+         ]
+            );
+        ?>
+
+    <?= $form
+        ->field($modelFilter,'year')
+        ->label(false)
+        ->dropDownList($arrYear,[
+                'options'=>[
+                    $month =>['Selected'=>true]
+                ]
+            ]
+        );
+    ?>
+        <?= Html::submitButton( Yii::t('yii', 'Применить') , ['class' => 'btn btn-success btn-filter']) ?>
     <?php $form = ActiveForm::end(); ?>
 <!--</div>-->

@@ -12,11 +12,12 @@ use yii\base\Model;
 class PlannerFilter extends Model
 {
     public $month;
+    public $year;
 
     public function rules()
     {
         return [
-            [['month'], 'string']
+            [['month','year'], 'string']
         ];
     }
 }

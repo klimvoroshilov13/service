@@ -10,102 +10,96 @@ use app\components\helper\Adminhelper;
 /* @var $model app\models\Planner */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $role string  */
-/* @var $job string  */
-/* @var $jobs array  */
-/* @var $customer string  */
-/* @var $customers array  */
-/* @var $contract string  */
-/* @var $contracts array  */
-/* @var $performers array */
-/* @var $performer1 string */
-/* @var $performer2 string */
-/* @var $status string */
-/* @var $statuses array */
-/* @var $request string */
-/* @var $requests  array  */
+/* @var $modelPlannerArray  array */
 
 ?>
 
 <div class="planner-form">
 
+
     <?php $form = ActiveForm::begin(); ?>
-    <?php $model->isNewRecord ? $model->date = Datehelper::setCurrentDate(): null;?>
-    <?php $model->date=Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y") ?>
-    <?= $form->field($model, 'date')
-        -> widget(DatePicker::classname(), [
-        'language' => 'ru',
-        'name' => 'date',
-        'value' => date('d.m.Y'),
-        'options' => ['placeholder' => Yii::t('yii','Select date ...')],
-        'convertFormat' => true,
-        'pluginOptions' => [
-            'format' => 'dd.MM.yyyy',
-            'autoclose'=> true,
-            'todayHighlight' => true,
-            'weekStart'=> 1, //неделя начинается с понедельника
-            'startDate' => '01.05.2015', //самая ранняя возможная дата
-        ]
-    ]) ?>
 
-    <? $paramNj = ['options' =>[$job  => ['Selected' => true]],
-        'prompt'=> 'Выберите работы ... '
-        ];?>
-    <?= $form->field($model,'name_jobs')->dropDownList($jobs,$paramNj)?>
+        <!-- date -->
+        <?php $model->isNewRecord ? $model->date = Datehelper::setCurrentDate(): null;?>
+        <?php $model->date=Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y") ?>
+        <?= $form->field($model, 'date')
+            -> widget(DatePicker::classname(), [
+            'language' => 'ru',
+            'name' => 'date',
+            'value' => date('d.m.Y'),
+            'options' => ['placeholder' => Yii::t('yii','Select date ...')],
+            'convertFormat' => true,
+            'pluginOptions' => [
+                'format' => 'dd.MM.yyyy',
+                'autoclose'=> true,
+                'todayHighlight' => true,
+                'weekStart'=> 1, //неделя начинается с понедельника
+                'startDate' => '01.05.2015', //самая ранняя возможная дата
+            ]
+        ]) ?>
 
-    <?= $form->field($model, 'name_customers')
-        ->dropDownList($customers,[
-                'options' =>[
-                        $customer => ['Selected' => true ]
-                ],
-        'prompt'=> $model->isNewRecord ? 'Выберите контрагента...':null,
-    ])?>
+        <!-- name_jobs -->
+        <? $paramNj = ['options' =>[$modelPlannerArray['job']  => ['Selected' => true]],
+            'prompt'=> 'Выберите работы ... '
+            ];?>
+        <?= $form->field($model,'name_jobs')->dropDownList($modelPlannerArray['jobs'],$paramNj)?>
 
+        <!-- name_customers -->
+        <?= $form->field($model, 'name_customers')
+            ->dropDownList($modelPlannerArray['customers'],[
+                    'options' =>[
+                            $modelPlannerArray['customer'] => ['Selected' => true ]
+                    ],
+            'prompt'=> $model->isNewRecord ? 'Выберите контрагента...':null,
+        ])?>
 
-    <?=  $form->field($model, 'info_contract')
-        ->dropDownList($model->isNewRecord ?[]:$contracts,[
-        'options' =>[
-                $contract  => ['Selected' => true]
-        ],
-        'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
-        ]);?>
+        <!--  info_request  -->
+        <?=  $form->field($model, 'info_contract')
+            ->dropDownList($model->isNewRecord ?[]:$modelPlannerArray['contracts'],[
+            'options' =>[
+                    $modelPlannerArray['contract'] => ['Selected' => true]
+            ],
+            'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
+            ]);?>
 
-    <?= $form->field($model,'info_request')->label(false)->dropDownList($requests, [
-        'options' =>[$request  => ['Selected' => true]],
-        'prompt'=> $model->isNewRecord ? 'Выберите заявку ...':null,
-    ])?>
+        <!--  info_request  -->
+        <?= $form->field($model,'info_request')->label(false)->dropDownList($modelPlannerArray['requests'], [
+            'options' =>[$modelPlannerArray['request'] => ['Selected' => true]],
+            'prompt'=> $model->isNewRecord ? 'Выберите заявку ...':null,
+        ])?>
 
-    <?= $form->field($model, 'info_text')->label(false)->textarea(['rows' => 3, 'cols' => 5]);?>
+        <!--  info_text  -->
+        <?= $form->field($model, 'info_text')->label(false)->textarea(['rows' => 3, 'cols' => 5]);?>
 
+        <!--  name_performers1  -->
+        <? $paramNp = ['options' =>[$modelPlannerArray['performer1'] => ['Selected' => true]],
+                    'prompt'=>'Выберите исполнителя ...'
+            ];?>
+        <?= $form->field($model,'name_performers1')->dropDownList($modelPlannerArray['performers'],$paramNp)?>
 
-    <? $paramNp = ['options' =>[$performer1 => ['Selected' => true]],
-                'prompt'=>'Выберите исполнителя ...'
-        ];?>
-    <?= $form->field($model,'name_performers1')->dropDownList($performers,$paramNp)?>
+        <!--  name_performers2  -->
+        <? $paramNp = ['options' =>[$modelPlannerArray['performer2'] => ['Selected' => true]],
+                    'prompt'=>'Выберите исполнителя ...'
+            ];?>
+        <?= $form->field($model,'name_performers2')->checkbox(['label'=>'Второй исполнитель'])?>
+        <?= $form->field($model,'name_performers2')->label(false)->dropDownList($modelPlannerArray['performers'],$paramNp)?>
 
-
-    <? $paramNp = ['options' =>[$performer2 => ['Selected' => true]],
-                'prompt'=>'Выберите исполнителя ...'
-        ];?>
-
-    <?= $form->field($model,'name_performers2')->checkbox(['label'=>'Второй исполнитель'])?>
-
-    <?= $form->field($model,'name_performers2')->label(false)->dropDownList($performers,$paramNp)?>
-
-    <?php  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
-        $paramNs = ['options' =>[$status => ['Selected' => true]],
-            'prompt'=>'Выберите статус ...'
-        ];?>
-    <?= $form->field($model,'name_status')->dropDownList($statuses,$paramNs)?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+        <!--  name_status  -->
+        <?php  $model->isNewRecord ? $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
+            $paramNs = ['options' =>[$modelPlannerArray['status'] => ['Selected' => true]],
+                'prompt'=>'Выберите статус ...'
+            ];?>
+        <?= $form->field($model,'name_status')->dropDownList($modelPlannerArray['statuses'],$paramNs)?>
+        
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
 
-<!-- Подключение JS скриптов -->
+<!-- Connect js_scripts -->
 <?php
 $this->registerJsFile('@web/js/reload-info.js',['depends' => [
     'yii\web\YiiAsset',
@@ -122,16 +116,15 @@ $this->registerJsFile('@web/js/planner/form/load-data.js',['depends' => [
     'yii\bootstrap\BootstrapAsset',
 ]]);
 ?>
-<!-- Подключение JS скриптов -->
 
-<!-- Диагностика -->
+<!-- Diagnostic -->
 <?php If (Yii::$app->user->identity->username=='Admin') {?>
 <?='Это статус: '.$model->name_status;?><br>
 <?='Это работы: '.$job;?><br>
 <?='Это котрагент: '.$customer;?><br>
 <?='Это контракт: '.$contract;?><br>
-<?//= Adminhelper::printArr($requests);?>
+<?//= Adminhelper::printArr($modelPlannerArray);?>
 <?}?>
-<!-- Диагностика -->
+
 
 

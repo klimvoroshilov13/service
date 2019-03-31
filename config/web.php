@@ -8,7 +8,7 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
     'layout' => '',
-    'defaultRoute' => 'requests/index',
+    'defaultRoute' => 'home/index',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -21,21 +21,18 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => 'requests/login',
+            'loginUrl' => 'home/login',
         ],
         'errorHandler' => [
-            'errorAction' => 'requests/error',
+            'errorAction' => 'home/error',
         ],
 
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
-            //'datetimeFormat' => 'short',
             'defaultTimeZone' => 'Europe/Moscow',
-            //'timeZone' => 'GMT+3',
-            //'date1Format' => 'd.m.Y',
-            'dateFormat' => 'dd MMMM Y',
-            'datetimeFormat' => 'dd.MM.Y HH:mm',
-            'timeFormat' => 'HH:mm',
+            'dateFormat' => 'php:d F Y',
+            'datetimeFormat' => 'php:d.m.Y H:i',
+            'timeFormat' => 'php:H:i',
             'nullDisplay' => ''
         ],
 

@@ -8,8 +8,9 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Войти в приложение';
+
 ?>
-<div class="requests-login">
+<div class="home-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Пожалуйста, заполните следующие поля для входа:</p>
@@ -39,6 +40,5 @@ $this->title = 'Войти в приложение';
         </div>
 
     <?php ActiveForm::end(); ?>
-
 
 </div>

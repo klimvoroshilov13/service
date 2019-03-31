@@ -21,7 +21,7 @@ class PerformersController extends Controller
      * Свойство устанавливающее шаблон для web приложения
      */
 
-    public $layout='requests';
+    public $layout='service';
 
     /**
      * Метод ограничения доступа к web приложению взависимости от роли пользователя

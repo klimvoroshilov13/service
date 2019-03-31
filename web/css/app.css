@@ -12,6 +12,10 @@ h1{
     font-weight: bold;
 }
 
+h2{
+    font-size: 14px;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -271,6 +275,13 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
 
 .btn-filter{
     display: block;
+}
+
+.service-index li,.home-index li{
+    background:#efefef url(/web/img/li.jpg) no-repeat scroll;
+    background-position: left 3px;
+    list-style-type: none;
+    padding: 0 0 10px 25px;
 }
 
 /*.modal-content{*/

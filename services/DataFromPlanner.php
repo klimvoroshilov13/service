@@ -15,6 +15,7 @@ use app\models\Performers;
 use app\models\Status;
 use app\models\Requests;
 use yii\helpers\ArrayHelper;
+use app\models\Planner;
 
 
 class DataFromPlanner
@@ -32,11 +33,11 @@ class DataFromPlanner
 
 
     /**
-     * @param object $model
+     * @param Planner $model
      * @return array
      */
 
-    public function getDataArray($model){
+    public function getDataArray(Planner $model){
 
         $job = trim(ArrayHelper::getValue($model,'name_jobs'));
         $jobs = ArrayHelper::map(Jobs::find()

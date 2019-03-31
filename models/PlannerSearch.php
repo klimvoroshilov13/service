@@ -41,7 +41,7 @@ class PlannerSearch extends Planner
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$status,$filter)
+    public function search($params, $status, $month, $year)
     {
         $query = Planner::find();
 
@@ -92,8 +92,10 @@ class PlannerSearch extends Planner
                 $query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
                 break;
             case ('year'):
-                $filter==null ? $query->Where('YEAR(`date`) = YEAR(NOW())')->all()
-                    :$query->Where('MONTH(`date`)= '.$filter.' AND YEAR(`date`) = YEAR(NOW())')->all();
+                 $query->Where('YEAR(`date`) = YEAR(NOW())')->all();
+                break;
+            case ('all'):
+                $month != null ? $query->Where('MONTH(`date`)= '.$month.' AND YEAR(`date`) = 20'.$year)->all():null;
                 break;
         };
 
@@ -115,4 +117,6 @@ class PlannerSearch extends Planner
 
         return $dataProvider;
     }
+
 }
+

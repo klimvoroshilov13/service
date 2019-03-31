@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\LoginForm;
 use app\modules\admin\models\UserControl;
 use app\models\Requests;
 use app\models\RequestsSearch;
@@ -29,7 +28,7 @@ class RequestsController extends Controller
     /**
      * Устанавливает шаблон web-приложения
      */
-   public $layout='requests';
+   public $layout='service';
 
     /**
      * Ограничивает доступ к web-приложению
@@ -73,41 +72,6 @@ class RequestsController extends Controller
                 ],
             ],
         ];
-    }
-
-    /**
-     * Осуществляет вход в web-приложение
-     *
-     * @return \yii\web\Response|string  возвращает главную страницу web-приложения
-     * в случае авторизации и страницу входа
-     * если пользователь не авторизован.
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Осуществляет выход из web-приложения
-     *
-     * @return \yii\web\Response  возвращает страницу входа
-     * в web-приложение при выходе.
-     */
-    public function actionLogout()
-        {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
     }
 
     /**
@@ -218,7 +182,7 @@ class RequestsController extends Controller
         $model = new Requests();
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
-        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
+        $customers = ArrayHelper::map(Customers::find()->orderBy(['name'=>SORT_ASC])->all(),'name','name');
         $customer = ArrayHelper::getValue($model,'name_customers');
         $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
         $contract = ArrayHelper::getValue($model,'name_contracts');
@@ -280,7 +244,7 @@ class RequestsController extends Controller
         $page = Yii::$app->request->get('page');
         $statusRequest= Yii::$app->request->get('stateRequest');
 //        !($statusPage) ? $statusPage='run':null;
-        $customers = ArrayHelper::map(Customers::find()->all(),'name','name');
+        $customers = ArrayHelper::map(Customers::find()->orderBy(['name'=>SORT_ASC])->all(),'name','name');
         $customer = ArrayHelper::getValue($model,'name_customers');
         $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
         $contract = ArrayHelper::getValue($model,'name_contracts');

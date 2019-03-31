@@ -14,22 +14,31 @@ class Datehelper
 
     static function getDayRus($date)
     {
-        $days = array(
-            'Воскресенье', 'Понедельник', 'Вторник', 'Среда',
-            'Четверг', 'Пятница', 'Суббота'
-        );
+        $days = [
+            'Воскресенье',
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота'
+        ];
         return $days[strftime("%w", strtotime($date))];
     }
 
-    static function setCurrentDate($format='d.m.Y H:i')
+    static function setCurrentDate($format = 'd.m.Y H:i')
     {
         $currentDate = new DateTime();
         switch ($format){
-            case'd.m.Y H:i': $date=$currentDate->format('d.m.Y H:i');
+            case'd.m.Y H:i': $date = $currentDate->format('d.m.Y H:i');
             break;
-            case'Y-m-d': $date=$currentDate->format('d.m.Y H:i');
+            case'Y-m-d': $date = $currentDate->format('Y-m-d');
             break;
-            case'd.m.Y': $date=$currentDate->format('php:d.m.Y');
+            case'd.m.Y': $date = $currentDate->format('d.m.Y');
+            break;
+            case'm': $date = $currentDate->format('m');
+            break;
+            case'y': $date = $currentDate->format('y');
             break;
         }
         return $date;

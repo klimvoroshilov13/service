@@ -11,27 +11,43 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
+    public $layout='requests';
     /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login','error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout','index','view','update','lists'],
+                        'allow' => true,
+                        'roles' => ['user'],
+                    ],
+                    [
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists'],
+                        'allow' => true,
+                        'roles' => ['operator'],
+                    ],
+                    [
+                        'actions' => ['logout','index','view','update','create','delete','mailer','lists','crops'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
         ];

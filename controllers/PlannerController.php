@@ -9,6 +9,7 @@ use app\modules\admin\models\UserControl;
 use app\models\Planner;
 use app\models\PlannerSearch;
 use app\models\PlannerCopy;
+use app\models\PlannerState;
 use yii\base\InvalidConfigException;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
@@ -17,12 +18,13 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\services\DataFromPlanner;
 use yii\helpers\ArrayHelper;
+use app\components\helper\Datehelper;
 /**
  * Контроллер PlannerController(управление планировщиком)
  */
 class PlannerController extends Controller
 {
-    public $layout='requests';
+    public $layout = 'service';
 
     public function behaviors() // Ограничение доступа к actions
     {
@@ -84,105 +86,69 @@ class PlannerController extends Controller
         ];
     }
 
-
-
-
     public function actionIndex()
     {
-        /* @var $userModel UserControl  */
-        $stateRequest = Yii::$app->request->get('stateRequest');
-        $page = Yii::$app->request->get('page');
-        $perPage = Yii::$app->request->get('per-page');
-        !($stateRequest) ? $stateRequest ='curdate':null;
-
-        if ($stateRequest=='curdate'){
-            $query = Planner::find()
-                ->where('date = CURDATE() AND name_status = "ожидание" AND name_performers1 != "null"')
-                ->column();
-             if ($query){
-                foreach ($query as $value){
-                    try {
-                        $model = $this->findModel($value);
-                    } catch (NotFoundHttpException $e) {
-                    }
-                    $model->name_status = 'выполняется';
-                    $model->save();
-                }
-              }
-
-            $query = Planner::find()
-                ->where('(date < CURDATE()) AND (name_status = "выполняется" OR name_status = "ожидание")')
-                ->column();
-            if ($query){
-                foreach ($query as $value){
-                    try {
-                        $model = $this->findModel($value);
-                    } catch (NotFoundHttpException $e) {
-                    }
-                    /** @var object $model */
-                    switch ($model->name_status){
-                        case 'выполняется':
-                            $model->name_status = 'завершена';
-                            $model->save();
-                            break;
-                        case 'ожидание':
-                            if ($model->name_performers1 == null){
-                            try {
-                                $model->date = Yii::$app->formatter->asDatetime(setCurrentDate(), "php:Y-m-d");
-                            } catch (InvalidConfigException $e) {
-                            }
-                            $model->day_week = getDayRus($model->date);
-                            $model->save();
-                        }
-                    }
-                    $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
-                    /** @var object $modelRequest */
-                    if ($modelRequest){
-                        $modelRequest->scenario = Requests::SCENARIO_USER;
-                        $modelRequest->name_performers = $model->name_performers1;
-                        $modelRequest->name_status = $model->name_status;
-                        $modelRequest->save();
-                    }
-                }
-            }
-        }
-
-        $modelFilter = new PlannerFilter();
-        $modelFilter->load(Yii::$app->request->post()) ? $month = $modelFilter->month:$month=null;
-        $searchModel = new PlannerSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$stateRequest,$month);
-
+        /** @var UserControl $userModel */
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
-
-        $model = new Planner();
-        $modelCopy = new PlannerCopy();
-        $data = new DataFromPlanner();
-        $modelPlannerArray = $data->getDataArray($model);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-                'stateRequest'=>$stateRequest,
-                'page'=>$page,
-                'perPage'=>$perPage,
-                'model' => $model,
-                'modelCopy'=> $modelCopy,
-                'modelFilter'=> $modelFilter,
-                'role'=>$role,
-                'modelPlannerArray'=>$modelPlannerArray,
-                'month'=>$modelFilter->month
-            ]);
+        $session = Yii::$app->session;
+        $get = Yii::$app->request->get();
+        $getIndex = 0;
+        foreach ($get as $key=>$value){
+            !($key=='stateRequest') && !($key=='_pjax') && isset($key) ? $getIndex++:null;
         }
 
+        $stateModel = new PlannerState();
+        $modelFilter = new PlannerFilter();
+        $searchModel = new PlannerSearch();
+
+        !($get['stateRequest']) ? $get['stateRequest'] ='curdate':null;
+        if ($get['stateRequest']=='curdate'){
+           $stateModel->autochange();
+        }
+
+        if($get['stateRequest']=='all'){
+            $session->has('month') && $getIndex == 0 ? $session->remove('month'):null;
+            $session->has('year') && $getIndex == 0 ? $session->remove('year'):null;
+        }
+
+        if($modelFilter->load(Yii::$app->request->post())){
+            $session->set('month', $modelFilter->month);
+            $session->set('year', $modelFilter->year);
+        }
+
+        $dataProvider = $searchModel
+            ->search(
+                Yii::$app->request->queryParams,
+                $get['stateRequest'],
+                $session->get('month'),
+                $session->get('year')
+            );
+
+        !(isset($modelFilter->month)) && $getIndex == 0
+            ? $modelFilter->month = Datehelper::setCurrentDate('m')
+            : $modelFilter->month = $session->get('month');
+        !(isset($modelFilter->year)) && $getIndex == 0
+            ? $modelFilter->year = Datehelper::setCurrentDate('y')
+            : $modelFilter->year = $session->get('year');
+
+        $modelCopy = new PlannerCopy();
+        return $this->render('index', [
+               'searchModel' => $searchModel,
+               'dataProvider' => $dataProvider,
+               'stateRequest'=>$get['stateRequest'],
+               'page'=>$get['page'],
+               'perPage'=>$get['per-page'],
+               'modelCopy'=> $modelCopy,
+               'modelFilter'=> $modelFilter,
+               'role'=>$role
+           ]);
     }
 
 
     public function actionView($id)
     {
+        Yii::$app->defaultRoute ='planner';
         try {
            $model=$this->findModel($id);
         } catch (NotFoundHttpException $e) {
@@ -201,16 +167,11 @@ class PlannerController extends Controller
 
         $model = new Planner();
         $data = new DataFromPlanner();
+        $stateModel = new PlannerState();
         $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
-            if ($modelRequest){
-                $modelRequest->scenario = Requests::SCENARIO_USER;
-                $modelRequest->name_performers = $model->name_performers1;
-                $modelRequest->name_status = $model->name_status;
-                $modelRequest->save();
-            }
+            $model->name_jobs =='заявка' ? $stateModel->requestchange($model):null;
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
@@ -224,7 +185,7 @@ class PlannerController extends Controller
 
     public function actionUpdate($id)
     {
-        /* @var $userModel UserControl  */
+        /** @var UserControl $userModel */
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
 
@@ -236,16 +197,12 @@ class PlannerController extends Controller
         $stateRequest = Yii::$app->request->get('stateRequest');
 
         $data = new DataFromPlanner();
+        $stateModel = new PlannerState();
+        /** @var Planner $model */
         $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->name_jobs =='заявка' ? $modelRequest = Requests::findOne($model->info_request):null;
-            if ($modelRequest){
-                $modelRequest->scenario = Requests::SCENARIO_USER;
-                $modelRequest->name_performers = $model->name_performers1;
-                $modelRequest->name_status = $model->name_status;
-                $modelRequest->save();
-            }
+            $model->name_jobs =='заявка' ? $stateModel->requestchange($model):null;
             return $this->redirect(['index', 'id' => $model->id, 'stateRequest'=>$stateRequest]);
         } else {
             return $this->render('update', [
@@ -256,33 +213,16 @@ class PlannerController extends Controller
         }
     }
 
-
     public function actionCopy($id)
     {
-        try {
-            $copyModel = $this->findModel($id);
-        } catch (NotFoundHttpException $e) {
-        }
-
         $modelCopy = new PlannerCopy();
         $stateRequest = Yii::$app->request->get('stateRequest');
-
         if ($modelCopy->load(Yii::$app->request->post()) && $modelCopy->validate()) {
-            $modelCopy->dateEnd && date($modelCopy->dateEnd) > date($modelCopy->dateStart)  ?
-                $sumDays = date($modelCopy->dateEnd)-date($modelCopy->dateStart):
-                $sumDays = 0;
-            for ($i=0;$i<=($sumDays);$i++){
-                $model = new Planner();
-                $model->attributes = $copyModel->attributes ;
-                $model->date = date('Y-m-d H:i',strtotime($modelCopy->dateStart. ' + '.$i.' days'));
-                $model->name_status = 'ожидание';
-                $model->save();
-            }
+            $modelCopy->copy($id);
             return $this->redirect(['index','Result'=>true]);
         } else {
             return $this->redirect(['index','Result'=>false]);
         }
-
     }
 
     public function actionDelete($id)
@@ -303,14 +243,14 @@ class PlannerController extends Controller
         }
 
         if ($page) {
-            $url=[
+            $url = [
                 'index',
                 'stateRequest'=>$stateRequest,
                 'page'=>$page,
                 'per-page'=>$perPage
             ];
         } else {
-            $url=[
+            $url = [
                 'index',
                 'stateRequest'=>$stateRequest,
             ];
@@ -329,4 +269,9 @@ class PlannerController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    /**
+     * @param string $defaultRoute
+     * @return PlannerController
+     */
 }

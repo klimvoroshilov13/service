@@ -17,54 +17,56 @@ $this->title = Yii::t('yii', 'Planners');
 
 <?php Pjax::begin(['timeout'=>'5000']); ?>
 
-        <?php require  ('columns-planner.php');?> <!--    -->
+    <div class="planner-index">
 
-<div class="planner-index">
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-<!--        --><?php //require  ('modal-create.php');?><!--    -->
-    </p>
+            <p>
+        <!--        --><?php //require  ('modal-create.php');?><!--    -->
+            </p>
 
-    <p>
-        <?= Html::a(Yii::t('yii', 'Создать'),
-            ['create'], [
-                    'class' => 'btn-planner btn-create btn-success'
-            ]) ?>
-    </p>
+            <p>
+                <?= Html::a(Yii::t('yii', 'Создать'),
+                    ['create'], [
+                            'class' => 'btn-planner btn-create btn-success'
+                    ]) ?>
+            </p>
 
-    <p>
-        <?= Html::a('refreshButton',$stateRequest == 'curdate'? ['/planner/index/curdate']:null, ['class' => 'hidden','id' => 'refreshButton']) ?>
-    </p>
+            <p>
+                <?= Html::a('refreshButton',$stateRequest == 'curdate'? ['/planner/index/curdate']:null, ['class' => 'hidden','id' => 'refreshButton']) ?>
+            </p>
 
-    <p>
-        <?php require  ('btn-create.php');?>
-        <?php $stateRequest=='all'? require  ('filter-month_form.php'):null;?>
-    </p>
+            <p>
+                <?php require  ('btn-create.php');?>
+                <?php $stateRequest=='all'? require  ('filter-form.php'):null;?>
+            </p>
 
-    <?php try {
-        echo GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'columns' => $columnsPlanner,
-        ]);
-    } catch (Exception $e) {
-        return \yii\helpers\Url::to(['/requests/error','message'=>$e->getMessage()]);
-    } ?>
+        <?php
+            require  ('columns-planner.php');
+            try {
+                echo GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => $columnsPlanner,
+                ]);
+            } catch (Exception $e) {
+                return \yii\helpers\Url::to(['/requests/error','message'=>$e->getMessage()]);
+            }
+        ?>
 
-    <?php
+        <?php
 
-    if (Yii::$app->request->get('Result')) {
-        echo "Скопировано успешно";
-    } else {
-        echo "Не скопировано";
-    }
+            if (Yii::$app->request->get('Result')) {
+                echo "Скопировано успешно";
+            } else {
+                echo "Не скопировано";
+            }
 
-    ?>
+        ?>
 
-</div>
+    </div>
 
-<?php require  ('modal-copy.php');?><!--    -->
+    <?php require  ('modal-copy.php');?><!--    -->
 
 <?php Pjax::end(); ?>
 

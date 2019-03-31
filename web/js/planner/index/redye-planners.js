@@ -90,14 +90,23 @@
                 var myModal = $('#myModal');
                 var modalBody = myModal.find('.modal-body');
                 var modalTitle = myModal.find('.modal-header');
+                // var formModal = myModal.querySelectorAll('form');
                 var form = $('#w1');
                 var action = form.attr('action');
-                form.attr('action',target);
+                if (action){
+                    form.attr('action',target);
+                    console.log(action)
+                }else{
+                    form=$('#w2');
+                    action = form.attr('action');
+                    form.attr('action',target);
+                    console.log(action)
+                }
 
                 //modalTitle.find('h2').html('Информация.');
                 //modalBody.html('Тут будет информация.');
-                console.log(form);
-                console.log(action);
+                // console.log(formModal);
+                console.log(myModal);
                 console.log(target);
                 myModal.modal('show');
             }

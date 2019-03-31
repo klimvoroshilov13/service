@@ -14,7 +14,7 @@ use app\components\helper\Datehelper;
 /** @var $arrMonth array */
 /** @var $month string*/
 
-$arrMonth = array(
+$arrMonth = [
     '1'=>'Январь',
     '2'=>'Февраль',
     '3'=>'Март',
@@ -27,38 +27,39 @@ $arrMonth = array(
     '10'=>'Октябрь',
     '11'=>'Ноябрь',
     '12'=>'Декабрь'
-);
+];
 
-$arrYear = array(
+$arrYear = [
     '18'=>'2018',
     '19'=>'2019'
-);
+];
 
 ?>
 
-<!--<div class="filter-month-form">-->
-    <?php $form = ActiveForm::begin([]); ?>
-        <?= $form
-        ->field($modelFilter,'month')
-        ->label(false)
-        ->dropDownList($arrMonth,[
-                'options'=>[
-                    $month =>['Selected'=>true]
-                ]
-         ]
-            );
-        ?>
+<?php $form = ActiveForm::begin([]); ?>
 
+    <!--month-->
+    <?= $form
+    ->field($modelFilter,'month')
+    ->label(false)
+    ->dropDownList($arrMonth,[
+            'options'=>[
+                $modelFilter->month =>['Selected'=>true]
+            ]
+     ]
+        );
+    ?>
+
+    <!--year-->
     <?= $form
         ->field($modelFilter,'year')
         ->label(false)
         ->dropDownList($arrYear,[
                 'options'=>[
-                    $month =>['Selected'=>true]
+                    $modelFilter->year =>['Selected'=>true]
                 ]
             ]
         );
     ?>
-        <?= Html::submitButton( Yii::t('yii', 'Применить') , ['class' => 'btn btn-success btn-filter']) ?>
-    <?php $form = ActiveForm::end(); ?>
-<!--</div>-->
+    <?= Html::submitButton( Yii::t('yii', 'Применить') , ['class' => 'btn btn-success btn-filter']) ?>
+<?php $form = ActiveForm::end(); ?>

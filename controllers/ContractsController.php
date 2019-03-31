@@ -22,7 +22,7 @@ class ContractsController extends Controller
      *  Унаследованное свойство класса Component,
      * устанавливающее шаблон для web приложения
      */
-    public $layout='requests';
+    public $layout='service';
 
     /**
      *  Унаследованный метод класса Component,

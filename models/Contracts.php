@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "contracts".
  *
@@ -20,7 +18,7 @@ use Yii;
 class Contracts extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * @return string
      */
     public static function tableName()
     {
@@ -28,7 +26,7 @@ class Contracts extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
     public function rules()
     {
@@ -42,7 +40,7 @@ class Contracts extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
     public function attributeLabels()
     {
@@ -71,6 +69,10 @@ class Contracts extends \yii\db\ActiveRecord
         return $this->hasMany(Requests::className(), ['name_contracts' => 'name']);
     }
 
+    /**
+     * @param bool $insert
+     * @return bool
+     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert))

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $role string */
 /* @var $modelPlannerArray  array  */
 
-$this->title = Yii::t('yii', 'Update Planner of ') . Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y");
+$this->title = Yii::t('yii', 'Update Planner of ') . Yii::$app->formatter->asDate($model->date,'dd.MM.yyyy');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 //$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');

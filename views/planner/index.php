@@ -4,12 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\PlannerSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $stateRequest string */
-/* @var $Result boolean */
-/* @var $month string */
+/**  @var $this yii\web\View */
+/**  @var $searchModel app\models\PlannerSearch */
+/**  @var $dataProvider yii\data\ActiveDataProvider */
+/**  @var $stateRequest string */
+/**  @var $Result boolean */
+/** @var $month string */
+/** @var $modelFilter app\models\PlannerFilter */
 
 
 $this->title = Yii::t('yii', 'Planners');
@@ -111,6 +112,6 @@ If ($userModel->username == 'Admin') {?>
     <?="PHP: " . PHP_VERSION . "\n";?>
     <?="ICU: " . INTL_ICU_VERSION . "\n";?>
     <br>
-    <?php echo "Месяц:".$month;?>
+    <?php echo "Месяц:".$modelFilter->month;?>
 <?}?>
 <!-- Диагностика -->

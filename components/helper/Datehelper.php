@@ -38,10 +38,13 @@ class Datehelper
             break;
             case'm': $date = $currentDate->format('m');
             break;
+            case'Y': $date = $currentDate->format('Y');
+            break;
             case'y': $date = $currentDate->format('y');
             break;
         }
+        /** @var string $date */
         return $date;
-        }
+    }
 
 }

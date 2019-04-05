@@ -67,22 +67,28 @@ class DataFromPlanner
         $requests = ArrayHelper::map(Requests::find()
             ->where(['name_status'=>['ожидание','выполняется','отложена']])
             ->all(),'id','short_info');
+        $requestsAll = ArrayHelper::map(Requests::find()
+            ->where(['name_customers'=>$model->name_customers])
+            ->orderBy(['date_start'=>SORT_ASC])
+            ->all(),'id','short_info');
         $requestsRun = Requests::find()
             ->where(['name_status'=>['ожидание','выполняется','отложена']])
             ->orderBy(['date_start'=>SORT_ASC])
             ->all();
-        $requestsRunDate = ArrayHelper::map($requestsRun,'id',function ($requestsAllRun){
-            return Yii::$app
-                    ->formatter
-                    ->asDatetime(
-                        $requestsAllRun
-                        ->date_start, "php:d.m.Y"
-                    )
-                        .' - ('.$requestsAllRun
-                    ->name_customers.')'.
-                        $requestsAllRun
-                        ->short_info;
-        });
+        $requestsRunDate = ArrayHelper::map($requestsRun,'id',
+            function ($requestsAllRun) {
+                return Yii::$app
+                        ->formatter
+                        ->asDatetime(
+                            $requestsAllRun
+                            ->date_start, "php:d.m.Y"
+                        )
+                            .' - ('.$requestsAllRun
+                        ->name_customers.')'.
+                            $requestsAllRun
+                            ->short_info;
+            }
+        );
 
         return [
             'job' => $job,
@@ -98,7 +104,8 @@ class DataFromPlanner
             'statuses'=>$statuses,
             'request'=>$request,
             'requests'=>$requests,
-            'requestsRunDate'=>$requestsRunDate
+            'requestsRunDate'=>$requestsRunDate,
+            'requestsAll'=>$requestsAll
         ];
     }
 }

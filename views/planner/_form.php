@@ -63,7 +63,9 @@ use app\components\helper\Adminhelper;
             ]);?>
 
         <!--  info_request  -->
-        <?= $form->field($model,'info_request')->label(false)->dropDownList($modelPlannerArray['requests'], [
+        <?= $form->field($model,'info_request')
+            ->label(false)
+            ->dropDownList($model->isNewRecord ? $modelPlannerArray['requests']:$modelPlannerArray['requestsAll'], [
             'options' =>[$modelPlannerArray['request'] => ['Selected' => true]],
             'prompt'=> $model->isNewRecord ? 'Выберите заявку ...':null,
         ])?>

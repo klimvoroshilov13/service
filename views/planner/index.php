@@ -14,6 +14,7 @@ use yii\widgets\Pjax;
 
 
 $this->title = Yii::t('yii', 'Planners');
+
 ?>
 
 <?php Pjax::begin(['timeout'=>'5000']); ?>

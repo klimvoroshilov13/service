@@ -97,7 +97,7 @@
 
    selectCustomers.addEventListener('change',loadContracts);
    selectRequests.addEventListener('change',loadRequests);
-   $(document).ready([behaviorPerformer,behaviorJobs,updateContract]);
+   $(document).ready([behaviorPerformer,behaviorJobs]);
    $(document).on('pjax:complete',behaviorPerformer);
    $(document).on('pjax:complete',behaviorJobs);
    console.log(selectedVal);

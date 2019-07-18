@@ -57,7 +57,7 @@ use app\components\helper\Adminhelper;
         <?=  $form->field($model, 'info_contract')
             ->dropDownList($model->isNewRecord ?[]:$modelPlannerArray['contracts'],[
             'options' =>[
-                    $modelPlannerArray['contract'] => ['Selected' => true]
+                $modelPlannerArray['contract'] => ['Selected' => true]
             ],
             'prompt'=> $model->isNewRecord ? 'Выберите договор ...':null,
             ]);?>

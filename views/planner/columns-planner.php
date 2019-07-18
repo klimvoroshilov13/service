@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
+use app\components\helper\Datehelper;
 
 /* @var $searchModel app\models\PlannerSearch */
 /* @var $stateRequest string */
@@ -50,11 +51,12 @@ $columnsPlanner = [
         ],
         'values' => [
             null,
+            null
         ],
+
         'sortLinksOptions' => [
             ['class' => 'text-nowrap'],
             null,
-
         ],
         'options' => ['width' => '232'],
         'filter' => $datePicker,

@@ -50,7 +50,7 @@ class DataFromPlanner
 
         $contract = trim(ArrayHelper::getValue($model,'info_contract'));
         $contracts = ArrayHelper::map(Contracts::find()
-            ->where(['flag'=>1])
+            ->where(['name_customers'=>$model->name_customers])
             ->all(),'name','full_name');
 
         $performer1 = trim(ArrayHelper::getValue($model,'name_performers1'));

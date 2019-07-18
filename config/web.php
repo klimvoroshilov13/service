@@ -36,7 +36,7 @@ $config = [
             'nullDisplay' => ''
         ],
 
-        //Настройка отправки почты
+        // Settings send email
 
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -46,7 +46,7 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'mail.reg13.ru', //вставляем имя или адрес почтового сервера
+                'host' => 'mail.reg13.ru', // вставляем имя или адрес почтового сервера
                 'username' => 'test',
                 'password' => 'Pa$w0rd',
                 'port' => '25',
@@ -100,7 +100,7 @@ $config = [
 
     'params' => $params,
 
-    //Модули
+    // Modules
 
     'modules' => [
         'gridview' =>  [
@@ -115,8 +115,6 @@ $config = [
 
 
 ];
-
-
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

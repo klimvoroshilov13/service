@@ -37,8 +37,11 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Planners'), 'url' =>
                 'value' => $model->getAllPerformers()
             ],
             'name_status',
-
-            'name_user'
+            'name_user',
+            [
+                'attribute' => 'date_create',
+                'format' =>  ['date','php:d.m.Y H:i'],
+            ],
         ],
     ]) ?>
 

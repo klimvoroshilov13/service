@@ -166,15 +166,13 @@ $columnsAll = [
 ];
 
 if ($stateRequest=='run'||$stateRequest=='') {
-        $this->title = 'Заявки(в работе)';
         $columnsSetting = $columnsRun;
     }
     else{
-        $this->title = 'Заявки(все)';
         $columnsSetting = $columnsAll;
     }
 
-//$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('yii', 'Requests');
 
 ?>
 
@@ -189,8 +187,9 @@ if ($stateRequest=='run'||$stateRequest=='') {
         <?= !($userModel->role=='user') ? Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn-requests btn-create btn-success']):null ?>
     </p>
     <p>
-        <?= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-success btn-option']) ?>
-        <?= Html::a(Yii::t('yii', '&nbsp&nbsp&nbspВсе&nbsp&nbsp&nbsp'), ['/requests/index/all'], ['class' => 'btn btn-success btn-option']) ?>
+        <?php require  ('btn-create.php');?>
+<!--        --><?//= Html::a(Yii::t('yii', 'Run'), ['/requests/index/run'], ['class' => 'btn btn-success btn-option']) ?>
+<!--        --><?//= Html::a(Yii::t('yii', '&nbsp&nbsp&nbspВсе&nbsp&nbsp&nbsp'), ['/requests/index/all'], ['class' => 'btn btn-success btn-option']) ?>
         <?= Html::a('refreshButton',$stateRequest == 'run'? ['/requests/index/run/'.$page.'/10']:null, ['class' => 'hidden','id' => 'refreshButton']) ?>
     </p>
 </div>

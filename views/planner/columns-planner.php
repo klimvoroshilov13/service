@@ -31,10 +31,16 @@ use app\components\helper\Datehelper;
          ]
      ]);
  } catch (Exception $e) {
-      return \yii\helpers\Url::to(['/requests/error','message'=>$e->getMessage()]);
+      return Url::to(['/requests/error','message'=>$e->getMessage()]);
  }
 
-$columnsPlanner = [
+
+    $infoFilter = Html::activeDropDownList($searchModel, 'name_jobs',
+            ArrayHelper::map(\app\models\Jobs::find()->asArray()->all(), 'name', 'name'),
+            ['class'=>'form-control','prompt' => 'Выберите работы...']);
+
+
+ $columnsPlanner = [
 
      /* Combined column date,day_week */
     [
@@ -91,8 +97,12 @@ $columnsPlanner = [
             },
             function ($model, $_key, $_index, $_column) {
                 return $model->info_request == '' ? null:
-                    Html::a(' № ' . $model->info_request, array('requests/view?id='.$model->info_request));
-            },
+                        Html::a(' № ' . $model->info_request, array('requests/view?id='.$model->info_request),[
+                            'title'=>$model->info_request,
+                            'class'=>'my-tooltip',
+                    ]);
+                },
+
             function ($model, $_key, $_index, $_column) {
                 return $model->info_text == '' ? ')':$model->info_text . ')' ;
             }
@@ -103,9 +113,7 @@ $columnsPlanner = [
             null,
         ],
         'options' => ['width' => '45%'],
-        'filter' => Html::activeDropDownList($searchModel, 'name_jobs',
-            ArrayHelper::map(\app\models\Jobs::find()->asArray()->all(), 'name', 'name'),
-            ['class'=>'form-control','prompt' => 'Выберите работы...']),
+//        'filter' => $infoFilter
     ],
 
     /* Combined column name_performers1,name_performers2 */

@@ -3,13 +3,13 @@
 (function (){
 
 // Функция изменения цвета заявки взависимости от статуса
-    var redyeRequests = function () {
+    let redyeRequests = function () {
 
-        var request = document.querySelectorAll('tr[data-key]');
-        var requestSum = document.querySelector('div.summary');
-        //var btnSucess = document.querySelectorAll('btn-success');
-        var regexDate = formatDate(yesterday);
-        var regexValue = {
+        let request = document.querySelectorAll('tr[data-key]');
+        let requestSum = document.querySelector('div.summary');
+        //let btnSucess = document.querySelectorAll('btn-success');
+        let regexDate = formatDate(yesterday);
+        let regexValue = {
             'postponed':/отложена/,
             'canceled':/отменена/,
             'wait':/ожидание/,
@@ -19,8 +19,8 @@
 
         if (!!requestSum)requestSum.firstChild.nodeValue ='Показаны планы ';
 
-        for (var i = 0; i < request.length; i++) {
-        var text = request[i].innerText;
+        for (let i = 0; i < request.length; i++) {
+        let text = request[i].innerText;
         // text.search(regexValue['wait']) > 0 ?
         //     request[i].className ='wait':null;
         // text.search(regexValue['postponed']) > 0 ?
@@ -38,61 +38,78 @@
 
     function formatDate(date) {
 
-        var dd = date.getDate();
+        let dd = date.getDate();
         if (dd < 10) dd = '0' + dd;
 
-        var mm = date.getMonth() + 1;
+        let mm = date.getMonth() + 1;
         if (mm < 10) mm = '0' + mm;
 
-        var yyyy = date.getFullYear();
+        let yyyy = date.getFullYear();
         // if (yy < 10) yy = '0' + yy;
 
         return dd + '.' + mm + '.' + yyyy;
     }
 
-    var today = new Date;
-    var yesterday = new Date();
+    let today = new Date;
+    let yesterday = new Date();
     yesterday.setDate(yesterday.getDate()-1);
 
 
 //Диагностика
-// var requestSum = document.querySelectorAll('div.summary');
-// var th  = document.querySelectorAll('th[data-col-seq]');
-// var filter = document.querySelectorAll('tr#w0-filters');
+// let requestSum = document.querySelectorAll('div.summary');
+// let th  = document.querySelectorAll('th[data-col-seq]');
+// let filter = document.querySelectorAll('tr#w0-filters');
 //     th[6].hidden=true;
 //     filter[0].cells[8].hidden=true;
 //     requestSum[0].firstChild.nodeValue='Показаны заявки ';
 //     console.log(requestSum);
 
 
-    var Diag = function(){
-        var p = document.querySelectorAll('p');
-        p[1].addEventListener('click',function(event){
-            var target = event.target;
-            if (target.tagName !== 'A')return;
-            var btn = document.querySelectorAll('a.btn');
-            toggleSelect(target);
-            //alert(target.innerHTML);
-            console.log(target,btn);
-         });
+    let Diag = function() {
+        let span = $('.my-tooltip');
+        // p[1].addEventListener('click',function(event){
+        //     let target = event.target;
+        //     if (target.tagName !== 'A')return;
+        //     let btn = document.querySelectorAll('a.btn');
+        //     toggleSelect(target);
+        //     //alert(target.innerHTML);
+        //     console.log(target,btn);
+        //  });
 
-         function toggleSelect(li) {
-             li.className='btn-current';
-         }
-         // btn = document.querySelectorAll('a.btn');
-         console.log(p);
-         };
+        // function toggleSelect(li) {
+        //     li.className='btn-current';
+        // }
+        // btn = document.querySelectorAll('a.btn');
+        console.log(span);
+    };
 
-    var copyModal = function(){
+    let myTooltip = function(){
+        let myTooltip = $('.my-tooltip');
+        for (let i = 0; i < myTooltip.length; i++) {
+            let value = myTooltip[i].attributes[2].value;
+            loadRequest(myTooltip, value, i);
+        }
+    };
+
+    let loadRequest = function (item,id,i) {
+        $.post(
+            '/requests/lists?id='+id+'&flag=info&i='+i,
+                function (data){
+                    item[data[1]].attributes[2].value = data[0];
+                }
+         );
+    };
+
+    let copyModal = function(){
         $('[id^=copy]').on('click',function(event){
                 event.preventDefault();
-                var target = this.id;
-                var myModal = $('#myModal');
-                var modalBody = myModal.find('.modal-body');
-                var modalTitle = myModal.find('.modal-header');
-                // var formModal = myModal.querySelectorAll('form');
-                var form = $('#w1');
-                var action = form.attr('action');
+                let target = this.id;
+                let myModal = $('#myModal');
+                let modalBody = myModal.find('.modal-body');
+                let modalTitle = myModal.find('.modal-header');
+                // let formModal = myModal.querySelectorAll('form');
+                let form = $('#w1');
+                let action = form.attr('action');
                 if (action){
                     form.attr('action',target);
                     console.log(action)
@@ -113,22 +130,24 @@
         );
     };
 
-    var changeYear = function () {
+    let changeYear = function () {
        $('#plannerfilter-month').on('change',function () {
          filterMonth();
          })
     };
 
-    var filterMonth = function () {
+    let filterMonth = function () {
         $('#plannerfilter-month').on('change',function () {
            alert('Привет');
         })
     } ;
 
-    $(document).ready([redyeRequests,copyModal]);
-    // $(document).ready(Diag);
+    $(document).ready([redyeRequests,copyModal,myTooltip]);
     $(document).on('pjax:complete',redyeRequests);
     $(document).on('pjax:complete',copyModal);
+    $(document).on('pjax:complete',myTooltip);  
+    $(document).ready(Diag);
     //$(document).on('pjax:complete',Diag);
+
 
 })();

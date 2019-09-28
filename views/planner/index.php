@@ -64,7 +64,7 @@ $this->title = Yii::t('yii', 'Planners');
                 echo "Не скопировано";
             }
 
-        ?>
+         ?>
 
     </div>
 

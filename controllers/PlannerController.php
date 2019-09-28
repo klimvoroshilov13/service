@@ -16,7 +16,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use app\services\DataFromPlanner;
+use app\services\DataFromModel;
 use yii\helpers\ArrayHelper;
 use app\components\helper\Datehelper;
 /**
@@ -117,9 +117,23 @@ class PlannerController extends Controller
             $session->set('year', $modelFilter->year);
         }
 
+        // Jobs with $query
+        $query = Yii::$app->request->queryParams;
+
+        if ($query['PlannerSearch']['name_jobs']){
+           list($jobs,$customer) = explode("-",str_ireplace(" ","",$query['PlannerSearch']['name_jobs']));
+           $query['PlannerSearch']['name_jobs']=$jobs;
+           $query['PlannerSearch']['name_customers']=$customer;
+        }
+
+        if (preg_match('%^\p{Lu}%u', $query['PlannerSearch']['name_jobs'])){
+            $query['PlannerSearch']['name_customers']=$query['PlannerSearch']['name_jobs'];
+            $query['PlannerSearch']['name_jobs']=null;
+        }
+
         $dataProvider = $searchModel
             ->search(
-                Yii::$app->request->queryParams,
+                $query,
                 $get['stateRequest'],
                 $session->get('month'),
                 $session->get('year')
@@ -166,7 +180,7 @@ class PlannerController extends Controller
         $role = $userModel->role;
 
         $model = new Planner();
-        $data = new DataFromPlanner();
+        $data = new DataFromModel();
         $stateModel = new PlannerState();
         $modelPlannerArray = $data->getDataArray($model);
 
@@ -185,6 +199,7 @@ class PlannerController extends Controller
 
     public function actionUpdate($id)
     {
+
         /** @var UserControl $userModel */
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
@@ -195,11 +210,12 @@ class PlannerController extends Controller
 
         }
         $stateRequest = Yii::$app->request->get('stateRequest');
+        Datehelper::setCurrentDate("Y-m-d")<= $model->date ? $status_contracts="active":$status_contracts="all";
 
-        $data = new DataFromPlanner();
+        $data = new DataFromModel();
         $stateModel = new PlannerState();
         /** @var Planner $model */
-        $modelPlannerArray = $data->getDataArray($model);
+        $modelPlannerArray = $data->getDataArray($model,$status_contracts);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->name_jobs =='заявка' ? $stateModel->requestchange($model):null;

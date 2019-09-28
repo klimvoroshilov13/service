@@ -108,12 +108,19 @@ $userModel=Yii::$app->user->identity;
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
-                    ['label' => Yii::t('yii', 'Planner'), 'url' => ['planner/index']],
+                    [
+                        'label' => 'Сервис',
+                        'items' => [
+                            ['label' => Yii::t('yii', 'Parts'), 'url' => ['parts/index']],
+                            ['label' => Yii::t('yii', 'Planner'), 'url' => ['planner/index']],
+                        ],
+                    ],
                 ],
             ]);
         } catch (Exception $e) {
         }
     }
+
     NavBar::end();
     ?>
 

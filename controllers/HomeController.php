@@ -51,7 +51,7 @@ class HomeController extends Controller
                             'index',
 
                         ],
-                        'allow' => false,
+                        'allow' => true,
                         'roles' => ['operator'],
                     ],
                     [

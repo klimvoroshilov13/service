@@ -3,12 +3,14 @@
 namespace app\models;
 
 use Yii;
+use app\components\helper\Datehelper;
 
 /**
  * This is the model class for table "planner".
  *
  * @property integer $id
  * @property string $date
+ * @property string $date_create
  * @property string $day_week
  * @property string $name_jobs
  * @property string $name_customers
@@ -65,6 +67,7 @@ class Planner extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'date' => Yii::t('yii','Date'),
+            'date_create' => Yii::t('yii','Date create'),
             'day_week' => Yii::t('yii','Day Week'),
             'name_jobs' => Yii::t('yii','Name Jobs'),
             'name_customers' => Yii::t('yii','Name Customers'),
@@ -154,8 +157,9 @@ class Planner extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->day_week = getDayRus($this->date);
             $this->date=Yii::$app->formatter->asDatetime($this->date, "php:Y-m-d");
+            $this->date_create==null ? $this->date_create=Datehelper::setCurrentDate('Y-m-d H:i'):null;
             !($this->name_jobs=='заявка')?$this->info_request=null:null;
-            $this->info_contract=='Выберите договор...'? $this->info_contract=null:null;
+            $this->info_contract=='Выберите договор...' || $this->info_contract=='Без договора'? $this->info_contract=null:null;
             $this->name_performers1==''? $this->name_performers1=null:null;
             $this->name_performers2==''? $this->name_performers2=null:null;
             $this->name_user==null ? $this->name_user=Yii::$app->user->identity->fullname: null;

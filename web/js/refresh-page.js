@@ -2,7 +2,7 @@
 
     (function() {
 
-        var intervalId;
+        let intervalId;
 
         // Delete interval
         function deleteInterval () {

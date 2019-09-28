@@ -1,29 +1,29 @@
 'use strict';
 (function () {
-    var formJobs = document.querySelector('select#planner-name_jobs');
-    var formRequest = document.querySelector('div.field-planner-info_request');
-    var formCustomer = document.querySelector('div.field-planner-name_customers');
-    var formContract = document.querySelector('div.field-planner-info_contract');
-    var selectedVal = document.querySelectorAll('option[selected]');
-    var selectCustomers = document.querySelector('select#planner-name_customers');
-    var selectRequests = document.querySelector('select#planner-info_request');
+    let formJobs = document.querySelector('select#planner-name_jobs');
+    let formRequest = document.querySelector('div.field-planner-info_request');
+    let formCustomer = document.querySelector('div.field-planner-name_customers');
+    let formContract = document.querySelector('div.field-planner-info_contract');
+    let selectedVal = document.querySelectorAll('option[selected]');
+    let selectCustomers = document.querySelector('select#planner-name_customers');
+    let selectRequests = document.querySelector('select#planner-info_request');
 
-    var pathContracts = {
+    let pathContracts = {
         'url':'/contracts/lists?id=',
         'select':'select#planner-info_contract'
     };
-    var pathRequests = {
+    let pathRequests = {
         'url':'/requests/lists?id=',
         'select':'select#planner-info_request'
     };
 
-    var pathCustomers = {
+    let pathCustomers = {
         'url':'/customers/lists?id=',
         'select':'select#planner-name_customers'
     };
 
     // Функция загрузки данных методом post
-    var load = function (selector,select,url,callback,id,flag) {
+    let load = function (selector,select,url,callback,id,flag) {
         callback = callback || function (){};
         id = id || selector.options[selector.selectedIndex].value;
         // console.log([id,selector]);
@@ -37,21 +37,21 @@
     };
 
     // Функция загрузки данных для значения "заявка"
-    var loadRequests = function () {
+    let loadRequests = function () {
         formCustomer.hidden = false;
         formContract.hidden = false;
         load(selectRequests,pathCustomers.select,pathRequests.url,loadContracts);
     };
 
     // Функция загрузки данных для значения "контрагенты"
-    var loadContracts = function () {
+    let loadContracts = function () {
         load(selectCustomers,pathContracts.select,pathContracts.url);
     };
 
     // Функция сценария поведения 2-го исполнителя
-    var behaviorPerformer = function () {
-       var formInput = document.querySelector('input#planner-name_performers2');
-       var formDiv = document.querySelectorAll('div.field-planner-name_performers2');
+    let behaviorPerformer = function () {
+       let formInput = document.querySelector('input#planner-name_performers2');
+       let formDiv = document.querySelectorAll('div.field-planner-name_performers2');
        selectedVal[0].value === 'ожидание' ? formDiv[1].hidden = true: formDiv[1].hidden = false;
        if (selectedVal.length === 6 ) {
            selectedVal[4].value ? formInput.setAttribute('checked','checked'): null;
@@ -64,11 +64,11 @@
     };
 
     // Функция сценария поведения поля наименование работ
-    var behaviorJobs = function () {
-       var val = selectedVal[0].value;
+    let behaviorJobs = function () {
+       let val = selectedVal[0].value;
        val==='заявка'? formRequest.hidden = false:formRequest.hidden = true;
        formJobs.addEventListener('change',function () {
-           var val = formJobs.options[formJobs.selectedIndex].value;
+           let val = formJobs.options[formJobs.selectedIndex].value;
            if (val==='заявка'){
                formRequest.hidden = false;
                formCustomer.hidden = true;
@@ -86,9 +86,9 @@
    };
 
    // Поведение поля конракты при редактирование планов
-    var updateContract = function () {
+    let updateContract = function () {
         if (selectedVal[1]) {
-            var val = selectedVal[1].value;
+            let val = selectedVal[1].value;
             load(selectCustomers,pathContracts.select,pathContracts.url,'',val);
         }
         console.log(val);

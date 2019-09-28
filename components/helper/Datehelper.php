@@ -32,6 +32,8 @@ class Datehelper
         switch ($format){
             case'd.m.Y H:i': $date = $currentDate->format('d.m.Y H:i');
             break;
+            case'Y-m-d H:i': $date = $currentDate->format('Y-m-d H:i');
+            break;
             case'Y-m-d': $date = $currentDate->format('Y-m-d');
             break;
             case'd.m.Y': $date = $currentDate->format('d.m.Y');

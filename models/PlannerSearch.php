@@ -105,7 +105,7 @@ class PlannerSearch extends Planner
         $query->andFilterWhere([
             'id' => $this->id,
             'date' =>$this->date ==''? null:Yii::$app->formatter->asDatetime ($this->date,"php:Y-m-d"),
-            'name_customers' => $this->name_customers,
+//            'name_customers' => $this->name_customers,
         ]);
 
         $query->andFilterWhere(['like', 'name_jobs', $this->name_jobs])

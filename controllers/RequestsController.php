@@ -18,6 +18,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use app\components\helper\Datehelper;
+use yii\web\Response;
 
     /**
      *  Класс контроллера RequestsController(управление заявками)
@@ -103,49 +105,76 @@ class RequestsController extends Controller
      * или список заявок со статусом "ожидание" и "выполняется"
      * @param $id string контрагент/номер заявки
      * @param $flag string 'one'- вывод контрагента 'all'- список заявок
+     * @param $i integer 0
      *
      * @return boolean возвращает страницу списка заявок
      * находящихся в работе
      */
-    public function actionLists($id,$flag ='one')
+    public function actionLists($id,$flag ='one',$i=0)
     {
-         function uploadData($arr,$count,$flag){
-          switch ($flag) {
-              case 'one':if ($count > 0){
-                         foreach ($arr as $item){
-                             echo"<option value='".$item->name_customers."'>".$item->name_customers."</option>";
-                         }
-                     }else{
-                         echo"<option></option>";
-                     }
-              break;
-              case 'all':if ($count > 0){
-                  echo"<option value=''>Выберите заявку ...</option>";
-                  foreach ($arr as $item){
-                      echo"<option value='".$item->id."'>".Yii::$app->formatter->asDatetime($item->date_start, "php:d.m.Y") .' - '.$item->short_info ."</option>";
-                  }
-              }else{
-                  echo"<option></option>";
-              }
-              break;
-          }
-          return true;
-         }
+        function uploadData($arr, $count, $flag,$i)
+        {
+            $data=0;
+            switch ($flag) {
+                case 'one':
+                    if ($count > 0) {
+                        foreach ($arr as $item) {
+                            echo "<option value='" . $item->name_customers . "'>" . $item->name_customers . "</option>";
+                        }
+                    } else {
+                        echo "<option></option>";
+                    }
+                break;
 
-        $flag==''?$flag='one':null;
+                case 'all':
+                    if ($count > 0) {
+                        echo "<option value=''>Выберите заявку ...</option>";
+                        foreach ($arr as $item) {
+                            echo "<option value='" . $item->id . "'>" . Yii::$app->formatter->asDatetime($item->date_start, "php:d.m.Y") . ' - ' . $item->short_info . "</option>";
+                        }
+                    } else {
+                        echo "<option></option>";
+                    }
+                break;
 
-        $flag=='one'? $requests = Requests::find()
-            ->where(['id'=>$id,'name_status'=>['ожидание','выполняется','отложена']])
-            ->all():null;
+                case 'info':
+                    if ($count > 0) {
+                        foreach ($arr as $item) {
+                            $data="Сведения: ".$item->info.
+                                "\r\nКонтакт.лицо: ". $item->contacts.
+                                "\r\nТелефон: ". $item->phone;
+                        }
+                    }
+                break;
+            }
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return [$data,$i];
+        }
+            $flag == '' ? $flag = 'one' : null;
+            $requests=null;
 
-        $flag=='all'? $requests = Requests::find()
-            ->where(['name_status'=>['ожидание','выполняется','отложена']])
-            ->orderBy(['date_start'=>SORT_ASC])
-            ->all():null;
+            switch ($flag) {
+                case 'one':
+                    $requests = Requests::find()
+                        ->where(['id' => $id, 'name_status' => ['ожидание', 'выполняется', 'отложена']])
+                        ->all();
+                break;
+                case 'all':
+                    $requests = Requests::find()
+                        ->where(['name_status' => ['ожидание', 'выполняется', 'отложена']])
+                        ->orderBy(['date_start' => SORT_ASC])
+                        ->all();
+                break;
+                case 'info':
+                    $requests = Requests::find()
+                        ->where(['id' => $id])
+                        ->all();
+                break;
+            }
 
-        $countRequests=count($requests);
-        return uploadData($requests,$countRequests,$flag);
-    }
+            $countRequests = count($requests);
+            return uploadData($requests, $countRequests, $flag,$i);
+        }
 
     /**
      * Генерирует страницу просмотра конкретной заявки
@@ -252,6 +281,10 @@ class RequestsController extends Controller
         $performer = ArrayHelper::getValue($model,'name_performers');
         $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
         $status = ArrayHelper::getValue($model,'name_status');
+        $planners = Planner::find()
+            ->where('info_request='.$id)
+            ->andWhere(['<=','date',Datehelper::setCurrentDate('Y-m-d')])
+            ->all();
 
         switch ($role){
             case 'admin': $model->scenario = Requests::SCENARIO_ADMIN;
@@ -264,6 +297,13 @@ class RequestsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (!$page==null){return $this->redirect(['/requests/index/'.$statusRequest.'/'.$page.'/10']);}
+            if (!$model->oldAttributes->name_status==$model->name_status){
+                foreach ($planners as $planner){
+                    $planner->name_status=$model->name_status;
+                    $planner->name_performers1=$model->name_performers;
+                    $planner->save();
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

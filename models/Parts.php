@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by Nikolay N. Kazakov
- * File: index.php
+ * File: Parts.php
  * Date: 24.09.2019
  * Time: 14:43
  */

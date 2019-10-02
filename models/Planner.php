@@ -46,16 +46,16 @@ class Planner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date','name_jobs','name_customers'], 'required'],
-            [['info_text','info_request'], 'string'],
-            [['name_jobs','day_week'], 'string', 'max' => 12],
-            [['name_customers','info_contract'], 'string', 'max' => 100],
-            [['name_status', 'name_performers1', 'name_performers2','name_user'], 'string', 'max' => 32],
+            [['date_create', 'date'], 'safe'],
+            [['info_text', 'info_request'], 'string'],
+            [['day_week', 'name_jobs'], 'string', 'max' => 15],
+            [['name_customers', 'info_contract'], 'string', 'max' => 127],
+            [['name_status', 'name_performers1', 'name_performers2', 'name_user'], 'string', 'max' => 31],
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
             [['name_jobs'], 'exist', 'skipOnError' => true, 'targetClass' => Jobs::className(), 'targetAttribute' => ['name_jobs' => 'name']],
             [['name_performers1'], 'exist', 'skipOnError' => true, 'targetClass' => Performers::className(), 'targetAttribute' => ['name_performers1' => 'name']],
             [['name_performers2'], 'exist', 'skipOnError' => true, 'targetClass' => Performers::className(), 'targetAttribute' => ['name_performers2' => 'name']],
-            [['name_status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['name_status' => 'name']],
+            [['name_status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['name_status' => 'status_name']],
         ];
     }
 
@@ -105,14 +105,6 @@ class Planner extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return string
-     */
-//    public function ()
-//    {
-//        return $this->info_contract == null ? $this->info_contract = 'Без договора':$this->info_contract;
-//    }
-
-    /**
      * @return \yii\db\ActiveQuery
      */
     public function getNameCustomers()
@@ -131,7 +123,7 @@ class Planner extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNamePerfomers1()
+    public function getNamePerformers1()
     {
         return $this->hasOne(Performers::className(), ['name' => 'name_performers1']);
     }
@@ -139,7 +131,7 @@ class Planner extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNamePerfomers2()
+    public function getNamePerformers2()
     {
         return $this->hasOne(Performers::className(), ['name' => 'name_performers2']);
     }
@@ -149,7 +141,7 @@ class Planner extends \yii\db\ActiveRecord
      */
     public function getNameStatus()
     {
-        return $this->hasOne(Status::className(), ['name' => 'name_status']);
+        return $this->hasOne(Status::className(), ['status_name' => 'name_status']);
     }
 
     public function beforeSave($insert)

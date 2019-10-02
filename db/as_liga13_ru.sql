@@ -2803,7 +2803,7 @@ CREATE TABLE `status` (
 -- Дамп данных таблицы `stateRequest`
 --
 
-INSERT INTO `status` (`id`, `name`) VALUES
+INSERT INTO `status` (`id`, status_name) VALUES
 (2, 'выполняется'),
 (3, 'завершена'),
 (1, 'ожидание'),

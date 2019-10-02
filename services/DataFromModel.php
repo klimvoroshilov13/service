@@ -41,14 +41,28 @@ class DataFromModel
 
     public function getDataArray($model,$status_contracts="all"){
 
+        switch ($model){
+            case ($model instanceof Planner):
+                $job = 'name_jobs';
+                $contract = 'info_contract';
+                $performer1 = 'name_performers1';
+                $performer2 = 'name_performers2';
+                $request = 'info_request';
+                $status = 'name_status';
+                $customer = 'name_customers';
+            break;
+        }
+
+        //Jobs
         if ($model instanceof Planner){
-            $job = trim(ArrayHelper::getValue($model,'name_jobs'));
+            $job = trim(ArrayHelper::getValue($model,$job));
             $jobs = ArrayHelper::map(Jobs::find()
                 ->all(),'name','name');
         }
 
+        //Contracts
         if ($model instanceof Planner) {
-            $contract = trim(ArrayHelper::getValue($model, 'info_contract'));
+            $contract = trim(ArrayHelper::getValue($model,$contract));
             $contract == null ? $contract = "Без договора" : null;
             switch ($status_contracts) {
                 case "all" :
@@ -65,16 +79,18 @@ class DataFromModel
             $contracts["Без договора"] = "Без договора";
         }
 
+        //Performers
         if ($model instanceof Planner) {
-            $performer1 = trim(ArrayHelper::getValue($model, 'name_performers1'));
-            $performer2 = trim(ArrayHelper::getValue($model, 'name_performers2'));
+            $performer1 = trim(ArrayHelper::getValue($model, $performer1));
+            $performer2 = trim(ArrayHelper::getValue($model, $performer2));
             $performers = ArrayHelper::map(Performers::find()
                 ->where(['flag' => 1])
                 ->all(), 'name', 'name');
         }
 
+        //Request
         if ($model instanceof Planner) {
-            $request = trim(ArrayHelper::getValue($model, 'info_request'));
+            $request = trim(ArrayHelper::getValue($model, $request));
             $requests = ArrayHelper::map(Requests::find()
                 ->where(['name_status' => ['ожидание', 'выполняется', 'отложена']])
                 ->all(), 'id', 'short_info');
@@ -102,6 +118,7 @@ class DataFromModel
             );
         }
 
+        //Measure
         if ($model instanceof Parts){
             $measure = trim(ArrayHelper::getValue($model,'name_measure'));
             $measures = ArrayHelper::map(Measure::find()
@@ -109,14 +126,16 @@ class DataFromModel
                 ->all(),'name_measure','name_measure');
         }
 
-        $customer = trim(ArrayHelper::getValue($model,'name_customers'));
+        //Customers
+        $customer = trim(ArrayHelper::getValue($model,$customer));
         $customers = ArrayHelper::map(Customers::find()
             ->orderBy(['name'=>SORT_ASC])
             ->all(),'name','name');
 
-        $status = trim(ArrayHelper::getValue($model,'name_status'));
+        //Status
+        $status = trim(ArrayHelper::getValue($model,$status));
         $statuses = ArrayHelper::map(Status::find()
-            ->all(),'name','name');
+            ->all(),'status_name','status_name');
 
         return [
            'contracts'=>$contracts,

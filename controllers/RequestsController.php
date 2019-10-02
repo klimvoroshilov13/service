@@ -150,31 +150,32 @@ class RequestsController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [$data,$i];
         }
-            $flag == '' ? $flag = 'one' : null;
-            $requests=null;
 
-            switch ($flag) {
-                case 'one':
-                    $requests = Requests::find()
-                        ->where(['id' => $id, 'name_status' => ['ожидание', 'выполняется', 'отложена']])
-                        ->all();
-                break;
-                case 'all':
-                    $requests = Requests::find()
-                        ->where(['name_status' => ['ожидание', 'выполняется', 'отложена']])
-                        ->orderBy(['date_start' => SORT_ASC])
-                        ->all();
-                break;
-                case 'info':
-                    $requests = Requests::find()
-                        ->where(['id' => $id])
-                        ->all();
-                break;
-            }
+        $flag == '' ? $flag = 'one' : null;
+        $requests=null;
 
-            $countRequests = count($requests);
-            return uploadData($requests, $countRequests, $flag,$i);
+        switch ($flag) {
+            case 'one':
+                $requests = Requests::find()
+                    ->where(['id' => $id, 'name_status' => ['ожидание', 'выполняется', 'отложена']])
+                    ->all();
+            break;
+            case 'all':
+                $requests = Requests::find()
+                    ->where(['name_status' => ['ожидание', 'выполняется', 'отложена']])
+                    ->orderBy(['date_start' => SORT_ASC])
+                    ->all();
+            break;
+            case 'info':
+                $requests = Requests::find()
+                    ->where(['id' => $id])
+                    ->all();
+            break;
         }
+
+        $countRequests = count($requests);
+        return uploadData($requests, $countRequests, $flag,$i);
+    }
 
     /**
      * Генерирует страницу просмотра конкретной заявки
@@ -217,7 +218,7 @@ class RequestsController extends Controller
         $contract = ArrayHelper::getValue($model,'name_contracts');
         $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
         $performer = ArrayHelper::getValue($model,'name_performers');
-        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
+        $statuses = ArrayHelper::map(Status::find()->all(),'status_name','status_name');
         $status = ArrayHelper::getValue($model,'name_status');
 
         switch ($role){
@@ -279,7 +280,7 @@ class RequestsController extends Controller
         $contract = ArrayHelper::getValue($model,'name_contracts');
         $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
         $performer = ArrayHelper::getValue($model,'name_performers');
-        $statuses = ArrayHelper::map(Status::find()->all(),'name','name');
+        $statuses = ArrayHelper::map(Status::find()->all(),'status_name','status_name');
         $status = ArrayHelper::getValue($model,'name_status');
         $planners = Planner::find()
             ->where('info_request='.$id)

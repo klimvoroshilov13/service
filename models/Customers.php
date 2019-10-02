@@ -39,7 +39,7 @@ class Customers extends ActiveRecord
             [['name'], 'string', 'max' => 100],
             [['name'], 'unique'],
             [['full_name'], 'string', 'max' => 150],
-            [['legal_address', 'mailing_address'], 'string', 'max' => 250],
+            [['legal_address', 'mailing_address'], 'string', 'max' => 255],
             [['inn'], 'string', 'max' => 12],
             [['kpp'], 'string', 'max' => 9],
             ];

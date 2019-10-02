@@ -93,7 +93,8 @@ use app\components\helper\Datehelper;
 
                 /* @var $model object*/
                 $model->withoutContract();
-                return $model->info_request == '' &&  $model->info_text == '' ? '( ' . $model->info_contract:'( ' . $model->info_contract.' -' ;
+                return $model->info_request == '' &&  $model->info_text == '' ? '( ' . $model->info_contract
+                    :'( ' . $model->info_contract.' -' ;
             },
             function ($model, $_key, $_index, $_column) {
                 return $model->info_request == '' ? null:

@@ -90,7 +90,7 @@ class Requests extends ActiveRecord
             [['name_customers','phone','contacts','info'], 'required'],// Поля необходимые к заполнению
             [['name_customers'], 'exist', 'skipOnError' => true, 'targetClass' => Customers::className(), 'targetAttribute' => ['name_customers' => 'name']],
             [['name_performers'], 'exist', 'skipOnError' => true, 'targetClass' => Performers::className(), 'targetAttribute' => ['name_performers' => 'name']],
-            [['name_status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['name_status' => 'name']],
+            [['name_status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['name_status' => 'status_name']],
             [['name_contracts'], 'exist', 'skipOnError' => true, 'targetClass' => Contracts::className(), 'targetAttribute' => ['name_contracts' => 'name']],
             [['name_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['name_user' => 'username']],
             ];
@@ -144,7 +144,7 @@ class Requests extends ActiveRecord
      */
     public function getNameStatus()
     {
-        return $this->hasOne(Status::className(), ['name' => 'name_status']);
+        return $this->hasOne(Status::className(), ['status_name' => 'name_status']);
     }
 
     /**

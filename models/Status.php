@@ -5,13 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Status".
+ * This is the model class for table "status".
  *
  * @property integer $id
- * @property string $name
+ * @property string $status_name
  * @property string $abbreviated_name
+ * @property string $first_owner
+ * @property string $second_owner
+ * @property string $third_owner
  *
+ * @property Parts[] $parts
+ * @property Planner[] $planners
  * @property Requests[] $requests
+ * @property Apps $firstOwner
  */
 class Status extends \yii\db\ActiveRecord
 {
@@ -29,8 +35,10 @@ class Status extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string', 'max' => 30],
-            [['name'], 'unique'],
+            [['status_name', 'first_owner', 'second_owner', 'third_owner'], 'string', 'max' => 31],
+            [['abbreviated_name'], 'string', 'max' => 7],
+            [['status_name'], 'unique'],
+            [['first_owner'], 'exist', 'skipOnError' => true, 'targetClass' => Apps::className(), 'targetAttribute' => ['first_owner' => 'url']],
         ];
     }
 
@@ -40,10 +48,29 @@ class Status extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'abbreviated_name'=>'Abbreviated name'
+            'id' => Yii::t('yii', 'ID'),
+            'status_name' => Yii::t('yii', 'Status Name'),
+            'abbreviated_name' => Yii::t('yii', 'Abbreviated Name'),
+            'first_owner' => Yii::t('yii', 'First Owner'),
+            'second_owner' => Yii::t('yii', 'Second Owner'),
+            'third_owner' => Yii::t('yii', 'Third Owner'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParts()
+    {
+        return $this->hasMany(Parts::className(), ['status' => 'status_name']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlanners()
+    {
+        return $this->hasMany(Planner::className(), ['name_status' => 'status_name']);
     }
 
     /**
@@ -51,6 +78,14 @@ class Status extends \yii\db\ActiveRecord
      */
     public function getRequests()
     {
-        return $this->hasMany(Requests::className(), ['name_status' => 'name']);
+        return $this->hasMany(Requests::className(), ['name_status' => 'status_name']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFirstOwner()
+    {
+        return $this->hasOne(Apps::className(), ['url' => 'first_owner']);
     }
 }

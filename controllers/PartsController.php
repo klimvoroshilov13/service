@@ -9,9 +9,12 @@
 
 namespace app\controllers;
 
+use app\models\Requests;
 use Yii;
-use app\models\Parts;
+use app\models\PartsItem;
+use app\models\PartsRequest;
 use app\models\PartsSearch;
+use app\models\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,7 +24,7 @@ use yii\helpers\ArrayHelper;
 use app\components\helper\Datehelper;
 
 /**
- * PartsController implements the CRUD actions for Parts model.
+ * PartsController implements the CRUD actions for PartsItem model.
  */
 class PartsController extends Controller
 {
@@ -90,7 +93,7 @@ class PartsController extends Controller
     }
 
     /**
-     * Lists all Parts models.
+     * Lists all PartsItem models.
      * @return mixed
      */
     public function actionIndex()
@@ -105,81 +108,157 @@ class PartsController extends Controller
     }
 
     /**
-     * Displays a single Parts model.
+     * Displays a single PartsItem model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'partsRequest' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Parts model.
+     * Creates a new PartsItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Parts();
+        $partsRequest = new PartsRequest();
+//        $partsItem = [new PartsItem()];
         $data = new DataFromModel();
-        $modelPlannerArray = $data->getDataArray($model);
+        $modelPlannerArray[0][0] = $data->getDataArray($partsRequest);
+        for ($i=0;$i<4;$i++){
+            $partsItem[$i]=new PartsItem();
+            $modelPlannerArray[1][$i] = $data->getDataArray($partsItem[$i]);
+        }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($partsRequest->load(Yii::$app->request->post())) {
+
+            $partsItem = Model::createMultiple(PartsItem::classname());
+            Model::loadMultiple($partsItem, Yii::$app->request->post());
+
+            // validate all models
+            $valid = $partsRequest->validate();
+            $valid = Model::validateMultiple($partsItem) && $valid;
+
+            if ($valid) {
+                $transaction = Yii::$app->db->beginTransaction();
+
+                try {
+                    if ($flag = $partsRequest->save(false)) {
+                        foreach ($partsItem as $partItem) {
+                            $partItem->part_request = $partsRequest->id;
+                            if (! ($flag = $partItem->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                    }
+                    if ($flag) {
+                        $transaction->commit();
+//                        return $this->redirect(['view', 'id' => $partsRequest->id]);
+                        return $this->redirect(['index']);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                }
+            }
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'partsRequest' => $partsRequest,
+                'partsItem' => (empty($partsItem)) ? [new PartsItem()] : [new PartsItem()],
                 'modelPlannerArray'=>$modelPlannerArray
             ]);
         }
     }
 
     /**
-     * Updates an existing Parts model.
+     * Updates an existing PartsItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $result = $this->findModel($id);
+        $partsRequest = $result[2];
+        $partsItem = $result[1];
+        $data = new DataFromModel();
+        $modelPlannerArray = $data->getDataArray($partsRequest);
+        $modelPlannerArray = array_merge($modelPlannerArray, $data->getDataArray($partsItem));
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($partsRequest->load(Yii::$app->request->post())) {
+
+            $partsItem = Model::createMultiple(PartsItem::classname());
+            Model::loadMultiple($partsItem, Yii::$app->request->post());
+
+            // validate all models
+            $valid = $partsRequest->validate();
+            $valid = Model::validateMultiple($partsItem) && $valid;
+
+            if ($valid) {
+                $transaction = Yii::$app->db->beginTransaction();
+
+                try {
+                    if ($flag = $partsRequest->save(false)) {
+                        foreach ($partsItem as $partItem) {
+                            $partItem->part_request = $partsRequest->id;
+                            if (! ($flag = $partItem->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                    }
+                    if ($flag) {
+                        $transaction->commit();
+                        return $this->redirect(['view', 'id' => $partsRequest->id]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                }
+            }
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'partsRequest' => $partsRequest,
+                'partsItem' => (empty($partsItem)) ? [new PartsItem()] : $partsItem,
+                'modelPlannerArray'=>$modelPlannerArray
             ]);
         }
+
     }
 
     /**
-     * Deletes an existing Parts model.
+     * Deletes an existing PartsItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $result = $this->findModel($id);
+        $result[0]->delete();
+        $count = count($result[1]);
+        $count == 1 ? $result[2]->delete():null;
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Parts model based on its primary key value.
+     * Finds the PartsItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Parts the loaded model
+     * @return PartsItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Parts::findOne($id)) !== null) {
-            return $model;
+        if (($partsItem = PartsItem::findOne($id)) !== null) {
+            $partsItems = PartsItem::findAll(['part_request'=> $partsItem->part_request]);
+            $partsRequest = PartsRequest::findOne($partsItem->part_request);
+            return [$partsItem,$partsItems,$partsRequest];
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }

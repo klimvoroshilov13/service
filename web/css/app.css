@@ -4,7 +4,7 @@ body {
     overflow-x:hidden;
     overflow-y:auto;
     background:#efefef url(/web/img/logo_bg.jpg) center 200px no-repeat; padding:0 0 28px 0;
-    color: #005fad;
+    color: #337ab7;
 }
 
 h1{
@@ -132,16 +132,20 @@ a.desc:after {
     outline: none;
 }
 
-.navbar-inverse, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus{
-    background: #005fad ;
-    border-color: #005fad;
-    opacity: 0.7;
-    filter: alpha(Opacity=70); /* Прозрачность в IE */
+.navbar-inverse, .navbar-fixed-top, .navbar{
+    box-shadow: 0 10px 10px -5px; /* Shadows of navbar */
+}
+
+li.active,.navbar-inverse, .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus{
+    background: #337ab7;
+    border-color: #337ab7;
+    /*opacity: 0.7;*/
+    /*filter: alpha(Opacity=70); !* Прозрачность в IE *!*/
 }
 
 .navbar-inverse .navbar-nav > .active > a:hover{
-    background: #005fad ;
-    border-color: #005fad;
+    background: #337ab7;
+    border-color: #337ab7;
     color: #ababab;
 }
 
@@ -165,7 +169,7 @@ a.desc:after {
 }
 
 .ui-datepicker-year, .ui-datepicker-month, .ui-widget {
-    color: #005fad;
+    color: #337ab7;
 }
 
 .btn-success {
@@ -278,7 +282,7 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
 }
 
 .service-index li,.home-index li{
-    background:#efefef url(/web/img/li.jpg) no-repeat scroll;
+    background:transparent url(/web/img/li.jpg) no-repeat scroll;
     background-position: left 3px;
     list-style-type: none;
     padding: 0 0 10px 25px;
@@ -298,7 +302,7 @@ div[class*=-create],div[class*=-update],.requests-view,.planner-view,.site-conta
     border-top-width:1px;
     background-color:#efefef;
     border-color: #9f9f9f;
-    color:#005fad
+    color: #337ab7
 }
 
 li.dropdown.open{
@@ -321,34 +325,39 @@ li.dropdown.open{
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
     background-color: #efefef;
-    border-color: #005fad;;
+    border-color: #337ab7;;
 }
 
 .dropdown-menu > li > a{
-    color:#005fad;
+    color: #337ab7;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus{
     background-color:#868787;
-    color:#005fad;
-    border-color: #005fad;
+    color: #337ab7;
+    border-color: #337ab7;
 }
 
-.form-group.field-parts-name_parts.required{
+.form-group.field-partsitem-partname{
     flex-basis: 70%;
 }
 
-.form-group.field-parts-number.required{
+.form-group.field-partsitem-number{
     margin-right: 5px;
     margin-left: 5px;
     flex-basis: 15%;
 }
 
-.form-group.field-parts-name_measure.required{
+.form-group.field-partsitem-measure{
     flex-basis: 15%;
 }
 
-.parts-first-group{
+.field-partsitem-invoice{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.parts-item-firstgroup,.parts-item-secondgroup{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

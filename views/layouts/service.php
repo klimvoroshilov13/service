@@ -111,7 +111,7 @@ $userModel=Yii::$app->user->identity;
                     [
                         'label' => 'Сервис',
                         'items' => [
-                            ['label' => Yii::t('yii', 'Parts'), 'url' => ['parts/index']],
+                            ['label' => Yii::t('yii', 'PartsItem'), 'url' => ['parts/index']],
                             ['label' => Yii::t('yii', 'Planner'), 'url' => ['planner/index']],
                         ],
                     ],

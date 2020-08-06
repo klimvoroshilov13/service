@@ -14,7 +14,7 @@ use Yii;
  * This is the model class for table "measure".
  *
  * @property integer $id
- * @property string $name_measure
+ * @property string $measure_name
  * @property integer $flag
  */
 class Measure extends \yii\db\ActiveRecord
@@ -34,7 +34,7 @@ class Measure extends \yii\db\ActiveRecord
     {
         return [
             [['flag'], 'integer'],
-            [['name_measure'], 'string', 'max' => 16],
+            [['measure_name'], 'string', 'max' => 15],
         ];
     }
 
@@ -45,7 +45,7 @@ class Measure extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('yii', 'ID'),
-            'name_measure' => Yii::t('yii', 'Name Measure'),
+            'measure_name' => Yii::t('yii', 'Name Measure'),
             'flag' => Yii::t('yii', 'Flag'),
         ];
     }

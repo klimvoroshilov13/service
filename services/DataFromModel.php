@@ -7,8 +7,9 @@
 
 namespace app\services;
 
-use app\models\Parts;
+use app\models\PartsRequest;
 use Yii;
+use app\models\PartsItem;
 use app\models\Jobs;
 use app\models\Customers;
 use app\models\Contracts;
@@ -43,26 +44,34 @@ class DataFromModel
 
         switch ($model){
             case ($model instanceof Planner):
-                $job = 'name_jobs';
                 $contract = 'info_contract';
+                $customer = 'name_customers';
+                $job = 'name_jobs';
                 $performer1 = 'name_performers1';
                 $performer2 = 'name_performers2';
                 $request = 'info_request';
                 $status = 'name_status';
-                $customer = 'name_customers';
             break;
-        }
-
-        //Jobs
-        if ($model instanceof Planner){
-            $job = trim(ArrayHelper::getValue($model,$job));
-            $jobs = ArrayHelper::map(Jobs::find()
-                ->all(),'name','name');
+            case ($model instanceof Requests):
+                $contract = 'name_contracts';
+                $customer = 'name_customers';
+                $performer1 = 'name_performers';
+                $status = 'name_status';
+            break;
+            case ($model instanceof PartsRequest):
+                $customer = 'customer';
+                $status = 'status';
+                break;
+            case ($model instanceof PartsItem):
+                $measure = 'measure';
+                $statusItem = 'status';
+                $supplier = 'supplier';
+                break;
         }
 
         //Contracts
-        if ($model instanceof Planner) {
-            $contract = trim(ArrayHelper::getValue($model,$contract));
+        if ($model instanceof Planner or $model instanceof Requests) {
+            $contract = trim(ArrayHelper::getValue($model, $contract));
             $contract == null ? $contract = "Без договора" : null;
             switch ($status_contracts) {
                 case "all" :
@@ -76,16 +85,61 @@ class DataFromModel
                         ->all(), 'name', 'full_name');
                     break;
             }
-            $contracts["Без договора"] = "Без договора";
+        $contracts["Без договора"] = "Без договора";
+        $dataArray['contract'] = $contract;
+        $dataArray['contracts'] = $contracts;
+        }
+
+        //Customers
+        if ($model instanceof Planner or $model instanceof Requests or $model instanceof PartsRequest){
+            $customer = trim(ArrayHelper::getValue($model, $customer));
+            $customers = ArrayHelper::map(Customers::find()
+                ->orderBy(['name' => SORT_ASC])
+                ->all(), 'name', 'name');
+        $dataArray['customer'] = $customer;
+        $dataArray['customers'] = $customers;
+        }
+
+        //Supplier
+        if ($model instanceof PartsItem){
+            $supplier = trim(ArrayHelper::getValue($model, $supplier));
+            $suppliers = ArrayHelper::map(Customers::find()
+                ->where(['name_status'=>'поставщик'])
+                ->orderBy(['name' => SORT_ASC])
+                ->all(), 'name', 'name');
+            $dataArray['supplier'] = $supplier;
+            $dataArray['suppliers'] = $suppliers;
+        }
+
+        //Jobs
+        if ($model instanceof Planner){
+            $job = trim(ArrayHelper::getValue($model,$job));
+            $jobs = ArrayHelper::map(Jobs::find()
+                ->all(),'name','name');
+        $dataArray['job'] = $job;
+        $dataArray['jobs'] = $jobs;
+        }
+
+        //Measure
+        if ($model instanceof PartsItem){
+            $measure = trim(ArrayHelper::getValue($model,'measure'));
+            $measures = ArrayHelper::map(Measure::find()
+                ->orderBy(['measure_name'=>SORT_ASC])
+                ->all(),'measure_name','measure_name');
+        $dataArray['measure'] = $measure;
+        $dataArray['measures'] = $measures;
         }
 
         //Performers
-        if ($model instanceof Planner) {
+        if ($model instanceof Planner or $model instanceof Requests){
             $performer1 = trim(ArrayHelper::getValue($model, $performer1));
-            $performer2 = trim(ArrayHelper::getValue($model, $performer2));
+            !($performer2 == null) ? $performer2 = trim(ArrayHelper::getValue($model, $performer2)):null;
             $performers = ArrayHelper::map(Performers::find()
                 ->where(['flag' => 1])
                 ->all(), 'name', 'name');
+        $dataArray['performer1'] = $performer1;
+        $dataArray['performer2'] = $performer2;
+        $dataArray['performers'] = $performers;
         }
 
         //Request
@@ -116,45 +170,33 @@ class DataFromModel
                             ->short_info;
                 }
             );
+        $dataArray['request'] = $request;
+        $dataArray['requests'] = $requests;
+        $dataArray['requestsAll'] = $requestsAll;
+        $dataArray['requestsRun'] = $requestsRun;
+        $dataArray['requestsRunDate'] = $requestsRunDate;
         }
-
-        //Measure
-        if ($model instanceof Parts){
-            $measure = trim(ArrayHelper::getValue($model,'name_measure'));
-            $measures = ArrayHelper::map(Measure::find()
-                ->orderBy(['name_measure'=>SORT_ASC])
-                ->all(),'name_measure','name_measure');
-        }
-
-        //Customers
-        $customer = trim(ArrayHelper::getValue($model,$customer));
-        $customers = ArrayHelper::map(Customers::find()
-            ->orderBy(['name'=>SORT_ASC])
-            ->all(),'name','name');
 
         //Status
-        $status = trim(ArrayHelper::getValue($model,$status));
-        $statuses = ArrayHelper::map(Status::find()
-            ->all(),'status_name','status_name');
-
-        return [
-           'contracts'=>$contracts,
-           'contract'=>$contract,
-           'customer'=>$customer,
-           'customers'=>$customers,
-           'job' => $job,
-           'jobs' => $jobs,
-           'measure'=> $measure,
-           'measures'=> $measures,
-           'performers'=>$performers,
-           'performer1'=>$performer1,
-           'performer2'=>$performer2,
-           'request'=>$request,
-           'requests'=>$requests,
-           'requestsRunDate'=>$requestsRunDate,
-           'requestsAll'=>$requestsAll,
-           'status'=>$status,
-           'statuses'=>$statuses
-       ];
+        if ($model instanceof Planner or $model instanceof Requests
+            or $model instanceof PartsRequest or $model instanceof PartsItem) {
+            switch ($model) {
+                case ($model instanceof Requests or $model instanceof Planner):
+                    $status = trim(ArrayHelper::getValue($model, $status));
+                    $statuses = ArrayHelper::map(Status::find()
+                        ->where(['first_owner' => 'requests'])
+                        ->all(), 'status_name', 'status_name');
+                    $dataArray['status'] = $status;
+                    $dataArray['statuses'] = $statuses;
+                    break;
+                case ($model instanceof PartsItem):
+                    $dataArray['statusItem'] = trim(ArrayHelper::getValue($model, $statusItem));
+                    $dataArray['statusesItem'] = ArrayHelper::map(Status::find()
+                        ->where(['or',['=','first_owner','parts'],['=','second_owner','parts']])
+                        ->all(), 'status_name', 'status_name');
+                    break;
+            }
+        }
+        return $dataArray;
     }
 }

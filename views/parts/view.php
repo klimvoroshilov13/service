@@ -9,10 +9,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Parts */
+/* @var $partsRequest app\models\PartsRequest */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Parts'), 'url' => ['index']];
+$this->title = $partsRequest->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'PartsRequest'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="parts-view">
@@ -31,13 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= DetailView::widget([
-        'model' => $model,
+        'model' => $partsRequest,
         'attributes' => [
             'id',
-            'date_create',
-            'name_customers',
-            'name_parts:ntext',
-            'name_status',
+            'date_creation',
+            'customer',
         ],
     ]) ?>
 

@@ -8,16 +8,9 @@ use app\components\helper\Adminhelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Requests */
+/* @var $modelRequestArray array*/
 /* @var $role string  */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $customers array  */
-/* @var $customer string  */
-/* @var $contracts array  */
-/* @var $contract string  */
-/* @var $performers array */
-/* @var $performer string */
-/* @var $statuses array */
-/* @var $status string */
 ?>
 
 <div class="requests-form">
@@ -29,6 +22,7 @@ use app\components\helper\Adminhelper;
             $model->date_start = Yii::$app->formatter->asDatetime($model->date_start, "php:d.m.Y H:i")
         ?>
 
+        <!-- Field date_start -->
         <?=
             !($role=='user')?
                 $form
@@ -55,6 +49,7 @@ use app\components\helper\Adminhelper;
                 null:$model->date_end = Yii::$app->formatter->asDatetime($model->date_end, "php:d.m.Y H:i")
         ?>
 
+        <!-- Field date_end -->
         <?=
             !($role=='operator') ?
                 $form
@@ -76,11 +71,12 @@ use app\components\helper\Adminhelper;
             : null;
         ?>
 
+        <!-- Field  name_customers -->
         <?=
             $form
                 ->field($model, 'name_customers')
-                ->dropDownList($customers,[
-                    'options' =>[$customer => ['Selected' => true]],
+                ->dropDownList($modelRequestArray['customers'],[
+                    'options' =>[$modelRequestArray['customer'] => ['Selected' => true]],
                     'prompt'=>'Выберите контрагента ...',
                     'onchange'=>'$.post( "'.Yii::$app->urlManager->createUrl('contracts/lists?id=').'"+$(this).val(), 
                         function(data){$("select#requests-name_contracts").html(data);});'
@@ -93,20 +89,22 @@ use app\components\helper\Adminhelper;
         ?>
 
         <?php
-        $role=='admin' ? Adminhelper::printArr($contracts,$contract): null;
+        $role=='admin' ? Adminhelper::printArr($modelRequestArray['contracts'],$modelRequestArray['contract']): null;
         ?>
 
+        <!-- Field name_contracts -->
         <?=
             !($role=='user')?
                 $form
                     ->field($model, 'name_contracts')
-                    ->dropDownList($contracts,[
-                        'options' =>[$contract  => ['Selected' => true]],
+                    ->dropDownList($modelRequestArray['contracts'],[
+                        'options' =>[$modelRequestArray['contract']  => ['Selected' => true]],
                         'prompt'=>'Выберите договор ...',
                     ])
             :null;
         ?>
 
+        <!-- Field info -->
         <?=
             $form
                 ->field($model, 'info')
@@ -122,6 +120,7 @@ use app\components\helper\Adminhelper;
 
         <label class="control-label"><?= 'Контакты' ?></label>
 
+        <!-- phone -->
         <?=
             $form
                 ->field($model, 'phone')
@@ -129,6 +128,7 @@ use app\components\helper\Adminhelper;
                 ->textInput(['placeholder' => $model->getAttributeLabel(Yii::t('yii', 'Phone'))]);
         ?>
 
+        <!-- contacts -->
         <?=
             $form
                 ->field($model, 'contacts')
@@ -136,26 +136,28 @@ use app\components\helper\Adminhelper;
                 ->textInput(['placeholder' => $model->getAttributeLabel(Yii::t('yii', 'Contact person'))]);
          ?>
 
+        <!-- name_performers -->
         <?php
-            $performer == null ? $performer=0:null;
+            $modelRequestArray['performer1'] == null ? $modelRequestArray['performer1'] = 0:null;
             $model->isNewRecord ?
                 $paramNp = ['options' =>[],'prompt'=>'Выберите исполнителя ...']:
-                $paramNp = ['options' =>[$performer => ['Selected' => true]],'prompt'=>'Выберите исполнителя ...'];
+                $paramNp = ['options' =>[$modelRequestArray['performer1'] => ['Selected' => true]],'prompt'=>'Выберите исполнителя ...'];
         ?>
 
-        <?= !($role=='operator') ? $form->field($model,'name_performers')->dropDownList($performers,$paramNp): null ?>
+        <?= !($role=='operator') ? $form->field($model,'name_performers')->dropDownList($modelRequestArray['performers'],$paramNp): null ?>
 
+        <!-- name_status -->
         <?php
             $model->isNewRecord ?
                 $paramNs = ['options' =>['ожидание' => ['Selected' => true]]]:
-                $paramNs = ['options' =>[$status => ['Selected' => true]]];
+                $paramNs = ['options' =>[$modelRequestArray['status'] => ['Selected' => true]]];
          ?>
 
         <?=
             !($role=='operator') ?
                 $form
                     ->field($model,'name_status')
-                    ->dropDownList($statuses,$paramNs):null;
+                    ->dropDownList($modelRequestArray['statuses'],$paramNs):null;
         ?>
 
         <div class="form-group">

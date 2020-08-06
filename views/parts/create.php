@@ -11,7 +11,8 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Parts */
+/* @var $partsItem app\models\PartsItem */
+/* @var $partsRequest app\models\PartsRequest */
 
 $this->title = Yii::t('yii', 'Create Parts');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Parts'), 'url' => ['index']];
@@ -22,7 +23,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Parts'), 'url' => ['
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'partsRequest' => $partsRequest,
+        'partsItem' => (empty($partsItem)) ? [new PartsItem()] : $partsItem,
         'modelPlannerArray'=>$modelPlannerArray
     ]) ?>
 

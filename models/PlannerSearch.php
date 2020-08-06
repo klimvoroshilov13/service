@@ -80,13 +80,14 @@ class PlannerSearch extends Planner
                 $query->Where('date = (CURDATE()+1) AND date > CURDATE()')->all();
                 break;
             case ('yesterday'):
-                $query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
+//                $query->Where('date >= (CURDATE()-1) AND date < CURDATE()')->all();
+                $query->Where('DATE(`date`) = SUBDATE(CURRENT_DATE(), INTERVAL 1 DAY)')->all();
                 break;
             case ('curweek'):
-                $query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW())')->all();
+                $query->Where('WEEKOFYEAR(`date`) = WEEKOFYEAR(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
                 break;
             case ('nextweek'):
-                $query->Where('WEEKOFYEAR(`date`) = (WEEKOFYEAR(NOW())+1)')->all();
+                $query->Where('WEEKOFYEAR(`date`) = (WEEKOFYEAR(NOW())+1) AND YEAR(`date`) = YEAR(NOW())')->all();
                 break;
             case ('month'):
                 $query->Where('MONTH(`date`) = MONTH(NOW()) AND YEAR(`date`) = YEAR(NOW())')->all();
@@ -97,7 +98,7 @@ class PlannerSearch extends Planner
             case ('all'):
                 $month != null ? $query->Where('MONTH(`date`)= '.$month.' AND YEAR(`date`) = 20'.$year)->all():null;
                 break;
-        };
+        }
 
 
 

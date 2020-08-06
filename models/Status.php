@@ -14,7 +14,7 @@ use Yii;
  * @property string $second_owner
  * @property string $third_owner
  *
- * @property Parts[] $parts
+ * @property PartsItem[] $parts
  * @property Planner[] $planners
  * @property Requests[] $requests
  * @property Apps $firstOwner
@@ -62,7 +62,7 @@ class Status extends \yii\db\ActiveRecord
      */
     public function getParts()
     {
-        return $this->hasMany(Parts::className(), ['status' => 'status_name']);
+        return $this->hasMany(PartsItem::className(), ['status' => 'status_name']);
     }
 
     /**

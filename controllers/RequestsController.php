@@ -20,6 +20,7 @@ use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use app\components\helper\Datehelper;
 use yii\web\Response;
+use app\services\DataFromModel;
 
     /**
      *  Класс контроллера RequestsController(управление заявками)
@@ -210,16 +211,10 @@ class RequestsController extends Controller
         /* @var $userModel UserControl  */
 
         $model = new Requests();
+        $data = new DataFromModel();
         $userModel = Yii::$app->user->identity;
         $role = $userModel->role;
-        $customers = ArrayHelper::map(Customers::find()->orderBy(['name'=>SORT_ASC])->all(),'name','name');
-        $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
-        $contract = ArrayHelper::getValue($model,'name_contracts');
-        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
-        $performer = ArrayHelper::getValue($model,'name_performers');
-        $statuses = ArrayHelper::map(Status::find()->all(),'status_name','status_name');
-        $status = ArrayHelper::getValue($model,'name_status');
+        $modelRequestArray = $data->getDataArray($model);
 
         switch ($role){
             case 'admin': $model->scenario = Requests::SCENARIO_ADMIN;
@@ -245,13 +240,7 @@ class RequestsController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'role'=>$role,
-                'customers'=>$customers,
-                'contracts'=>$contracts,
-                'contract'=>$contract,
-                'performers'=>$performers,
-                'performer'=>$performer,
-                'statuses'=>$statuses,
-                'status'=>$status,
+                'modelRequestArray' => $modelRequestArray,
             ]);
         }
     }
@@ -268,20 +257,14 @@ class RequestsController extends Controller
 
 
     try{
+        $data = new DataFromModel();
         $model = $this->findModel($id);
         $userModel=Yii::$app->user->identity;
         $role=$userModel->role;
         $page = Yii::$app->request->get('page');
         $statusRequest= Yii::$app->request->get('stateRequest');
-//        !($statusPage) ? $statusPage='run':null;
-        $customers = ArrayHelper::map(Customers::find()->orderBy(['name'=>SORT_ASC])->all(),'name','name');
-        $customer = ArrayHelper::getValue($model,'name_customers');
-        $contracts = ArrayHelper::map(Contracts::find()->where(['name_customers'=>$customer,'flag'=>1])->all(),'name','name');
-        $contract = ArrayHelper::getValue($model,'name_contracts');
-        $performers = ArrayHelper::map(Performers::find()->where(['flag'=>1])->all(),'name','name');
-        $performer = ArrayHelper::getValue($model,'name_performers');
-        $statuses = ArrayHelper::map(Status::find()->all(),'status_name','status_name');
-        $status = ArrayHelper::getValue($model,'name_status');
+        $modelRequestArray = $data->getDataArray($model);
+
         $planners = Planner::find()
             ->where('info_request='.$id)
             ->andWhere(['<=','date',Datehelper::setCurrentDate('Y-m-d')])
@@ -310,14 +293,7 @@ class RequestsController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'role'=>$role,
-                'customer'=>$customer,
-                'customers'=>$customers,
-                'contracts'=>$contracts,
-                'contract'=>$contract,
-                'performers'=>$performers,
-                'performer'=>$performer,
-                'statuses'=>$statuses,
-                'status'=>$status,
+                'modelRequestArray' => $modelRequestArray,
                 ]);
         }
         }catch (NotFoundHttpException $e){

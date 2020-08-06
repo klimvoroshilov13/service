@@ -95,7 +95,7 @@ class PlannerController extends Controller
         $get = Yii::$app->request->get();
         $getIndex = 0;
         foreach ($get as $key=>$value){
-            !($key=='stateRequest') && !($key=='_pjax') && isset($key) ? $getIndex++:null;
+            !($key === 'stateRequest') && !($key === '_pjax') && isset($key) ? $getIndex++:null;
         }
 
         $stateModel = new PlannerState();
@@ -103,13 +103,13 @@ class PlannerController extends Controller
         $searchModel = new PlannerSearch();
 
         !($get['stateRequest']) ? $get['stateRequest'] ='curdate':null;
-        if ($get['stateRequest']=='curdate'){
+        if ($get['stateRequest']==='curdate'){
            $stateModel->autochange();
         }
 
-        if($get['stateRequest']=='all'){
-            $session->has('month') && $getIndex == 0 ? $session->remove('month'):null;
-            $session->has('year') && $getIndex == 0 ? $session->remove('year'):null;
+        if($get['stateRequest']==='all'){
+            $session->has('month') && $getIndex === 0 ? $session->remove('month'):null;
+            $session->has('year') && $getIndex === 0 ? $session->remove('year'):null;
         }
 
         if($modelFilter->load(Yii::$app->request->post())){
@@ -121,7 +121,7 @@ class PlannerController extends Controller
         $query = Yii::$app->request->queryParams;
 
         if ($query['PlannerSearch']['name_jobs']){
-           list($jobs,$customer) = explode("-",str_ireplace(" ","",$query['PlannerSearch']['name_jobs']));
+           list($jobs,$customer) = explode('-',str_ireplace(' ', '',$query['PlannerSearch']['name_jobs']));
            $query['PlannerSearch']['name_jobs']=$jobs;
            $query['PlannerSearch']['name_customers']=$customer;
         }
@@ -139,10 +139,10 @@ class PlannerController extends Controller
                 $session->get('year')
             );
 
-        !(isset($modelFilter->month)) && $getIndex == 0
+        !(isset($modelFilter->month)) && $getIndex === 0
             ? $modelFilter->month = Datehelper::setCurrentDate('m')
             : $modelFilter->month = $session->get('month');
-        !(isset($modelFilter->year)) && $getIndex == 0
+        !(isset($modelFilter->year)) && $getIndex === 0
             ? $modelFilter->year = Datehelper::setCurrentDate('y')
             : $modelFilter->year = $session->get('year');
 
@@ -185,7 +185,7 @@ class PlannerController extends Controller
         $modelPlannerArray = $data->getDataArray($model);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->name_jobs =='заявка' ? $stateModel->requestchange($model):null;
+            $model->name_jobs ==='заявка' ? $stateModel->requestchange($model):null;
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
@@ -210,7 +210,7 @@ class PlannerController extends Controller
 
         }
         $stateRequest = Yii::$app->request->get('stateRequest');
-        Datehelper::setCurrentDate("Y-m-d")<= $model->date ? $status_contracts="active":$status_contracts="all";
+        Datehelper::setCurrentDate('Y-m-d')<= $model->date ? $status_contracts= 'active' :$status_contracts= 'all';
 
         $data = new DataFromModel();
         $stateModel = new PlannerState();

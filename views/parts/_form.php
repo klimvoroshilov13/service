@@ -90,7 +90,7 @@ $this->registerJs($js);
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-envelope"></i> Parts
+            <i class="fa fa-envelope"></i><?= Yii::t('yii', 'Parts')?>
             <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i>Add part</button>
             <div class="clearfix"></div>
         </div>
@@ -98,7 +98,7 @@ $this->registerJs($js);
             <?php foreach ($partsItem as $index => $partItem): ?>
             <div class="item panel panel-default"><!-- widgetBody -->
                 <div class="panel-heading">
-                    <span class="panel-title-address">Part: <?= ($index + 1) ?></span>
+                    <span class="panel-title-address"> № <?= ($index + 1) ?></span>
                     <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
                     <div class="clearfix"></div>
                 </div>
@@ -158,7 +158,11 @@ $this->registerJs($js);
    </div>
 <?php DynamicFormWidget::end(); ?>
 
-    <div class="form-group">
+    <!--  name_performer  -->
+<? $paramNp = ['options' =>[$modelPlannerArray[0][0]['performer1'] => ['Selected' => true]],'prompt'=>'Выберите отправителя ...'];?>
+<?= $form->field($partsRequest,'name_performer')->dropDownList($modelPlannerArray[0][0]['performers'],$paramNp)?>
+
+     <div class="form-group">
         <?= Html::submitButton($partsRequest->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Update'),
             ['class' => $partsRequest->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

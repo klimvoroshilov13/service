@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by Nikolay N. Kazakov
  * File: index.php
@@ -100,7 +99,6 @@ class PartsController extends Controller
     {
         $searchModel = new PartsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

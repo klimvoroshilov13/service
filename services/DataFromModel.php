@@ -60,6 +60,7 @@ class DataFromModel
             break;
             case ($model instanceof PartsRequest):
                 $customer = 'customer';
+                $performer1 = 'name_performer';
                 $status = 'status';
                 break;
             case ($model instanceof PartsItem):
@@ -131,7 +132,7 @@ class DataFromModel
         }
 
         //Performers
-        if ($model instanceof Planner or $model instanceof Requests){
+        if ($model instanceof Planner or $model instanceof Requests or $model instanceof PartsRequest){
             $performer1 = trim(ArrayHelper::getValue($model, $performer1));
             !($performer2 == null) ? $performer2 = trim(ArrayHelper::getValue($model, $performer2)):null;
             $performers = ArrayHelper::map(Performers::find()

@@ -1,0 +1,1940 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"t",
+				"t\t@today"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "views/parts/_form.php",
+			"settings":
+			{
+				"buffer_size": 7194,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "algorithm/parts/Create.vsdx",
+			"settings":
+			{
+				"buffer_size": 94617,
+				"encoding": "Hexadecimal",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "algorithm/parts/dynamic-form-controller.php",
+			"settings":
+			{
+				"buffer_size": 6330,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "algorithm/parts/dynamic-form-example.php",
+			"settings":
+			{
+				"buffer_size": 5397,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 5581,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/web.php",
+			"settings":
+			{
+				"buffer_size": 4495,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/requests/_form.php",
+			"settings":
+			{
+				"buffer_size": 6617,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/RequestsController.php",
+			"settings":
+			{
+				"buffer_size": 13493,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "components/helper/Dbhelper.php",
+			"settings":
+			{
+				"buffer_size": 405,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "service.sublime-project",
+			"settings":
+			{
+				"buffer_size": 319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/PartsItem.php",
+			"settings":
+			{
+				"buffer_size": 2713,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "controllers/PartsController.php",
+			"settings":
+			{
+				"buffer_size": 8597,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "services/DataFromModel.php",
+			"settings":
+			{
+				"buffer_size": 7700,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "as.todolist.txt",
+			"settings":
+			{
+				"buffer_size": 345,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 5423,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/PartsRequest.php",
+			"settings":
+			{
+				"buffer_size": 1994,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
+			"settings":
+			{
+				"buffer_size": 16532,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/planner/_form.php",
+			"settings":
+			{
+				"buffer_size": 4952,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: List Packages"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Pac",
+				"Package Control: Install Package"
+			],
+			[
+				"tas",
+				"Tasks: New document"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"git re",
+				"git: remote add"
+			],
+			[
+				"git push",
+				"git: push"
+			],
+			[
+				"git stage",
+				"git: quick stage"
+			],
+			[
+				"git ",
+				"git: branch"
+			],
+			[
+				"git",
+				"git: status"
+			],
+			[
+				" push",
+				"git: push"
+			],
+			[
+				" stag",
+				"git: quick stage"
+			],
+			[
+				" git",
+				"git: branch"
+			],
+			[
+				"st",
+				"git: quick stage"
+			],
+			[
+				"Pa",
+				"Package Control: List Packages"
+			],
+			[
+				"br",
+				"git: branch"
+			],
+			[
+				"gi",
+				"git: quick commit"
+			],
+			[
+				"qu",
+				"git: quick stage"
+			],
+			[
+				"co",
+				"git: commit"
+			],
+			[
+				"pu",
+				"git: push"
+			],
+			[
+				"pus",
+				"git: push"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"push",
+				"git: push"
+			],
+			[
+				"add",
+				"git: remote add"
+			],
+			[
+				"sta",
+				"git: quick stage"
+			],
+			[
+				"ini",
+				"git: init"
+			],
+			[
+				"bran",
+				"git: branch"
+			],
+			[
+				"stag",
+				"git: quick stage"
+			],
+			[
+				"ad",
+				"git: remote add"
+			],
+			[
+				"bra",
+				"git: branch"
+			],
+			[
+				"init",
+				"git: init"
+			],
+			[
+				"qui",
+				"git: quick stage"
+			],
+			[
+				"remo",
+				"git: remote add"
+			],
+			[
+				"re",
+				"git: remote remove"
+			],
+			[
+				"git:",
+				"git: commit"
+			],
+			[
+				"b",
+				"git: branch"
+			],
+			[
+				"gbra",
+				"git: branch"
+			],
+			[
+				"help",
+				"GitSavvy: help"
+			],
+			[
+				"Quik",
+				"git: quick stage"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"Git",
+				"Set Syntax: Git Config"
+			],
+			[
+				"Git Add",
+				"Git: Quick Add"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"Anak",
+				"Package Control: Install Package"
+			],
+			[
+				"Me",
+				"View: Toggle Menu"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 246.0,
+		"history":
+		[
+			"--version",
+			"python --version",
+			"help",
+			"help()",
+			"pyphon -h",
+			"pypthon",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(true)",
+			"echo $PATH which git",
+			"echo $PATH",
+			"import shutil; shutil.which(\"git\")",
+			"import os; os.environ.get('PATH')",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"print(sys.version)",
+			"import sys"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/H/Project/Web/service.loc",
+		"/H/Project/Web/service.loc/algorithm",
+		"/H/Project/Web/service.loc/algorithm/parts",
+		"/H/Project/Web/service.loc/components",
+		"/H/Project/Web/service.loc/services",
+		"/H/Project/Web/service.loc/vendor",
+		"/H/Project/Web/service.loc/vendor/yiisoft",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/messages",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/messages/ru"
+	],
+	"file_history":
+	[
+		"/W/service.loc/services/DataFromModel.php",
+		"/W/service.loc/as.todolist.txt",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+		"/H/Project/Web/service.loc/services/DataFromModel.php",
+		"/W/service.loc/controllers/PartsController.php",
+		"/H/Project/Web/service.loc/web/css/app.css",
+		"/H/Project/Web/service.loc/views/parts/create.php",
+		"/H/Project/Web/service.loc/controllers/PartsController.php",
+		"/W/service.loc/vendor/yiisoft/yii2/views/errorHandler/exception.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/C/OSPanel/userdata/MySQL-5.6/service@002eloc/parts_request.frm",
+		"/C/OSPanel/userdata/MySQL-5.6/service@002eloc/parts_request.ibd",
+		"/C/OSPanel/userdata/MySQL-5.6/service@002eloc/auth_rule.frm",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/yaTranslate.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/YandexTranslate/yaTranslate.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
+		"/H/Project/Web/service.loc/views/layouts/app.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/H/Project/Web/service.loc/service.todo",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Local History/settings/LocalHistory.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/LocalHistory.sublime-settings",
+		"/H/Project/Web/service.loc/views/parts/index.php",
+		"/H/Project/Web/service.loc/service.sublime-project",
+		"/W/service.loc/vendor/yiisoft/yii2/base/ErrorHandler.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PHP Companion/PHP Companion.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Settings/SideBarEnhancements.json",
+		"/W/service.loc/vendor/yiisoft/yii2/base/Application.php",
+		"/W/service.loc/web/index.php",
+		"/W/service.loc/views/parts/index.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/convert/convert.py",
+		"/H/Project/Web/service.loc/views/parts/_form.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PHP.sublime-settings",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/views/errorHandler/exception.php",
+		"/H/Project/LibreOffice/Счет-фактура № 46 от 30 апреля 2020 г.ods",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/light/light.py",
+		"/H/Project/LibreOffice/Счет-фактура № 46 от 30 апреля 2020 г.xml",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/light/fillin.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/WorkGit",
+		"/H/Project/LibreOffice/РасчетЗП-Мартынов.ods",
+		"/H/Project/LibreOffice/14042001/РасчетЗ_П/content.xml",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/forms.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/salary.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/light.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/loccount.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/modul.txt",
+		"/H/Project/LibreOffice/РасчетЗ_П_Январь.ods",
+		"/C/Users/Kazakov_N/Desktop/sqlite3/dbapi2.py",
+		"/H/Project/LibreOffice/РасчетЗ_П.ods",
+		"/H/Project/LibreOffice/РасчетЗ_П_Январь.xlsm",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/person.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
+		"/C/Users/Kazakov_N/AppData/Roaming/LibreOffice/4/user/Scripts/python/__init__.py",
+		"/H/Project/LibreOffice/Untitled 2.ods",
+		"/H/Project/LibreOffice/calculate_salary.py",
+		"/H/Project/python/python1.py",
+		"/H/Project/python/lesson5.py",
+		"/H/Project/python/test.py",
+		"/H/Project/python/pyhton-vers.py",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/python3.sublime-build",
+		"/H/Project/python/Calculate.py"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 13,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "views/parts/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2328,
+								2328
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "algorithm/parts/Create.vsdx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 94617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"current_ext": ".vsdx",
+								"current_syntax": "Text/Plain text",
+								"enabled": false,
+								"last_updated": 1597030982.47
+							},
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "algorithm/parts/dynamic-form-controller.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3561.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "algorithm/parts/dynamic-form-example.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5397,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2401,
+								2401
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"current_ext": ".sublime-settings",
+								"current_syntax": "JavaScript/JSON",
+								"enabled": false,
+								"last_updated": 1597030982.47
+							},
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 828.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "config/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/requests/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1449.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "controllers/RequestsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13493,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8186,
+								8186
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4623.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "components/helper/Dbhelper.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 405,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								403,
+								403
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "service.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"current_ext": ".sublime-project",
+								"current_syntax": "JavaScript/JSON",
+								"enabled": false,
+								"last_updated": 1597030982.47
+							},
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "models/PartsItem.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2713,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2151,
+								2151
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 207.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "controllers/PartsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7362,
+								7380
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "services/DataFromModel.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7700,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								204,
+								204
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 552.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "as.todolist.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								219,
+								219
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/PlainTasks/tasks.hidden-tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"current_ext": ".txt",
+								"current_syntax": "PlainTasks/PlainTasks",
+								"enabled": false,
+								"last_updated": 1597030982.47
+							},
+							"plain_tasks_remain_time_phantoms":
+							[
+							],
+							"syntax": "Packages/PlainTasks/PlainTasks.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"current_ext": ".sublime-settings",
+								"current_syntax": "JavaScript/JSON",
+								"enabled": false,
+								"last_updated": 1597030982.47
+							},
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "models/PartsRequest.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1309,
+								1335
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16532,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12280,
+								12280
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1794.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "views/planner/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3104,
+								2789
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsla",
+									"hexa",
+									"hexa_compressed",
+									"hwb",
+									"hex_compressed",
+									"hsl",
+									"rgb",
+									"graya",
+									"rgba",
+									"hwba",
+									"gray",
+									"hex",
+									"webcolors"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597030982.47,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 48.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 127.0
+	},
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 126.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.show_commit_info":
+	{
+		"height": 244.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 78.0
+	},
+	"output.xdebug":
+	{
+		"height": 131.0
+	},
+	"pinned_build_system": "Packages/User/python3.sublime-build",
+	"project": "service.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"xdebug":
+		{
+			"hide_conflict": false,
+			"restore_index":
+			{
+				"104":
+				{
+					"group": 0,
+					"index": 1
+				},
+				"18":
+				{
+					"group": 0,
+					"index": 0
+				},
+				"19":
+				{
+					"group": 0,
+					"index": 3
+				},
+				"20":
+				{
+					"group": 0,
+					"index": 5
+				},
+				"21":
+				{
+					"group": 0,
+					"index": 7
+				},
+				"22":
+				{
+					"group": 0,
+					"index": 10
+				},
+				"23":
+				{
+					"group": 0,
+					"index": 11
+				},
+				"24":
+				{
+					"group": 0,
+					"index": 12
+				},
+				"25":
+				{
+					"group": 0,
+					"index": 13
+				},
+				"27":
+				{
+					"group": 0,
+					"index": 8
+				},
+				"45":
+				{
+					"group": 0,
+					"index": 6
+				},
+				"63":
+				{
+					"group": 0,
+					"index": 2
+				},
+				"84":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"85":
+				{
+					"group": 0,
+					"index": 9
+				}
+			},
+			"restore_layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			}
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 246.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

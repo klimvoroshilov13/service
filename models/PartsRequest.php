@@ -18,6 +18,7 @@ use Yii;
  * @property string $date_creation
  * @property string $date_completation
  * @property string $customer
+ * @property string $name_performer
  * @property string $user
  *
  * @property PartsItem[] $parts
@@ -40,6 +41,7 @@ class PartsRequest extends \yii\db\ActiveRecord
         return [
 //            [['date_creation', 'customer', 'status', 'user'], 'required'],
             [['date_creation', 'date_completation'], 'safe'],
+            [['name_performer'], 'string', 'max' => 31],
             [['customer'], 'string', 'max' => 127],
         ];
     }
@@ -51,9 +53,10 @@ class PartsRequest extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('yii', 'ID'),
-            'date_creation' => Yii::t('yii', 'Date Creation'),
+            'date_creation' => Yii::t('yii', 'Date create'),
             'date_completation' => Yii::t('yii', 'Date Completation'),
             'customer' => Yii::t('yii', 'Customer'),
+            'name_performer' => Yii::t('yii', 'Performer'),
             'user' => Yii::t('yii', 'User'),
         ];
     }

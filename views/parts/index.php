@@ -15,7 +15,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('yii', 'PartsItem');
-//$this->params['breadcrumbs'][] = $this->title;
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="parts-index">
 
@@ -29,7 +29,7 @@ $this->title = Yii::t('yii', 'PartsItem');
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-//            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
             'part_request'=>[
                 'attribute' => 'part_request',
                 'label'=>'Запрос №',
@@ -89,13 +89,13 @@ $this->title = Yii::t('yii', 'PartsItem');
                     'update' => function ($url, $model, $key) {
                         $iconName = 'pencil';
                         $id = $key;
+                        $title = \Yii::t('yii','Обновить');
                         $options = [
                             'title' => $title,
                             'aria-label' => $title,
                             'data-pjax' => '0',
                             'id' => $id
                         ];
-                        $title = \Yii::t('yii','Обновить');
                         $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
                         $url = Url::to(['update','id' =>$model->id]);
                         return Html::a($icon, $url, $options);
@@ -103,13 +103,13 @@ $this->title = Yii::t('yii', 'PartsItem');
                     'delete' => function ($url, $model, $key) {
                         $iconName = 'trash';
                         $id = $key;
+                        $title = \Yii::t('yii','Удалить');
                         $options = [
                             'title' => $title,
                             'aria-label' => $title,
                             'data-pjax' => '0',
                             'id' => $id
                         ];
-                        $title = \Yii::t('yii','Удалить');
                         $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
                         $url = Url::to(['delete','id' =>$model->id]);
                         return Html::a($icon, $url, $options);

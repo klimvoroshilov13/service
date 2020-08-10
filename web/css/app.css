@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     height: 100%;
     overflow-x:hidden;
     overflow-y:auto;
@@ -319,7 +318,7 @@ li.dropdown.open{
     border-right-color:#9f9f9f;
     border-bottom-color:#9f9f9f;
     opacity: 1.0;
-    filter: alpha(Opacity=100); /* Прозрачность в IE */
+    filter: alpha(Opacity=100); /* Transparent in IE */
 }
 
 .dropdown-menu > .active > a:hover,
@@ -361,6 +360,15 @@ li.dropdown.open{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.panel{
+    background-color: #efefef;
+}
+
+.panel-body {
+    padding: 5px;
+    border: 0px solid transparent;
 }
 /*.modal-content{*/
     /*width: 700px;*/

@@ -10,6 +10,7 @@ use app\models\Planner;
 use app\models\PlannerSearch;
 use app\models\PlannerCopy;
 use app\models\PlannerState;
+use app\models\Customers;
 use yii\base\InvalidConfigException;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
@@ -44,40 +45,17 @@ class PlannerController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => [
-                            'logout',
-                            'index',
-                            'view',
-                            'update',
-                            'create',
-                            'delete',
-                            'copy'
-                        ],
+                        'actions' => ['logout','index','view','update','create','delete','copy'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
                     [
-                        'actions' => [
-                            'logout',
-                            'index',
-                            'view',
-                            'update',
-                            'create',
-                            'delete'
-                        ],
+                        'actions' => ['logout','index','view','update','create','delete'],
                         'allow' => false,
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => [
-                            'logout',
-                            'index',
-                            'view',
-                            'update',
-                            'create',
-                            'delete',
-                            'copy'
-                        ],
+                        'actions' => ['logout','index','view','update','create','delete','copy','addfield'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -94,7 +72,7 @@ class PlannerController extends Controller
         $session = Yii::$app->session;
         $get = Yii::$app->request->get();
         $getIndex = 0;
-        foreach ($get as $key=>$value){
+        foreach ($get as $key => $value){
             !($key === 'stateRequest') && !($key === '_pjax') && isset($key) ? $getIndex++:null;
         }
 
@@ -122,13 +100,13 @@ class PlannerController extends Controller
 
         if ($query['PlannerSearch']['name_jobs']){
            list($jobs,$customer) = explode('-',str_ireplace(' ', '',$query['PlannerSearch']['name_jobs']));
-           $query['PlannerSearch']['name_jobs']=$jobs;
-           $query['PlannerSearch']['name_customers']=$customer;
+           $query['PlannerSearch']['name_jobs'] = $jobs;
+           $query['PlannerSearch']['name_customers'] = $customer;
         }
 
         if (preg_match('%^\p{Lu}%u', $query['PlannerSearch']['name_jobs'])){
-            $query['PlannerSearch']['name_customers']=$query['PlannerSearch']['name_jobs'];
-            $query['PlannerSearch']['name_jobs']=null;
+            $query['PlannerSearch']['name_customers'] = $query['PlannerSearch']['name_jobs'];
+            $query['PlannerSearch']['name_jobs'] = null;
         }
 
         $dataProvider = $searchModel
@@ -150,12 +128,12 @@ class PlannerController extends Controller
         return $this->render('index', [
                'searchModel' => $searchModel,
                'dataProvider' => $dataProvider,
-               'stateRequest'=>$get['stateRequest'],
-               'page'=>$get['page'],
-               'perPage'=>$get['per-page'],
-               'modelCopy'=> $modelCopy,
-               'modelFilter'=> $modelFilter,
-               'role'=>$role
+               'stateRequest' => $get['stateRequest'],
+               'page' => $get['page'],
+               'perPage' => $get['per-page'],
+               'modelCopy' => $modelCopy,
+               'modelFilter' => $modelFilter,
+               'role' => $role
            ]);
     }
 
@@ -287,7 +265,29 @@ class PlannerController extends Controller
     }
 
     /**
-     * @param string $defaultRoute
-     * @return PlannerController
+     * Add data in a field's customer_id
+     * @return integer
      */
+    public function actionAddfield()
+    {
+        $customers = ArrayHelper::map(Customers::find()->all(),'id','name');
+        $planners = ArrayHelper::map(Planner::find()->all(),'id',trim('name_customers'));
+        foreach ($planners as $key => $value)
+            $planners[$key] = trim($value);
+        $count = count($planners);
+        $error = 0;
+        foreach ($planners as $key => $value)
+            try {
+                    $model = $this->findModel($key);
+                    $model->customer_id = array_search(trim($model->name_customers), $customers);
+                    $model->save(false) ? null: $error = $error + 1;
+            } catch (NotFoundHttpException $e) {
+                return $this->render('error',[
+                    'message'=>$e->getMessage(),
+                ]);
+            }
+        echo "Завершено c ".$error." ошибками.";
+        return 0;
+    }
+
 }

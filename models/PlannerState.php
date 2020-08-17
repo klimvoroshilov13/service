@@ -43,7 +43,7 @@ class PlannerState extends Planner
      */
     public function autochange()
     {
-        $queryArr = (['run'=>'','closed'=>'','wait'=>'']);
+        $queryArr = (['run'=> 0,'closed'=> 0,'wait'=> 0]);
         $query = Planner::find()
             ->where('date = CURDATE() AND name_status = "ожидание" AND name_performers1 != "null"')
             ->column();

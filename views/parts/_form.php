@@ -40,7 +40,6 @@ $this->registerJs($js);
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
 
     <!-- date_creation -->
-    <?php $partsRequest->isNewRecord ? $partsRequest->date_creation = Datehelper::setCurrentDate(): null;?>
     <?php $partsRequest->date_creation = Yii::$app->formatter->asDatetime($partsRequest->date_creation, "php:d.m.Y") ?>
     <?= $form->field($partsRequest, 'date_creation')
         -> widget(DatePicker::classname(), [
@@ -72,7 +71,7 @@ $this->registerJs($js);
         'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
         'widgetBody' => '.container-items', // required: css class selector
         'widgetItem' => '.item', // required: css class
-        'limit' => 4, // the maximum times, an element can be cloned (default 999)
+        'limit' => 5, // the maximum times, an element can be cloned (default 999)
         'min' => 1, // 0 or 1 (default 1)
         'insertButton' => '.add-item', // css class
         'deleteButton' => '.remove-item', // css class

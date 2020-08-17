@@ -88,9 +88,9 @@ class ContractsController extends Controller
      */
     public function actionLists($id)
     {
-
+        $customer = Customers::findOne($id);
         $contracts = Contracts::find()
-            ->where(['name_customers'=>$id,'flag'=>1])
+            ->where(['name_customers'=>$customer->name,'flag'=>1])
             ->all();
 
         $countContracts = count($contracts);
@@ -100,7 +100,7 @@ class ContractsController extends Controller
                 echo"<option value='".$contract->name. " '>".$contract->full_name. "</option>";
             }
         }
-        echo"<option value=''>Без договора</option>";
+        echo"<option value='0'>Без договора</option>";
 
     }
 

@@ -3,7 +3,7 @@
     let formCustomer = document.querySelector('div.field-planner-name_customers');
     let formContract =  document.querySelector('div.field-planner-info_contract');
     let formRequest =  document.querySelector('div.field-planner-info_request');
-    window.selectCustomers =  document.querySelector('select#planner-name_customers');
+    window.selectCustomers =  document.querySelector('select#planner-customer_id');
     window.selectRequests =  document.querySelector('select#planner-info_request');
 
     window.pathContracts = {
@@ -17,7 +17,7 @@
 
     window.pathCustomers = {
         'url':'/customers/lists?id=',
-        'select':'select#planner-name_customers'
+        'select':'select#planner-customer_id'
     };
 
     window.load = function (selector,select,url,callback,id,flag) {

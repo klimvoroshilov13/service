@@ -101,7 +101,7 @@ class CustomersController extends Controller
         {
                 echo"<option value=''>Выберите контрагента ...</option>";
             foreach ($customers as $item){
-                echo"<option value='".$item->name. " '>".$item->name. "</option>";
+                echo"<option value='".$item->id. " '>".$item->name. "</option>";
             }
         }
         else {
@@ -186,4 +186,5 @@ class CustomersController extends Controller
             throw new NotFoundHttpException(Yii::t('yii','The requested page does not exist.'));
         }
     }
+
 }

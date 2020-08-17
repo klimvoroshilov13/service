@@ -87,7 +87,7 @@ class DataFromModel
                     break;
             }
         $contracts["Без договора"] = "Без договора";
-        $dataArray['contract'] = $contract;
+        $dataArray['contract'] = array_search($contract, $contracts);
         $dataArray['contracts'] = $contracts;
         }
 
@@ -96,8 +96,8 @@ class DataFromModel
             $customer = trim(ArrayHelper::getValue($model, $customer));
             $customers = ArrayHelper::map(Customers::find()
                 ->orderBy(['name' => SORT_ASC])
-                ->all(), 'name', 'name');
-        $dataArray['customer'] = $customer;
+                ->all(), 'id', 'name');
+        $dataArray['customer'] = array_search($customer, $customers);
         $dataArray['customers'] = $customers;
         }
 

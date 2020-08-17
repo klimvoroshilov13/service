@@ -2,10 +2,10 @@
 (function () {
     let formJobs = document.querySelector('select#planner-name_jobs');
     let formRequest = document.querySelector('div.field-planner-info_request');
-    let formCustomer = document.querySelector('div.field-planner-name_customers');
+    let formCustomer = document.querySelector('div.field-planner-customer_id');
     let formContract = document.querySelector('div.field-planner-info_contract');
     let selectedVal = document.querySelectorAll('option[selected]');
-    let selectCustomers = document.querySelector('select#planner-name_customers');
+    let selectCustomers = document.querySelector('select#planner-customer_id');
     let selectRequests = document.querySelector('select#planner-info_request');
 
     let pathContracts = {
@@ -19,7 +19,7 @@
 
     let pathCustomers = {
         'url':'/customers/lists?id=',
-        'select':'select#planner-name_customers'
+        'select':'select#planner-customer_id'
     };
 
     // Функция загрузки данных методом post

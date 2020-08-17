@@ -45,7 +45,7 @@ use app\components\helper\Adminhelper;
         <?= $form->field($model,'name_jobs')->dropDownList($modelPlannerArray['jobs'],$paramNj)?>
 
         <!-- name_customers -->
-        <?= $form->field($model, 'name_customers')
+        <?= $form->field($model, 'customer_id')
             ->dropDownList($modelPlannerArray['customers'],[
                     'options' =>[
                             $modelPlannerArray['customer'] => ['Selected' => true ]
@@ -92,7 +92,7 @@ use app\components\helper\Adminhelper;
                 'prompt'=>'Выберите статус ...'
             ];?>
         <?= $form->field($model,'name_status')->dropDownList($modelPlannerArray['statuses'],$paramNs)?>
-        
+
         <div class="form-group">
             <?= Html::submitButton($model->isNewRecord ? Yii::t('yii', 'Create') : Yii::t('yii', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>

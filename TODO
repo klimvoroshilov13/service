@@ -1,0 +1,20 @@
+It needs to do:
+  Parts:
+    ✔ Add a performer's field to the _form.php(will be to work actionCreate)   @started(08.08.2020 - 22:17) @done (10.08.2020 - 14:30) @lasted(1 day, 16:13)
+    ☐ Write the actionUpdate code @critical
+      ☐ Try through editing PartsItem
+    ☐ Replace the id PartsRequest into id PartsItem in actionIndex @high
+    ☐ Write the actionView code @high
+    ☐ Replace the part name into № in actionCreate @low
+  Planner:
+    ☐ Fix the working of create (Don't works the contract's field) @high
+  Requests:
+    ☐ Fix the working of create (Don't works the contract's field) @high
+  General:
+    ✔ Fix the xdebug codek's utf8 error: can't decode byte 0xd0 in position 1023) @low @done (17.08.2020 - 10:19)
+  Database:
+    ✔ Added one field in table planner(id_customer) @done (17.08.2020 - 14:04)
+Note:
+  command: xdebug_session_start {"launch_browser": true}
+  command: xdebug_session_stop {"launch_browser": true}
+  command: xdebug_layout {"restore": true}

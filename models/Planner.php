@@ -14,6 +14,7 @@ use app\components\helper\Datehelper;
  * @property string $day_week
  * @property string $name_jobs
  * @property string $name_customers
+ * @property string $customer_id
  * @property string $info_text
  * @property string $info_contract
  * @property string $info_request
@@ -47,6 +48,7 @@ class Planner extends \yii\db\ActiveRecord
     {
         return [
             [['date_create', 'date'], 'safe'],
+            [['customer_id'], 'integer'],
             [['info_text', 'info_request'], 'string'],
             [['day_week', 'name_jobs'], 'string', 'max' => 15],
             [['name_customers', 'info_contract'], 'string', 'max' => 127],

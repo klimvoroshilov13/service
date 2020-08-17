@@ -128,7 +128,7 @@ class PartsController extends Controller
 //        $partsItem = [new PartsItem()];
         $data = new DataFromModel();
         $modelPlannerArray[0][0] = $data->getDataArray($partsRequest);
-        for ($i=0;$i<4;$i++){
+        for ($i=0;$i<5;$i++){
             $partsItem[$i]=new PartsItem();
             $modelPlannerArray[1][$i] = $data->getDataArray($partsItem[$i]);
         }
@@ -187,7 +187,6 @@ class PartsController extends Controller
         $data = new DataFromModel();
         $modelPlannerArray = $data->getDataArray($partsRequest);
         $modelPlannerArray = array_merge($modelPlannerArray, $data->getDataArray($partsItem));
-
         if ($partsRequest->load(Yii::$app->request->post())) {
 
             $partsItem = Model::createMultiple(PartsItem::classname());

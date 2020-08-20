@@ -72,7 +72,7 @@ class Planner extends \yii\db\ActiveRecord
             'date_create' => Yii::t('yii','Date create'),
             'day_week' => Yii::t('yii','Day Week'),
             'name_jobs' => Yii::t('yii','Name Jobs'),
-            'name_customers' => Yii::t('yii','Name Customers'),
+            'customer_id' => Yii::t('yii','Name Customer'),
             'info_text' => Yii::t('yii','Info'),
             'info_contract' => Yii::t('yii','Info'),
             'info_request' => Yii::t('yii','Info'),
@@ -151,7 +151,7 @@ class Planner extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->day_week = getDayRus($this->date);
             $this->date=Yii::$app->formatter->asDatetime($this->date, "php:Y-m-d");
-            $this->date_create==null ? $this->date_create=Datehelper::setCurrentDate('Y-m-d H:i'):null;
+            $this->date_create==null ? $this->date_create = Datehelper::setCurrentDate('Y-m-d H:i'):null;
             !($this->name_jobs=='заявка')?$this->info_request=null:null;
             $this->info_contract=='Выберите договор...' || $this->info_contract=='Без договора'? $this->info_contract=null:null;
             $this->name_performers1==''? $this->name_performers1=null:null;

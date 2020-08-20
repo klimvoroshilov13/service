@@ -58,7 +58,7 @@ class ContractsController extends Controller
                         'roles' => ['operator'],
                     ],
                     [
-                        'actions' => ['logout','index','view','update','create','delete','lists','full'],
+                        'actions' => ['logout','index','view','update','create','delete','lists','full','addfield'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -208,6 +208,32 @@ class ContractsController extends Controller
 
     echo "Завершено";
 
+    }
+
+    /**
+     * Add data in a field's customer_id
+     * @return integer
+     */
+    public function actionAddfield()
+    {
+        $customers = ArrayHelper::map(Customers::find()->all(),'id','name');
+        $contracts = ArrayHelper::map(Contracts::find()->all(),'id',trim('name_customers'));
+        foreach ($contracts as $key => $value)
+            $contracts[$key] = trim($value);
+        $count = count($contracts);
+        $error = 0;
+        foreach ($contracts as $key => $value)
+            try {
+                    $model = $this->findModel($key);
+                    $model->customer_id = array_search(trim($model->name_customers), $customers);
+                    $model->save(false) ? null: $error = $error + 1;
+            } catch (NotFoundHttpException $e) {
+                return $this->render('error',[
+                    'message'=>$e->getMessage(),
+                ]);
+            }
+        echo "Завершено c ".$error." ошибками.";
+        return 0;
     }
 
 }

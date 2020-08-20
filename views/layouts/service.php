@@ -28,6 +28,7 @@ $userModel=Yii::$app->user->identity;
     <link rel="icon" href="/web/favicon.ico">
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">

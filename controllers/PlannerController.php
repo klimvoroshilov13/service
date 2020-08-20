@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\PlannerFilter;
 use Yii;
+use app\models\PlannerFilter;
 use app\models\Requests;
 use app\modules\admin\models\UserControl;
 use app\models\Planner;
@@ -125,6 +125,8 @@ class PlannerController extends Controller
             : $modelFilter->year = $session->get('year');
 
         $modelCopy = new PlannerCopy();
+        $data = new DataFromModel();
+        $modelPlannerArray = $data->getDataArray(new Planner());
         return $this->render('index', [
                'searchModel' => $searchModel,
                'dataProvider' => $dataProvider,
@@ -133,7 +135,8 @@ class PlannerController extends Controller
                'perPage' => $get['per-page'],
                'modelCopy' => $modelCopy,
                'modelFilter' => $modelFilter,
-               'role' => $role
+               'role' => $role,
+               'modelPlannerArray'=>$modelPlannerArray
            ]);
     }
 

@@ -77,12 +77,12 @@ class DataFromModel
             switch ($status_contracts) {
                 case "all" :
                     $contracts = ArrayHelper::map(Contracts::find()
-                        ->where(['name_customers' => $model->name_customers])
+                        ->where(['customer_id' => $model->customer_id])
                         ->all(), 'name', 'full_name');
                     break;
                 case "active" :
                     $contracts = ArrayHelper::map(Contracts::find()
-                        ->where(['name_customers' => $model->name_customers, 'flag' => 1])
+                        ->where(['customer_id' => $model->customer_id, 'flag' => 1])
                         ->all(), 'name', 'full_name');
                     break;
             }

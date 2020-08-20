@@ -14,6 +14,7 @@ use app\components\helper\Datehelper;
 /* @var $searchModel app\models\PlannerSearch */
 /* @var $stateRequest string */
 /* @var $perPage string */
+/* @var $modelPlannerArray app\services\DataFromModel */
 
  try {
      $datePicker = DatePicker::widget([
@@ -46,7 +47,7 @@ use app\components\helper\Datehelper;
     [
         'class' => 'app\components\grid\CombinedDataColumn',
         'attributes' => [
-            'date:date',
+            'date:html',
             'day_week:html',
         ],
         'labelTemplate' => '{0}',
@@ -56,7 +57,11 @@ use app\components\helper\Datehelper;
             '[ Day Week ]',
         ],
         'values' => [
-            null,
+            function ($model, $_key, $_index, $_column) {
+                /* @var $model object*/
+                $date = Yii::$app->formatter->asDatetime($model->date, "php:d.m.Y");
+                return Datehelper::getMonthRus($date);
+            },
             null
         ],
 
@@ -73,7 +78,7 @@ use app\components\helper\Datehelper;
         'class' => 'app\components\grid\CombinedDataColumn',
         'attributes' => [
             'name_jobs:html',
-            'name_customers:html',
+            'customer_id:html',
             'info_contract:html',
             'info_request:html',
             'info_text:html',
@@ -86,11 +91,13 @@ use app\components\helper\Datehelper;
             'Customer',
             'Сведения',
         ],
-        'values' => array(
+        'values' => [
             null,
-            null,
+            function ($model, $_key, $_index, $_column) use ($modelPlannerArray) {
+                /* @var $model object*/
+                return $modelPlannerArray['customers'][$model->customer_id];
+            },
             function ($model, $_key, $_index, $_column) {
-
                 /* @var $model object*/
                 $model->withoutContract();
                 return $model->info_request == '' &&  $model->info_text == '' ? '( ' . $model->info_contract
@@ -103,11 +110,10 @@ use app\components\helper\Datehelper;
                             'class'=>'my-tooltip',
                     ]);
                 },
-
             function ($model, $_key, $_index, $_column) {
                 return $model->info_text == '' ? ')':$model->info_text . ')' ;
             }
-        ),
+        ],
 
         'sortLinksOptions' => [
             ['class' => 'text-nowrap'],

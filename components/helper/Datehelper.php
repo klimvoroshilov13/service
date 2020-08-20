@@ -6,6 +6,7 @@
  */
 
 namespace app\components\helper;
+
 use DateTime;
 
 
@@ -51,8 +52,8 @@ class Datehelper
 
     static function getMonthRus($date)
     {
-        //список месяцев с названиями для замены
-        $_monthsList = array(
+        // The list months
+        $_monthsList = [
             ".01." => "января",
             ".02." => "февраля",
             ".03." => "марта",
@@ -65,9 +66,9 @@ class Datehelper
             ".10." => "октября",
             ".11." => "ноября",
             ".12." => "декабря"
-        );
-        //заменяем число месяца на название:
-        $_mD = date("-m-.",$date); //для замены
+        ];
+        // Replace the day of the month
+        $_mD = date(".m.", strtotime($date)); //для замены
         return str_replace($_mD, " ".$_monthsList[$_mD]." ", $date);
     }
 

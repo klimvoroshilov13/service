@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
 /**  @var $Result boolean */
 /** @var $month string */
 /** @var $modelFilter app\models\PlannerFilter */
-
+/** @var $modelPlannerArray app\services\DataFromModel */
 
 $this->title = Yii::t('yii', 'Planners');
 

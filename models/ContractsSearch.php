@@ -18,7 +18,7 @@ class ContractsSearch extends Contracts
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'customer_id'], 'integer'],
             [['name', 'name_customers','note'], 'safe'],
         ];
     }
@@ -64,7 +64,7 @@ class ContractsSearch extends Contracts
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'note', $this->note])
-            ->andFilterWhere(['like', 'name_customers', $this->name_customers]);
+            ->andFilterWhere(['like', 'customer_id', $this->customer_id]);
 
         return $dataProvider;
     }

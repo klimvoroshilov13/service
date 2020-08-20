@@ -21,11 +21,20 @@
 			}
 		},
 		{
-			"file": "config/web.php",
+			"file": "controllers/PartsController.php",
 			"settings":
 			{
-				"buffer_size": 4495,
+				"buffer_size": 8596,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/PartsItem.php",
+			"settings":
+			{
+				"buffer_size": 2713,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -47,37 +56,163 @@
 			}
 		},
 		{
-			"file": "components/helper/Dbhelper.php",
+			"file": "controllers/ContractsController.php",
 			"settings":
 			{
-				"buffer_size": 405,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "models/PartsItem.php",
-			"settings":
-			{
-				"buffer_size": 2713,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "controllers/PartsController.php",
-			"settings":
-			{
-				"buffer_size": 8596,
+				"buffer_size": 7121,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "components/helper/Adminhelper.php",
+			"file": "models/Planner.php",
 			"settings":
 			{
-				"buffer_size": 729,
+				"buffer_size": 5531,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/PlannerController.php",
+			"settings":
+			{
+				"buffer_size": 9585,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/PlannerSearch.php",
+			"settings":
+			{
+				"buffer_size": 3992,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/PlannerState.php",
+			"settings":
+			{
+				"buffer_size": 2775,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/planner/columns-planner.php",
+			"settings":
+			{
+				"buffer_size": 6050,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/planner/index.php",
+			"settings":
+			{
+				"buffer_size": 3088,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/planner/_form.php",
+			"settings":
+			{
+				"buffer_size": 4941,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/Contracts.php",
+			"settings":
+			{
+				"buffer_size": 2117,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/ContractsSearch.php",
+			"settings":
+			{
+				"buffer_size": 1640,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/CustomersController.php",
+			"settings":
+			{
+				"buffer_size": 5455,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "services/DataFromModel.php",
+			"settings":
+			{
+				"buffer_size": 7738,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/planner/update.php",
+			"settings":
+			{
+				"buffer_size": 752,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web/js/planner/form/behavior-fields.js",
+			"settings":
+			{
+				"buffer_size": 4227,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "web/js/planner/form/load-data.js",
+			"settings":
+			{
+				"buffer_size": 1638,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/planner/filter-form.php",
+			"settings":
+			{
+				"buffer_size": 1324,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/web.php",
+			"settings":
+			{
+				"buffer_size": 4495,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
+			"settings":
+			{
+				"buffer_size": 16453,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -90,66 +225,20 @@
 			}
 		},
 		{
-			"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+			"file": "views/layouts/service.php",
 			"settings":
 			{
-				"buffer_size": 21924,
+				"buffer_size": 4077,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "services/DataFromModel.php",
+			"file": "components/grid/CombinedDataColumn.php",
 			"settings":
 			{
-				"buffer_size": 7700,
-				"encoding": "UTF-8",
+				"buffer_size": 3292,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
-			"settings":
-			{
-				"buffer_size": 7247,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
-			"settings":
-			{
-				"buffer_size": 1704,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "models/PartsRequest.php",
-			"settings":
-			{
-				"buffer_size": 1994,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
-			"settings":
-			{
-				"buffer_size": 16532,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/planner/_form.php",
-			"settings":
-			{
-				"buffer_size": 4952,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -180,6 +269,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pus",
+				"git: push"
+			],
+			[
+				"q",
+				"git: quick commit"
+			],
 			[
 				"Pac",
 				"Package Control: Install Package"
@@ -274,10 +371,6 @@
 			],
 			[
 				"pu",
-				"git: push"
-			],
-			[
-				"pus",
 				"git: push"
 			],
 			[
@@ -430,13 +523,36 @@
 	"expanded_folders":
 	[
 		"/H/Project/Web/service.loc",
+		"/H/Project/Web/service.loc/components",
+		"/H/Project/Web/service.loc/components/grid",
+		"/H/Project/Web/service.loc/components/helper",
+		"/H/Project/Web/service.loc/controllers",
+		"/H/Project/Web/service.loc/models",
+		"/H/Project/Web/service.loc/services",
 		"/H/Project/Web/service.loc/views",
-		"/H/Project/Web/service.loc/views/parts"
+		"/H/Project/Web/service.loc/views/layouts",
+		"/H/Project/Web/service.loc/views/planner",
+		"/H/Project/Web/service.loc/web",
+		"/H/Project/Web/service.loc/web/js",
+		"/H/Project/Web/service.loc/web/js/planner",
+		"/H/Project/Web/service.loc/web/js/planner/form"
 	],
 	"file_history":
 	[
-		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/base/ErrorHandler.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/H/Project/Web/service.loc/TODO",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/DocBlockr/README.md",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+		"/H/Project/Web/service.loc/models/Model.php",
+		"/H/Project/Web/service.loc/config/web.php",
+		"/H/Project/Web/service.loc/components/helper/Dbhelper.php",
+		"/H/Project/Web/service.loc/components/helper/Adminhelper.php",
+		"/H/Project/Web/service.loc/components/helper/Datehelper.php",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/base/ErrorHandler.php",
+		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/db/BaseActiveRecord.php",
+		"/H/Project/Web/service.loc/models/PartsRequest.php",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.log",
 		"/C/OSPanel/userdata/logs/xdebug.log",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Installed Packages/Temp/Xdebug Client/xdebug/protocol.py",
@@ -448,10 +564,8 @@
 		"/H/Project/Web/service.loc/algorithm/parts/dynamic-form-example.php",
 		"/H/Project/Web/service.loc/vendor/yiisoft/yii2/db/Command.php",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
-		"/H/Project/Web/service.loc/TODO",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/Default (Windows).sublime-keymap",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/All Autocomplete/All Autocomplete.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/All Autocomplete.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
@@ -469,7 +583,6 @@
 		"/C/OSPanel/userdata/MySQL-5.6/service@002eloc/auth_rule.frm",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/yaTranslate.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/YandexTranslate/yaTranslate.sublime-settings",
-		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
 		"/H/Project/Web/service.loc/views/layouts/app.php",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
@@ -478,7 +591,6 @@
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
-		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/Local History/settings/LocalHistory.sublime-settings",
 		"/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/LocalHistory.sublime-settings",
 		"/H/Project/Web/service.loc/views/parts/index.php",
@@ -540,6 +652,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$planners"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -547,6 +660,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"$contracts"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -557,7 +671,7 @@
 	"groups":
 	[
 		{
-			"selected": 15,
+			"selected": 23,
 			"sheets":
 			[
 				{
@@ -588,25 +702,25 @@
 							{
 								"allowed_colors":
 								[
-									"hex",
-									"rgb",
-									"graya",
-									"rgba",
 									"hsl",
-									"hexa",
-									"hwba",
-									"webcolors",
-									"hwb",
-									"gray",
-									"hex_compressed",
 									"hexa_compressed",
-									"hsla"
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597325023.28,
+								"last_updated": 1597636941.74,
 								"scan_completion_scopes":
 								[
 								],
@@ -626,266 +740,84 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "controllers/PartsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5809,
+								5809
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "config/web.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4495,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								188,
-								188
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hexa_compressed",
-									"hsl",
-									"hwb",
-									"graya",
-									"rgb",
-									"gray",
-									"rgba",
-									"hwba",
-									"hex",
-									"webcolors",
-									"hexa",
-									"hex_compressed",
-									"hsla"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597407132.89,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "views/requests/_form.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6617,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": false,
-								"last_updated": 1597407132.89
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "controllers/RequestsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13493,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8186,
-								8186
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hexa",
-									"hex_compressed",
-									"hex",
-									"webcolors",
-									"rgba",
-									"hwba",
-									"hsla",
-									"hwb",
-									"hsl",
-									"hexa_compressed",
-									"gray",
-									"rgb",
-									"graya"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597579693.29,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "components/helper/Dbhelper.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 405,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								403,
-								403
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hexa",
-									"hex_compressed",
-									"hex",
-									"webcolors",
-									"rgba",
-									"hwba",
-									"hsla",
-									"hwb",
-									"hsl",
-									"hexa_compressed",
-									"gray",
-									"rgb",
-									"graya"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597579693.29,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "models/PartsItem.php",
 					"semi_transient": false,
 					"settings":
@@ -912,25 +844,25 @@
 							{
 								"allowed_colors":
 								[
-									"hexa_compressed",
 									"hsl",
-									"hwb",
-									"graya",
-									"rgb",
-									"gray",
-									"rgba",
+									"hexa_compressed",
 									"hwba",
-									"hex",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
 									"webcolors",
 									"hexa",
-									"hex_compressed",
-									"hsla"
+									"hex",
+									"rgba",
+									"graya"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597407132.89,
+								"last_updated": 1597636941.74,
 								"scan_completion_scopes":
 								[
 								],
@@ -952,90 +884,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "controllers/PartsController.php",
+					"buffer": 3,
+					"file": "views/requests/_form.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8596,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5809,
-								5809
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.preview_meta":
-							{
-							},
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hex",
-									"webcolors",
-									"hexa",
-									"hex_compressed",
-									"hwb",
-									"graya",
-									"hwba",
-									"rgba",
-									"hexa_compressed",
-									"hsl",
-									"hsla",
-									"rgb",
-									"gray"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597582841.1,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3975.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "components/helper/Adminhelper.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 729,
+						"buffer_size": 6617,
 						"regions":
 						{
 						},
@@ -1057,25 +915,170 @@
 							{
 								"allowed_colors":
 								[
-									"hex",
-									"webcolors",
-									"hexa",
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
 									"hex_compressed",
 									"hwb",
-									"graya",
-									"hwba",
+									"webcolors",
+									"hexa",
+									"hex",
 									"rgba",
-									"hexa_compressed",
-									"hsl",
-									"hsla",
-									"rgb",
-									"gray"
+									"graya"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597582841.1,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "controllers/RequestsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13493,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13406,
+								13406
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "controllers/ContractsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7121,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7030,
+								7030
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
 								"scan_completion_scopes":
 								[
 								],
@@ -1101,7 +1104,1184 @@
 					"type": "text"
 				},
 				{
+					"buffer": 6,
+					"file": "models/Planner.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5531,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38,
+								30
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "controllers/PlannerController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9378,
+								9378
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 138.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
 					"buffer": 8,
+					"file": "models/PlannerSearch.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3952,
+								3952
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "models/PlannerState.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2766,
+								2766
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "views/planner/columns-planner.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6050,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1523,
+								1523
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 866.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "views/planner/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3088,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								452
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 69.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "views/planner/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1692,
+								1692
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1035.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "models/Contracts.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								345,
+								345
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 414.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "models/ContractsSearch.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1631,
+								1631
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "controllers/CustomersController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5455,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5452,
+								5452
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "services/DataFromModel.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7738,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2722,
+								2722
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1449.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "views/planner/update.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 752,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "web/js/planner/form/behavior-fields.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								871,
+								871
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".js",
+								"current_syntax": "JavaScript/JavaScript",
+								"enabled": false,
+								"last_updated": 1597636941.74
+							},
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "web/js/planner/form/load-data.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								806,
+								806
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".js",
+								"current_syntax": "JavaScript/JavaScript",
+								"enabled": false,
+								"last_updated": 1597636941.74
+							},
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "views/planner/filter-form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hsl",
+									"hexa_compressed",
+									"hwba",
+									"gray",
+									"rgb",
+									"hsla",
+									"hex_compressed",
+									"hwb",
+									"webcolors",
+									"hexa",
+									"hex",
+									"rgba",
+									"graya"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597636941.74,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "config/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								769,
+								769
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11547,
+								11547
+							]
+						],
+						"settings":
+						{
+							"color_helper.box_height": 20,
+							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.preview_meta":
+							{
+							},
+							"color_helper.scan":
+							{
+								"allowed_colors":
+								[
+									"hwba",
+									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
+									"hsla"
+								],
+								"compress_hex_output": true,
+								"current_ext": ".php",
+								"current_syntax": "PHP/PHP",
+								"enabled": true,
+								"last_updated": 1597733153.4,
+								"scan_completion_scopes":
+								[
+								],
+								"scan_scopes":
+								[
+									"meta.declaration-list.css -support.type.property-name.css -comment -string",
+									"meta.property-value.css -comment -string",
+									"meta.value.css -comment -string",
+									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
+									"meta.tag.any.html meta.attribute-with-value.style.html"
+								],
+								"use_hex_argb": false
+							},
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
 					"file": "components/helper/Datehelper.php",
 					"semi_transient": false,
 					"settings":
@@ -1124,29 +2304,32 @@
 							"color_helper.file_palette":
 							[
 							],
+							"color_helper.preview_meta":
+							{
+							},
 							"color_helper.scan":
 							{
 								"allowed_colors":
 								[
-									"gray",
-									"hexa",
-									"hwb",
-									"hex_compressed",
-									"rgba",
-									"hexa_compressed",
-									"graya",
 									"hwba",
-									"hsl",
-									"hex",
-									"rgb",
 									"webcolors",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
+									"hex_compressed",
+									"hwb",
+									"hexa_compressed",
+									"hexa",
 									"hsla"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597581540.81,
+								"last_updated": 1597733153.4,
 								"scan_completion_scopes":
 								[
 								],
@@ -1165,27 +2348,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 658.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+					"buffer": 24,
+					"file": "views/layouts/service.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21924,
+						"buffer_size": 4077,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3426,
-								3426
+								716,
+								716
 							]
 						],
 						"settings":
@@ -1195,71 +2378,32 @@
 							"color_helper.file_palette":
 							[
 							],
-							"color_helper.scan":
+							"color_helper.preview_meta":
 							{
-								"current_ext": ".sublime-settings",
-								"current_syntax": "JavaScript/JSON",
-								"enabled": false,
-								"last_updated": 1597407132.89
 							},
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "services/DataFromModel.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7700,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3211,
-								3211
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
 							"color_helper.scan":
 							{
 								"allowed_colors":
 								[
-									"hex",
+									"hwba",
 									"webcolors",
-									"hexa",
+									"hex",
+									"gray",
+									"rgba",
+									"graya",
+									"rgb",
+									"hsl",
 									"hex_compressed",
 									"hwb",
-									"graya",
-									"hwba",
-									"rgba",
 									"hexa_compressed",
-									"hsl",
-									"hsla",
-									"rgb",
-									"gray"
+									"hexa",
+									"hsla"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597582841.1,
+								"last_updated": 1597733153.4,
 								"scan_completion_scopes":
 								[
 								],
@@ -1278,64 +2422,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1863.0,
+						"translation.y": 2503.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+					"buffer": 25,
+					"file": "components/grid/CombinedDataColumn.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1288,
-								1288
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/PlainTasks/tasks.hidden-tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"current_ext": ".todo",
-								"current_syntax": "PlainTasks/PlainTasks",
-								"enabled": false,
-								"last_updated": 1597406401.88
-							},
-							"plain_tasks_remain_time_phantoms":
-							[
-							],
-							"syntax": "Packages/PlainTasks/PlainTasks.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/C/Users/Kazakov_N/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1704,
+						"buffer_size": 3292,
 						"regions":
 						{
 						},
@@ -1353,213 +2452,32 @@
 							"color_helper.file_palette":
 							[
 							],
-							"color_helper.scan":
+							"color_helper.preview_meta":
 							{
-								"current_ext": ".sublime-settings",
-								"current_syntax": "JavaScript/JSON",
-								"enabled": false,
-								"last_updated": 1597413451.34
 							},
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/PartsRequest.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1994,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								328,
-								328
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
 							"color_helper.scan":
 							{
 								"allowed_colors":
 								[
-									"hsla",
-									"webcolors",
-									"gray",
-									"hsl",
-									"hex",
-									"hex_compressed",
 									"hwba",
-									"graya",
-									"rgba",
-									"hexa_compressed",
-									"rgb",
-									"hexa",
-									"hwb"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597409430.66,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "vendor/yiisoft/yii2/messages/ru/yii.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16532,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12280,
-								12280
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hexa",
-									"hwba",
-									"graya",
-									"hex",
 									"webcolors",
-									"hwb",
+									"hex",
 									"gray",
-									"hsl",
-									"hsla",
-									"hexa_compressed",
-									"rgb",
 									"rgba",
-									"hex_compressed"
-								],
-								"compress_hex_output": true,
-								"current_ext": ".php",
-								"current_syntax": "PHP/PHP",
-								"enabled": true,
-								"last_updated": 1597582391.28,
-								"scan_completion_scopes":
-								[
-								],
-								"scan_scopes":
-								[
-									"meta.declaration-list.css -support.type.property-name.css -comment -string",
-									"meta.property-value.css -comment -string",
-									"meta.value.css -comment -string",
-									"meta.tag.inline.any.html string.quoted -constant.character.entity.html",
-									"meta.tag.any.html meta.attribute-with-value.style.html"
-								],
-								"use_hex_argb": false
-							},
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "views/planner/_form.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4952,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3104,
-								2789
-							]
-						],
-						"settings":
-						{
-							"color_helper.box_height": 20,
-							"color_helper.color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-							"color_helper.file_palette":
-							[
-							],
-							"color_helper.scan":
-							{
-								"allowed_colors":
-								[
-									"hex",
-									"webcolors",
-									"hexa",
+									"graya",
+									"rgb",
+									"hsl",
 									"hex_compressed",
 									"hwb",
-									"graya",
-									"hwba",
-									"rgba",
 									"hexa_compressed",
-									"hsl",
-									"hsla",
-									"rgb",
-									"gray"
+									"hexa",
+									"hsla"
 								],
 								"compress_hex_output": true,
 								"current_ext": ".php",
 								"current_syntax": "PHP/PHP",
 								"enabled": true,
-								"last_updated": 1597582841.1,
+								"last_updated": 1597733153.4,
 								"scan_completion_scopes":
 								[
 								],
@@ -1581,7 +2499,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1650,7 +2568,7 @@
 	"project": "service.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 88.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1688,37 +2606,42 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"15":
+				"13":
 				{
 					"group": 0,
 					"index": 0
 				},
-				"16":
+				"14":
 				{
 					"group": 0,
 					"index": 1
 				},
-				"17":
+				"15":
 				{
 					"group": 0,
 					"index": 2
 				},
-				"18":
+				"16":
 				{
 					"group": 0,
 					"index": 3
 				},
-				"19":
+				"17":
 				{
 					"group": 0,
 					"index": 4
 				},
-				"20":
+				"18":
+				{
+					"group": 0,
+					"index": 5
+				},
+				"19":
 				{
 					"group": 0,
 					"index": 6
 				},
-				"21":
+				"20":
 				{
 					"group": 0,
 					"index": 7
@@ -1726,37 +2649,37 @@
 				"22":
 				{
 					"group": 0,
-					"index": 5
+					"index": 8
 				},
 				"23":
 				{
 					"group": 0,
-					"index": 8
+					"index": 9
 				},
 				"24":
 				{
 					"group": 0,
-					"index": 9
+					"index": 10
 				},
 				"25":
 				{
 					"group": 0,
-					"index": 10
+					"index": 11
 				},
 				"26":
 				{
 					"group": 0,
-					"index": 11
+					"index": 12
 				},
 				"27":
 				{
 					"group": 0,
-					"index": 12
+					"index": 13
 				},
 				"28":
 				{
 					"group": 0,
-					"index": 13
+					"index": 14
 				},
 				"29":
 				{
@@ -1766,7 +2689,37 @@
 				"30":
 				{
 					"group": 0,
-					"index": 14
+					"index": 16
+				},
+				"31":
+				{
+					"group": 0,
+					"index": 17
+				},
+				"32":
+				{
+					"group": 0,
+					"index": 18
+				},
+				"33":
+				{
+					"group": 0,
+					"index": 19
+				},
+				"34":
+				{
+					"group": 0,
+					"index": 20
+				},
+				"35":
+				{
+					"group": 0,
+					"index": 21
+				},
+				"36":
+				{
+					"group": 0,
+					"index": 22
 				}
 			},
 			"restore_layout":

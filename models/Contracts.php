@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "contracts".
  *
@@ -46,10 +48,11 @@ class Contracts extends \yii\db\ActiveRecord
     {
         return [
             'id' => '№',
-            'name' => 'Наименование договора',
-            'note' => 'Примечание',
-            'name_customers' => 'Наименование контрагента',
-            'flag'=>'Статус'
+            'name' => Yii::t('yii','Name Contract'),
+            'note' => Yii::t('yii','Note'),
+            'customer_id' => Yii::t('yii','Name Customer'),
+            'name_customers' => Yii::t('yii','Name Customer'),
+            'flag'=> Yii::t('yii','Name Status')
         ];
     }
 
